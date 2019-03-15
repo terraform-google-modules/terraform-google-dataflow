@@ -19,3 +19,6 @@ attributes:
   - name: dataflow_job_state
     required: true
     type: string
+  - name: dataflow_job_id
+    required: true
+    type: string

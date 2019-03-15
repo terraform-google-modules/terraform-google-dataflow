@@ -32,3 +32,7 @@ output "job_name" {
 output "dataflow_job_state" {
     value ="${module.example.dataflow_job_state}"
 }
+
+output "dataflow_job_id" {
+    value ="${module.example.dataflow_job_id}"
+}

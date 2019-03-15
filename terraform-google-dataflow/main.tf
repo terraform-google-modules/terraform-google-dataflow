@@ -14,20 +14,30 @@
  * limitations under the License.
  */
 
+resource "google_storage_bucket" "tmp_dir_bucket" {
+  name          = "${var.temp_gcs_location}"
+  location      = "${var.bucket_region}"
+  storage_class = "REGIONAL"
+  project  = "${var.project_id}"
+}
 
 resource "google_dataflow_job" "default_dataflow_job" {
-    project = "tfmenard-seed"
-    zone = "us-central1-a"
+    project = "${var.project_id}"
+    zone = "${var.zone}"
     name = "${var.job_name}"
-    on_delete = "cancel"
+    on_delete = "${var.on_delete}"
+    max_workers = "${var.max_workers}"
     template_gcs_path = "${var.template_gcs_path}"
-    temp_gcs_location = "${var.temp_gcs_location}"
+    #temp_gcs_location = "${var.temp_gcs_location}"
+    temp_gcs_location = "gs://${google_storage_bucket.tmp_dir_bucket.name}/tmp_dir"
     parameters = {
         inputFile = "gs://dataflow-samples/shakespeare/kinglear.txt"
         output   = "${var.template_gcs_path}/output/my_output"
     }
+    #TODO: Parametrize the following parameters
     #project
     #zone
-    #max_workers
     #on_delete
+    #max_workers
+    #parameters
 }

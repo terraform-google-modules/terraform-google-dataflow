@@ -20,18 +20,14 @@ resource "random_id" "random_suffix" {
   byte_length = 4
 }
 
-resource "google_storage_bucket" "tmp_dir_bucket" {
-  name          = "tmp-dir-bucket-${random_id.random_suffix.hex}"
-  location      = "${var.region}"
-  storage_class = "REGIONAL"
-  project  = "${var.project_id}"
-}
-
 module "dataflow-job" {
   source      = "../../"
-  project  = "${var.project_id}"
-  #bucket_name = "${var.bucket_name}"
+  project_id  = "${var.project_id}"
   job_name = "${var.job_name}"
+  on_delete = "cancel"
+  zone = "us-central1-a"
+  max_workers = 1
   template_gcs_path =  "gs://dataflow-templates/latest/Word_Count"
-  temp_gcs_location = "gs://${google_storage_bucket.tmp_dir_bucket.name}/tmp_dir"
+  temp_gcs_location = "tmp-dir-bucket-${random_id.random_suffix.hex}"
+  #temp_gcs_location = "${var.temp_gcs_location}"
 }

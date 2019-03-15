@@ -30,3 +30,7 @@ output "dataflow_job_temp_gcs_location" {
 output "dataflow_job_state" {
   value = "${google_dataflow_job.default_dataflow_job.state}"
 }
+
+output "dataflow_job_id" {
+  value = "${google_dataflow_job.default_dataflow_job.id}"
+}

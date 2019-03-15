@@ -17,6 +17,7 @@ project_id = attribute('project_id')
 name = attribute('job_name')
 region = attribute('region')
 dataflow_job_state = attribute('dataflow_job_state')
+dataflow_job_id = attribute('dataflow_job_id')
 
 control "gcloud" do
   title "gcloud configuration"
@@ -39,9 +40,9 @@ control "gcloud" do
         it "includes newly created dataflow job's name and location" do
           expect(data).to include(
             including(
-              "name" => "#{name}",
-              "location" => "#{region}",
-              #"state" => "#{dataflow_job_state}",
+              #"name" => "#{name}",
+              #"location" => "#{region}",
+              "id" => "#{dataflow_job_id}",
             ),
           )
         end

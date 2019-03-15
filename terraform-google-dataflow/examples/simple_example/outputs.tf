@@ -21,3 +21,7 @@ output "project" {
 output "dataflow_job_state" {
   value  = "${module.dataflow-job.dataflow_job_state}"
 }
+
+output "dataflow_job_id" {
+  value  = "${module.dataflow-job.dataflow_job_id}"
+}
