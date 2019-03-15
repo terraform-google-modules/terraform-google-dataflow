@@ -1,0 +1,21 @@
+name: simple_example
+depends:
+  - name: inspec-gcp
+    git: https://github.com/inspec/inspec-gcp.git
+    version: ~> 0.9.0
+attributes:
+  - name: project_id
+    required: true
+    type: string
+  - name: bucket_name
+    required: true
+    type: string
+  - name: region
+    required: true
+    type: string
+  - name: job_name
+    required: true
+    type: string
+  - name: dataflow_job_state
+    required: true
+    type: string
