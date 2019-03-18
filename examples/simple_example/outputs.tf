@@ -18,12 +18,12 @@ output "project" {
   value = "${var.project_id}"
 }
 
-output "dataflow_job_state" {
-  value  = "${module.dataflow-job.dataflow_job_state}"
+output "df_job_state" {
+  value  = "${module.dataflow-job.df_job_state}"
 }
 
-output "dataflow_job_id" {
-  value  = "${module.dataflow-job.dataflow_job_id}"
+output "df_job_id" {
+  value  = "${module.dataflow-job.df_job_id}"
 }
 
 output "df_job_name" {

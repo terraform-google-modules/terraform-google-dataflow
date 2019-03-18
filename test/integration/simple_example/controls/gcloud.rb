@@ -16,8 +16,8 @@ project_id = attribute('project_id')
 #state = attribute('state')
 name = attribute('job_name')
 region = attribute('region')
-dataflow_job_state = attribute('dataflow_job_state')
-dataflow_job_id = attribute('dataflow_job_id')
+df_job_state = attribute('df_job_state')
+df_job_id = attribute('df_job_id')
 
 control "gcloud" do
   title "gcloud configuration"
@@ -40,7 +40,7 @@ control "gcloud" do
         it "includes newly created dataflow job's job_id" do
           expect(data).to include(
             including(
-              "id" => "#{dataflow_job_id}",
+              "id" => "#{df_job_id}",
             ),
           )
         end
@@ -49,7 +49,7 @@ control "gcloud" do
 
     context "google_dataflow_job's state attribute" do
       it "is equal to JOB_STATE_RUNNING" do
-        expect(dataflow_job_state).to eql ('JOB_STATE_RUNNING')
+        expect(df_job_state).to eql ('JOB_STATE_RUNNING')
       end
     end
 

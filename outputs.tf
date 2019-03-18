@@ -27,10 +27,10 @@ output "temp_gcs_location" {
   value = "${google_dataflow_job.dataflow_job.temp_gcs_location}"
 }
 
-output "dataflow_job_state" {
+output "df_job_state" {
   value = "${google_dataflow_job.dataflow_job.state}"
 }
 
-output "dataflow_job_id" {
+output "df_job_id" {
   value = "${google_dataflow_job.dataflow_job.id}"
 }

@@ -16,9 +16,9 @@ attributes:
   - name: job_name
     required: true
     type: string
-  - name: dataflow_job_state
+  - name: df_job_state
     required: true
     type: string
-  - name: dataflow_job_id
+  - name: df_job_id
     required: true
     type: string
