@@ -15,11 +15,11 @@
  */
 
 
-output "dataflow_job_name" {
+output "df_job_name" {
   value = "${google_dataflow_job.dataflow_job.name}"
 }
 
-output "dataflow_job_template_gcs_path" {
+output "df_job_template_gcs_path" {
   value = "${google_dataflow_job.dataflow_job.template_gcs_path}"
 }
 

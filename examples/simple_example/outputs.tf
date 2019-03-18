@@ -26,6 +26,6 @@ output "dataflow_job_id" {
   value  = "${module.dataflow-job.dataflow_job_id}"
 }
 
-output "dataflow_job_name" {
-  value = "${module.dataflow-job.dataflow_job_name}"
+output "df_job_name" {
+  value = "${module.dataflow-job.df_job_name}"
 }
