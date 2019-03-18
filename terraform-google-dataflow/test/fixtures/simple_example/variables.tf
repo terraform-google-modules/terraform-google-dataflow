@@ -5,7 +5,3 @@ variable "project_id" {
 variable "region" {
   description = "The region to deploy to"
 }
-
-variable "job_name" {
-  description = "The dataflow job's name"
-}

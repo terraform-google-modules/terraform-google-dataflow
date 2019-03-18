@@ -21,8 +21,3 @@ variable "project_id" {
 variable "region" {
   description = "The region in which the bucket and the dataflow job will be deployed"
 }
-
-
-variable "job_name" {
-  description = "The daflow job's name"
-}

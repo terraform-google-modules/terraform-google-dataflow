@@ -37,11 +37,9 @@ control "gcloud" do
 
     context "gcloud dataflow jobs list OUTPUT" do
       describe "contains a job with same name and location" do
-        it "includes newly created dataflow job's name and location" do
+        it "includes newly created dataflow job's job_id" do
           expect(data).to include(
             including(
-              #"name" => "#{name}",
-              #"location" => "#{region}",
               "id" => "#{dataflow_job_id}",
             ),
           )

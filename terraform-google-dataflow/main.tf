@@ -21,7 +21,7 @@ resource "google_storage_bucket" "tmp_dir_bucket" {
   project  = "${var.project_id}"
 }
 
-resource "google_dataflow_job" "default_dataflow_job" {
+resource "google_dataflow_job" "dataflow_job" {
     project = "${var.project_id}"
     zone = "${var.zone}"
     name = "${var.job_name}"
@@ -30,10 +30,13 @@ resource "google_dataflow_job" "default_dataflow_job" {
     template_gcs_path = "${var.template_gcs_path}"
     #temp_gcs_location = "${var.temp_gcs_location}"
     temp_gcs_location = "gs://${google_storage_bucket.tmp_dir_bucket.name}/tmp_dir"
+    parameters = "${var.parameters}"
+    /*
     parameters = {
         inputFile = "gs://dataflow-samples/shakespeare/kinglear.txt"
-        output   = "${var.template_gcs_path}/output/my_output"
+        output   = "gs://${google_storage_bucket.tmp_dir_bucket.name}/output/my_output"
     }
+    */
     #TODO: Parametrize the following parameters
     #project
     #zone

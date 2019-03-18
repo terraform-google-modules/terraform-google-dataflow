@@ -20,14 +20,22 @@ resource "random_id" "random_suffix" {
   byte_length = 4
 }
 
+locals {
+  gcs_bucket_name = "tmp-dir-bucket-${random_id.random_suffix.hex}"
+}
+
 module "dataflow-job" {
   source      = "../../"
   project_id  = "${var.project_id}"
-  job_name = "${var.job_name}"
+  #job_name = "${var.job_name}"
+  job_name = "pubsub2bq-terraform-example"
   on_delete = "cancel"
   zone = "us-central1-a"
   max_workers = 1
   template_gcs_path =  "gs://dataflow-templates/latest/Word_Count"
-  temp_gcs_location = "tmp-dir-bucket-${random_id.random_suffix.hex}"
-  #temp_gcs_location = "${var.temp_gcs_location}"
+  temp_gcs_location = "${local.gcs_bucket_name}"
+  parameters = {
+        inputFile = "gs://dataflow-samples/shakespeare/kinglear.txt"
+        output   = "gs://${local.gcs_bucket_name}/output/my_output"
+  }
 }

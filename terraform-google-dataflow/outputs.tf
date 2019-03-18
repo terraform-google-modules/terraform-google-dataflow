@@ -16,21 +16,21 @@
 
 
 output "dataflow_job_name" {
-  value = "${google_dataflow_job.default_dataflow_job.name}"
+  value = "${google_dataflow_job.dataflow_job.name}"
 }
 
 output "dataflow_job_template_gcs_path" {
-  value = "${google_dataflow_job.default_dataflow_job.template_gcs_path}"
+  value = "${google_dataflow_job.dataflow_job.template_gcs_path}"
 }
 
-output "dataflow_job_temp_gcs_location" {
-  value = "${google_dataflow_job.default_dataflow_job.temp_gcs_location}"
+output "temp_gcs_location" {
+  value = "${google_dataflow_job.dataflow_job.temp_gcs_location}"
 }
 
 output "dataflow_job_state" {
-  value = "${google_dataflow_job.default_dataflow_job.state}"
+  value = "${google_dataflow_job.dataflow_job.state}"
 }
 
 output "dataflow_job_id" {
-  value = "${google_dataflow_job.default_dataflow_job.id}"
+  value = "${google_dataflow_job.dataflow_job.id}"
 }

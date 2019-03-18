@@ -29,7 +29,7 @@ variable "temp_gcs_location" {
 
 variable "parameters" {
   description = "(Optional) Key/Value pairs to be passed to the Dataflow job (as used in the template)."
-  default = ""
+  default = {}
 }
 
 variable "max_workers" {

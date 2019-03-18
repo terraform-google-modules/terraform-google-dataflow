@@ -26,7 +26,7 @@ output "region" {
 
 output "job_name" {
   description = "The dataflow job's name"
-  value       = "${var.job_name}"
+  value       = "${module.example.dataflow_job_name}"
 }
 
 output "dataflow_job_state" {
