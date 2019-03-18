@@ -28,19 +28,6 @@ resource "google_dataflow_job" "dataflow_job" {
     on_delete = "${var.on_delete}"
     max_workers = "${var.max_workers}"
     template_gcs_path = "${var.template_gcs_path}"
-    #temp_gcs_location = "${var.temp_gcs_location}"
     temp_gcs_location = "gs://${google_storage_bucket.tmp_dir_bucket.name}/tmp_dir"
-    parameters = "${var.parameters}"
-    /*
-    parameters = {
-        inputFile = "gs://dataflow-samples/shakespeare/kinglear.txt"
-        output   = "gs://${google_storage_bucket.tmp_dir_bucket.name}/output/my_output"
-    }
-    */
-    #TODO: Parametrize the following parameters
-    #project
-    #zone
-    #on_delete
-    #max_workers
-    #parameters
+    parameters = "${var.parameters}"s
 }
