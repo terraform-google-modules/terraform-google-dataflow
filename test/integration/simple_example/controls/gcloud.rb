@@ -48,8 +48,8 @@ control "gcloud" do
     end
 
     context "google_dataflow_job's state attribute" do
-      it "is equal to JOB_STATE_RUNNING" do
-        expect(df_job_state).to eql ('JOB_STATE_RUNNING')
+      it "should be a stable state (e.g JOB_STATE_RUNNING or JOB_STATE_PENDING)" do
+        expect(df_job_state).to eql('JOB_STATE_RUNNING') | eql('JOB_STATE_PENDING')
       end
     end
 

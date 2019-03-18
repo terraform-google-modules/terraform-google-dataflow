@@ -30,9 +30,9 @@ output "job_name" {
 }
 
 output "df_job_state" {
-    value ="${module.example.df_job_state}"
+    value = "${module.example.df_job_state}"
 }
 
 output "df_job_id" {
-    value ="${module.example.df_job_id}"
+    value = "${module.example.df_job_id}"
 }

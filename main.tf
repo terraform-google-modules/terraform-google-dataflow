@@ -29,5 +29,5 @@ resource "google_dataflow_job" "dataflow_job" {
     max_workers = "${var.max_workers}"
     template_gcs_path = "${var.template_gcs_path}"
     temp_gcs_location = "gs://${google_storage_bucket.tmp_dir_bucket.name}/tmp_dir"
-    parameters = "${var.parameters}"s
+    parameters = "${var.parameters}"
 }
