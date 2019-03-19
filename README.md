@@ -1,18 +1,26 @@
-# terraform-google-{{cookiecutter.module_name}}
-
-This module was generated from [terraform-google-module-template](https://github.com/terraform-google-modules/terraform-google-module-template/), which by default generates a module that simply creates a GCS bucket. As the module develops, this README should be updated.
+# terraform-google-dataflow
 
 The resources/services/activations/deletions that this module will create/trigger are:
 - Create a GCS bucket with the provided name
+- Create a Dataflow job that uses the GCS bucket for temporary job data
 
 ## Usage
 There are examples included in the [examples](./examples/) folder but simple usage is as follows:
 
 ```hcl
-module "bucket" {
-  source                     = "terraform-google-modules/{{cookiecutter.module_name}}/google"
-  project_id                 = "<PROJECT ID>"
-  bucket_name                = "gcs-test-bucket"
+module "dataflow-job" {
+  source      = "../../modules/dataflow"
+  project_id  = "<project_id>"
+  job_name = "<job_name>"
+  on_delete = "<on_delete>"
+  zone = "<df_job_zone>"
+  max_workers = <#_of_max_workers>
+  template_gcs_path =  "<gcs_path_to_dataflow_template>"
+  temp_gcs_location = "<gcs_path_to_bucket_for_temp_dataflow_data>"
+  parameters = {
+        bar = "example string"
+        foo = 123
+  }
 }
 ```
 
