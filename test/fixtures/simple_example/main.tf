@@ -14,12 +14,11 @@
  * limitations under the License.
  */
 
-
-
 module "example" {
-  source      = "../../../examples/simple_example"
-  project_id  = "${var.project_id}"
-  region      = "${var.region}"
+  source     = "../../../examples/simple_example"
+  project_id = "${var.project_id}"
+  region     = "${var.region}"
+
   #bucket_name = "simple-example-${random_string.random_suffix.result}"
   #job_name    = "${var.job_name}"
 }

@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 output "df_job_name" {
   value = "${google_dataflow_job.dataflow_job.name}"
 }

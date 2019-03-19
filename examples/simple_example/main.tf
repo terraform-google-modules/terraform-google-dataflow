@@ -25,16 +25,17 @@ locals {
 }
 
 module "dataflow-job" {
-  source      = "../../"
-  project_id  = "${var.project_id}"
-  job_name = "wordcount-terraform-example"
-  on_delete = "cancel"
-  zone = "us-central1-a"
-  max_workers = 1
-  template_gcs_path =  "gs://dataflow-templates/latest/Word_Count"
+  source            = "../../"
+  project_id        = "${var.project_id}"
+  job_name          = "wordcount-terraform-example"
+  on_delete         = "cancel"
+  zone              = "us-central1-a"
+  max_workers       = 1
+  template_gcs_path = "gs://dataflow-templates/latest/Word_Count"
   temp_gcs_location = "${local.gcs_bucket_name}"
+
   parameters = {
-        inputFile = "gs://dataflow-samples/shakespeare/kinglear.txt"
-        output   = "gs://${local.gcs_bucket_name}/output/my_output"
+    inputFile = "gs://dataflow-samples/shakespeare/kinglear.txt"
+    output    = "gs://${local.gcs_bucket_name}/output/my_output"
   }
 }

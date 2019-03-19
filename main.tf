@@ -18,16 +18,16 @@ resource "google_storage_bucket" "tmp_dir_bucket" {
   name          = "${var.temp_gcs_location}"
   location      = "${var.bucket_region}"
   storage_class = "REGIONAL"
-  project  = "${var.project_id}"
+  project       = "${var.project_id}"
 }
 
 resource "google_dataflow_job" "dataflow_job" {
-    project = "${var.project_id}"
-    zone = "${var.zone}"
-    name = "${var.job_name}"
-    on_delete = "${var.on_delete}"
-    max_workers = "${var.max_workers}"
-    template_gcs_path = "${var.template_gcs_path}"
-    temp_gcs_location = "gs://${google_storage_bucket.tmp_dir_bucket.name}/tmp_dir"
-    parameters = "${var.parameters}"
+  project           = "${var.project_id}"
+  zone              = "${var.zone}"
+  name              = "${var.job_name}"
+  on_delete         = "${var.on_delete}"
+  max_workers       = "${var.max_workers}"
+  template_gcs_path = "${var.template_gcs_path}"
+  temp_gcs_location = "gs://${google_storage_bucket.tmp_dir_bucket.name}/tmp_dir"
+  parameters        = "${var.parameters}"
 }

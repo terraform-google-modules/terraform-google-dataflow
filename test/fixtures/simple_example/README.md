@@ -1,6 +1,6 @@
 # Simple Example
 
-This example illustrates how to use the `{{cookiecutter.module_name}}` module.
+This example illustrates how to use the `dataflow-module` module.
 
 [^]: (autogen_docs_start)
 
@@ -8,17 +8,18 @@ This example illustrates how to use the `{{cookiecutter.module_name}}` module.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| project\_id | The project ID to deploy to | string | n/a | yes |
-| region | The region in which the bucket and the dataflow job will be deployed | string | n/a | yes |
+| project\_id | The project_id to deploy the example instance into.  (e.g. "simple-sample-project-1234") | string | n/a | yes |
+| region | The region to deploy to | string | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
 | df\_job\_id |  |
-| df\_job\_name |  |
 | df\_job\_state |  |
-| project |  |
+| job\_name | The dataflow job's name |
+| project\_id | The project id used when managing resources. |
+| region | The region used when managing resources. |
 
 [^]: (autogen_docs_end)
 

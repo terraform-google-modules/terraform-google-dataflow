@@ -26,6 +26,30 @@ Then perform the following commands on the root folder:
 
 [^]: (autogen_docs_start)
 
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|:----:|:-----:|:-----:|
+| bucket\_region | BUCKET REGION | string | `"us-central1"` | no |
+| job\_name | (Required) The name of the dataflow job | string | n/a | yes |
+| max\_workers | (Optional)  The number of workers permitted to work on the job. More workers may improve processing speed at additional cost. | string | `"1"` | no |
+| on\_delete | (Optional) One of drain or cancel. Specifies behavior of deletion during terraform destroy. The default is cancel. | string | `"cancel"` | no |
+| parameters | (Optional) Key/Value pairs to be passed to the Dataflow job (as used in the template). | map | `<map>` | no |
+| project\_id | (Optional) The project in which the resource belongs. If it is not provided, the provider project is used. | string | `""` | no |
+| temp\_gcs\_location | (Required) A writeable location on GCS for the Dataflow job to dump its temporary data. | string | n/a | yes |
+| template\_gcs\_path | (Required) The GCS path to the Dataflow job template. | string | n/a | yes |
+| zone | (Optional) The zone in which the created job should run. If it is not provided, the provider zone is used. | string | `"us-central1-a"` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| df\_job\_id |  |
+| df\_job\_name |  |
+| df\_job\_state |  |
+| df\_job\_template\_gcs\_path |  |
+| temp\_gcs\_location |  |
+
 [^]: (autogen_docs_end)
 
 ## Requirements

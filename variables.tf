@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 variable "job_name" {
   description = "(Required) The name of the dataflow job"
 }
@@ -29,30 +28,30 @@ variable "temp_gcs_location" {
 
 variable "parameters" {
   description = "(Optional) Key/Value pairs to be passed to the Dataflow job (as used in the template)."
-  default = {}
+  default     = {}
 }
 
 variable "max_workers" {
   description = "(Optional)  The number of workers permitted to work on the job. More workers may improve processing speed at additional cost."
-  default = "1"
+  default     = "1"
 }
 
 variable "on_delete" {
   description = "(Optional) One of drain or cancel. Specifies behavior of deletion during terraform destroy. The default is cancel."
-  default = "cancel"
+  default     = "cancel"
 }
 
 variable "project_id" {
   description = " (Optional) The project in which the resource belongs. If it is not provided, the provider project is used."
-  default = ""
+  default     = ""
 }
 
 variable "zone" {
   description = "(Optional) The zone in which the created job should run. If it is not provided, the provider zone is used."
-  default = "us-central1-a"
+  default     = "us-central1-a"
 }
 
 variable "bucket_region" {
   description = "BUCKET REGION"
-  default = "us-central1"
+  default     = "us-central1"
 }
