@@ -27,8 +27,7 @@ locals {
 module "dataflow-job" {
   source      = "../../"
   project_id  = "${var.project_id}"
-  #job_name = "${var.job_name}"
-  job_name = "pubsub2bq-terraform-example"
+  job_name = "wordcount-terraform-example"
   on_delete = "cancel"
   zone = "us-central1-a"
   max_workers = 1
