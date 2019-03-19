@@ -52,11 +52,11 @@ Then perform the following commands on the root folder:
 
 | Name | Description |
 |------|-------------|
-| df\_job\_id |  |
-| df\_job\_name |  |
-| df\_job\_state |  |
-| df\_job\_template\_gcs\_path |  |
-| temp\_gcs\_location |  |
+| df\_job\_id | The unique Id of the newly created Dataflow job |
+| df\_job\_name | The name of the dataflow job |
+| df\_job\_state | The state of the newly created Dataflow job |
+| df\_job\_template\_gcs\_path | The GCS path to the Dataflow job template. |
+| temp\_gcs\_location | The GCS path for the Dataflow job's temporary data. |
 
 [^]: (autogen_docs_end)
 
@@ -67,6 +67,7 @@ Before this module can be used on a project, you must ensure that the following 
 1. Terraform is [installed](#software-dependencies) on the machine where Terraform is executed.
 2. The Service Account you execute the module with has the right [permissions](#configure-a-service-account).
 3. The necessary APIs are [active](#enable-apis) on the project.
+4. A working Dataflow template in uploaded in a GCS bucket
 
 The [project factory](https://github.com/terraform-google-modules/terraform-google-project-factory) can be used to provision projects with the correct APIs active.
 

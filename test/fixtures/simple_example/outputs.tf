@@ -25,14 +25,17 @@ output "region" {
 }
 
 output "job_name" {
-  description = "The dataflow job's name"
+  description = "The name of the newly created Dataflow job"
   value       = "${module.example.df_job_name}"
 }
 
 output "df_job_state" {
+  description = "The state of the newly created Dataflow job"
   value = "${module.example.df_job_state}"
+
 }
 
 output "df_job_id" {
+  description = "The unique Id of the newly created Dataflow job"
   value = "${module.example.df_job_id}"
 }

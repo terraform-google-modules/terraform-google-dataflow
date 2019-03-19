@@ -15,10 +15,10 @@ This example illustrates how to use the `{{cookiecutter.module_name}}` module.
 
 | Name | Description |
 |------|-------------|
-| df\_job\_id |  |
-| df\_job\_name |  |
-| df\_job\_state |  |
-| project |  |
+| df\_job\_id | The unique Id of the newly created Dataflow job |
+| df\_job\_name | The name of the newly created Dataflow job |
+| df\_job\_state | The state of the newly created Dataflow job |
+| project | The project's ID |
 
 [^]: (autogen_docs_end)
 

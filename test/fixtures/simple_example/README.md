@@ -15,9 +15,9 @@ This example illustrates how to use the `dataflow-module` module.
 
 | Name | Description |
 |------|-------------|
-| df\_job\_id |  |
-| df\_job\_state |  |
-| job\_name | The dataflow job's name |
+| df\_job\_id | The unique Id of the newly created Dataflow job |
+| df\_job\_state | The state of the newly created Dataflow job |
+| job\_name | The name of the newly created Dataflow job |
 | project\_id | The project id used when managing resources. |
 | region | The region used when managing resources. |
 
