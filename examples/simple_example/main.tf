@@ -14,11 +14,8 @@
  * limitations under the License.
  */
 
-#provider "google" {}
-
 provider "google" {
   version = "~> 2.0"
-  credentials = "${file("credentials.json")}"
   region  = "${var.region}"
 }
 
