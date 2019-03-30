@@ -13,17 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
-resource "google_storage_bucket" "tmp_dir_bucket" {
-  count = "${var.use_existing_bucket == "true" ? 0 : 1}"
-
-  name          = "${var.temp_gcs_location}"
-  #For the bucket location we take out last 2 characters of the zone string to get the corresponding region
-  location      = "${lower(substr(var.zone, 0, length(var.zone)-2))}"
-  storage_class = "REGIONAL"
-  project       = "${var.project_id}"
-}
-*/
 
 resource "google_dataflow_job" "dataflow_job" {
   provider              = "google"

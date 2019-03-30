@@ -44,6 +44,7 @@ Then perform the following commands on the root folder:
 | on\_delete | (Optional) One of drain or cancel. Specifies behavior of deletion during terraform destroy. The default is cancel. | string | `"cancel"` | no |
 | parameters | (Optional) Key/Value pairs to be passed to the Dataflow job (as used in the template). | map | `<map>` | no |
 | project\_id | (Optional) The project in which the resource belongs. If it is not provided, the provider project is used. | string | `""` | no |
+| service\_account\_email | (Optional) The Service Account email used to create the job. | string | `""` | no |
 | temp\_gcs\_location | (Required) A writeable location on GCS for the Dataflow job to dump its temporary data. | string | n/a | yes |
 | template\_gcs\_path | (Required) The GCS path to the Dataflow job template. | string | n/a | yes |
 | zone | (Optional) The zone in which the created job should run. If it is not provided, the provider zone is used. | string | `"us-central1-a"` | no |

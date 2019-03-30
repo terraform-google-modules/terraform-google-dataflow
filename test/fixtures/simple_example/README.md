@@ -10,14 +10,18 @@ This example illustrates how to use the `dataflow-module` module.
 |------|-------------|:----:|:-----:|:-----:|
 | project\_id | The project_id to deploy the example instance into.  (e.g. "simple-sample-project-1234") | string | n/a | yes |
 | region | The region to deploy to | string | n/a | yes |
+| service\_account\_email | The Service Account email used to create the job. | string | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
 | df\_job\_id | The unique Id of the newly created Dataflow job |
+| df\_job\_id\_2 | The unique Id of the newly created Dataflow job |
 | df\_job\_state | The state of the newly created Dataflow job |
+| df\_job\_state\_2 | The state of the newly created Dataflow job |
 | job\_name | The name of the newly created Dataflow job |
+| job\_name\_2 | The name of the newly created Dataflow job |
 | project\_id | The project id used when managing resources. |
 | region | The region used when managing resources. |
 
