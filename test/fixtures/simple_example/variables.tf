@@ -5,3 +5,7 @@ variable "project_id" {
 variable "region" {
   description = "The region to deploy to"
 }
+
+variable "service_account_email" {
+  description = "The Service Account email used to create the job."
+}

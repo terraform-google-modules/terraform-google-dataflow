@@ -18,6 +18,8 @@ name = attribute('job_name')
 region = attribute('region')
 df_job_state = attribute('df_job_state')
 df_job_id = attribute('df_job_id')
+df_job_state_2 = attribute('df_job_state_2')
+df_job_id_2 = attribute('df_job_id_2')
 
 control "gcloud" do
   title "gcloud configuration"
@@ -43,6 +45,11 @@ control "gcloud" do
               "id" => "#{df_job_id}",
             ),
           )
+          expect(data).to include(
+            including(
+              "id" => "#{df_job_id_2}",
+            ),
+          )
         end
       end
     end
@@ -50,6 +57,7 @@ control "gcloud" do
     context "google_dataflow_job's state attribute" do
       it "should be a stable state (e.g JOB_STATE_RUNNING or JOB_STATE_PENDING)" do
         expect(df_job_state).to eql('JOB_STATE_RUNNING') | eql('JOB_STATE_PENDING')
+        expect(df_job_state_2).to eql('JOB_STATE_RUNNING') | eql('JOB_STATE_PENDING')
       end
     end
 

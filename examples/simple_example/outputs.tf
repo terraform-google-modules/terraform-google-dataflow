@@ -33,3 +33,18 @@ output "df_job_name" {
   description = "The name of the newly created Dataflow job"
   value       = "${module.dataflow-job.df_job_name}"
 }
+
+output "df_job_state_2" {
+  description = "The state of the newly created Dataflow job"
+  value       = "${module.dataflow-job-2.df_job_state}"
+}
+
+output "df_job_id_2" {
+  description = "The unique Id of the newly created Dataflow job"
+  value       = "${module.dataflow-job-2.df_job_id}"
+}
+
+output "df_job_name_2" {
+  description = "The name of the newly created Dataflow job"
+  value       = "${module.dataflow-job-2.df_job_name}"
+}

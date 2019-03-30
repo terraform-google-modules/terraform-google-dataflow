@@ -27,16 +27,41 @@ locals {
   gcs_bucket_name = "tmp-dir-bucket-${random_id.random_suffix.hex}"
 }
 
+module "dataflow-bucket" {
+  source = "../../modules/dataflow_bucket"
+  bucket_name = "${local.gcs_bucket_name}"
+  bucket_region = "${var.region}"
+  project_id = "${var.project_id}"
+}
+
 module "dataflow-job" {
   source                = "../../"
   project_id            = "${var.project_id}"
   job_name              = "wordcount-terraform-example"
   on_delete             = "cancel"
-  zone                  = "us-central1-a"
+  zone                  = "${var.region}-a"
   max_workers           = 1
   template_gcs_path     = "gs://dataflow-templates/latest/Word_Count"
-  temp_gcs_location     = "${local.gcs_bucket_name}"
-  service_account_email = "dataflow@tfmenard-seed.iam.gserviceaccount.com"
+  temp_gcs_location     = "${module.dataflow-bucket.bucket_name}"
+  service_account_email = "${var.service_account_email}"
+
+  parameters = {
+    inputFile = "gs://dataflow-samples/shakespeare/kinglear.txt"
+    output    = "gs://${local.gcs_bucket_name}/output/my_output"
+  }
+}
+
+
+module "dataflow-job-2" {
+  source                = "../../"
+  project_id            = "${var.project_id}"
+  job_name              = "wordcount-terraform-example-2"
+  on_delete             = "cancel"
+  zone                  = "${var.region}-a"
+  max_workers           = 1
+  template_gcs_path     = "gs://dataflow-templates/latest/Word_Count"
+  temp_gcs_location     = "${module.dataflow-bucket.bucket_name}"
+  service_account_email = "${var.service_account_email}"
 
   parameters = {
     inputFile = "gs://dataflow-samples/shakespeare/kinglear.txt"

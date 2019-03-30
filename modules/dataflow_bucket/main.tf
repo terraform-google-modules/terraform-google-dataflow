@@ -14,13 +14,10 @@
  * limitations under the License.
  */
 
-variable "project_id" {
-  description = "The project ID to deploy to"
-}
-
-variable "region" {
-  description = "The region in which the bucket and the dataflow job will be deployed"
-}
-variable "service_account_email" {
-  description = "The Service Account email used to create the job."
+resource "google_storage_bucket" "tmp_dir_bucket" {
+  provider = "google"
+  name          = "${var.bucket_name}"
+  location      = "${var.bucket_region}"
+  storage_class = "REGIONAL"
+  project       = "${var.project_id}"
 }

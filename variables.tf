@@ -51,6 +51,11 @@ variable "zone" {
   default     = "us-central1-a"
 }
 
+variable "service_account_email" {
+  description = " (Optional) The Service Account email used to create the job."
+  default     = ""
+}
+
 variable "bucket_region" {
   description = "BUCKET REGION"
   default     = "us-central1"

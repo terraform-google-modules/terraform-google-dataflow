@@ -18,7 +18,5 @@ module "example" {
   source     = "../../../examples/simple_example"
   project_id = "${var.project_id}"
   region     = "${var.region}"
-
-  #bucket_name = "simple-example-${random_string.random_suffix.result}"
-  #job_name    = "${var.job_name}"
+  service_account_email = "${var.service_account_email}"
 }
