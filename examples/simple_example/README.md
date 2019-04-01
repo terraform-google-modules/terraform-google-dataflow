@@ -1,6 +1,18 @@
 # Simple Example
 
-This example illustrates how to use the `{{cookiecutter.module_name}}` module.
+This example illustrates how to use the Dataflow module to start multiple jobs with a common bucket for temporary job data.
+
+
+## Best practices
+
+### Cost and Performance
+As featured in this example, using a single regional bucket for storing your jobs' temporary data is recommended to optimize cost.
+Also, to optimize your jobs performance, this bucket should always in the corresponding region of the zones in which your jobs are running.
+
+### Controller Service Account
+This example features the use of a controller service accoun which is specified with the `service_account_email` input variables.
+We recommend using a custome service account with fine-grained access control to mitigate security risks. See more about controller service accounts [here](https://cloud.google.com/dataflow/docs/concepts/security-and-permissions#controller_service_account)
+
 
 [^]: (autogen_docs_start)
 
@@ -22,7 +34,7 @@ This example illustrates how to use the `{{cookiecutter.module_name}}` module.
 | df\_job\_name\_2 | The name of the newly created Dataflow job |
 | df\_job\_state | The state of the newly created Dataflow job |
 | df\_job\_state\_2 | The state of the newly created Dataflow job |
-| project | The project's ID |
+| project\_id | The project's ID |
 
 [^]: (autogen_docs_end)
 

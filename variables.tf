@@ -50,7 +50,7 @@ variable "zone" {
 }
 
 variable "service_account_email" {
-  description = " (Optional) The Service Account email used to create the job."
+  description = "(Optional) The Service Account email that will be used to identify the VMs in which the jobs are running"
   default     = ""
 }
 

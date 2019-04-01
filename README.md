@@ -44,7 +44,7 @@ Then perform the following commands on the root folder:
 | on\_delete | (Optional) One of drain or cancel. Specifies behavior of deletion during terraform destroy. The default is cancel. | string | `"cancel"` | no |
 | parameters | (Optional) Key/Value pairs to be passed to the Dataflow job (as used in the template). | map | `<map>` | no |
 | project\_id | (Required) The project in which the resource belongs. If it is not provided, the provider project is used. | string | n/a | yes |
-| service\_account\_email | (Optional) The Service Account email used to create the job. | string | `""` | no |
+| service\_account\_email | (Optional) The Service Account email that will be used to identify the VMs in which the jobs are running | string | `""` | no |
 | temp\_gcs\_location | (Required) A writeable location on GCS for the Dataflow job to dump its temporary data. | string | n/a | yes |
 | template\_gcs\_path | (Required) The GCS path to the Dataflow job template. | string | n/a | yes |
 | zone | (Optional) The zone in which the created job should run. If it is not provided, the provider zone is used. | string | `"us-central1-a"` | no |
@@ -77,11 +77,15 @@ The [project factory](https://github.com/terraform-google-modules/terraform-goog
 - [Terraform](https://www.terraform.io/downloads.html) 0.10.x
 - [terraform-provider-google](https://github.com/terraform-providers/terraform-provider-google) plugin v1.8.0
 
-### Configure a Service Account
+### Configure a Service Account to execute the module
 In order to execute this module you must have a Service Account with the
 following project roles:
-- roles/storage.admin
+- roles/dataflow.admin
+
+### Configure a Controller Service Account to create the job
+If you want to use the service_account_email input to specify a service account that will identify the VMs in which the jobs are running, the service account will need the following project roles:
 - roles/dataflow.worker
+- roles/storage.objectAdmin
 
 ### Enable APIs
 In order to launch a Dataflow Job, the Dataflow API must be enabled:
