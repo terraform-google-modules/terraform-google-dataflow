@@ -31,13 +31,12 @@ output "job_name" {
 
 output "df_job_state" {
   description = "The state of the newly created Dataflow job"
-  value = "${module.example.df_job_state}"
-
+  value       = "${module.example.df_job_state}"
 }
 
 output "df_job_id" {
   description = "The unique Id of the newly created Dataflow job"
-  value = "${module.example.df_job_id}"
+  value       = "${module.example.df_job_id}"
 }
 
 output "job_name_2" {
@@ -47,11 +46,10 @@ output "job_name_2" {
 
 output "df_job_state_2" {
   description = "The state of the newly created Dataflow job"
-  value = "${module.example.df_job_state_2}"
-
+  value       = "${module.example.df_job_state_2}"
 }
 
 output "df_job_id_2" {
   description = "The unique Id of the newly created Dataflow job"
-  value = "${module.example.df_job_id_2}"
+  value       = "${module.example.df_job_id_2}"
 }

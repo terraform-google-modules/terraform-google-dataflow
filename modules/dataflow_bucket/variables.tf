@@ -3,10 +3,10 @@ variable "project_id" {
 }
 
 variable "bucket_region" {
-    description = "The GCS bucket region. This should be the same as your dataflow job's zone ot optimize performance."
-    default = "us-central1"
+  description = "The GCS bucket region. This should be the same as your dataflow job's zone ot optimize performance."
+  default     = "us-central1"
 }
 
 variable "bucket_name" {
-    description = "(Required) The name of the bucket."
+  description = "(Required) The name of the bucket."
 }

@@ -28,10 +28,10 @@ locals {
 }
 
 module "dataflow-bucket" {
-  source = "../../modules/dataflow_bucket"
-  bucket_name = "${local.gcs_bucket_name}"
+  source        = "../../modules/dataflow_bucket"
+  bucket_name   = "${local.gcs_bucket_name}"
   bucket_region = "${var.region}"
-  project_id = "${var.project_id}"
+  project_id    = "${var.project_id}"
 }
 
 module "dataflow-job" {
@@ -50,7 +50,6 @@ module "dataflow-job" {
     output    = "gs://${local.gcs_bucket_name}/output/my_output"
   }
 }
-
 
 module "dataflow-job-2" {
   source                = "../../"

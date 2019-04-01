@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- variable "project_id" {
+variable "project_id" {
   description = "(Required) The project in which the resource belongs. If it is not provided, the provider project is used."
 }
 
