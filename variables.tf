@@ -13,6 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+ variable "project_id" {
+  description = "(Required) The project in which the resource belongs. If it is not provided, the provider project is used."
+}
 
 variable "job_name" {
   description = "(Required) The name of the dataflow job"
@@ -39,11 +42,6 @@ variable "max_workers" {
 variable "on_delete" {
   description = "(Optional) One of drain or cancel. Specifies behavior of deletion during terraform destroy. The default is cancel."
   default     = "cancel"
-}
-
-variable "project_id" {
-  description = " (Optional) The project in which the resource belongs. If it is not provided, the provider project is used."
-  default     = ""
 }
 
 variable "zone" {

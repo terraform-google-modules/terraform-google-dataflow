@@ -1,8 +1,8 @@
-# terraform-google-dataflow
+# Terraform Google Dataflow Module
 
 The resources/services/activations/deletions that this module will create/trigger are:
-- Create a GCS bucket with the provided name
-- Create a Dataflow job that uses the GCS bucket for temporary job data
+- Create a  GCS bucket for temporary job data
+- Create a Dataflow job 
 
 ## Usage
 There are examples included in the [examples](./examples/) folder but simple usage is as follows:
@@ -12,11 +12,11 @@ module "dataflow-job" {
   source      = "../../modules/dataflow"
   project_id  = "<project_id>"
   job_name = "<job_name>"
-  on_delete = "<on_delete>"
-  zone = "<df_job_zone>"
-  max_workers = <#_of_max_workers>
-  template_gcs_path =  "<gcs_path_to_dataflow_template>"
-  temp_gcs_location = "<gcs_path_to_bucket_for_temp_dataflow_data>"
+  on_delete = "cancel"
+  zone = "us-central1-a"
+  max_workers = 1
+  template_gcs_path =  "gs://<path-to-template>"
+  temp_gcs_location = "gs://<gcs_path_temp_data_bucket"
   parameters = {
         bar = "example string"
         foo = 123
@@ -43,7 +43,7 @@ Then perform the following commands on the root folder:
 | max\_workers | (Optional)  The number of workers permitted to work on the job. More workers may improve processing speed at additional cost. | string | `"1"` | no |
 | on\_delete | (Optional) One of drain or cancel. Specifies behavior of deletion during terraform destroy. The default is cancel. | string | `"cancel"` | no |
 | parameters | (Optional) Key/Value pairs to be passed to the Dataflow job (as used in the template). | map | `<map>` | no |
-| project\_id | (Optional) The project in which the resource belongs. If it is not provided, the provider project is used. | string | `""` | no |
+| project\_id | (Required) The project in which the resource belongs. If it is not provided, the provider project is used. | string | n/a | yes |
 | service\_account\_email | (Optional) The Service Account email used to create the job. | string | `""` | no |
 | temp\_gcs\_location | (Required) A writeable location on GCS for the Dataflow job to dump its temporary data. | string | n/a | yes |
 | template\_gcs\_path | (Required) The GCS path to the Dataflow job template. | string | n/a | yes |
@@ -81,11 +81,12 @@ The [project factory](https://github.com/terraform-google-modules/terraform-goog
 In order to execute this module you must have a Service Account with the
 following project roles:
 - roles/storage.admin
+- roles/dataflow.worker
 
 ### Enable APIs
-In order to operate with the Service Account you must activate the following APIs on the project where the Service Account was created:
+In order to launch a Dataflow Job, the Dataflow API must be enabled:
 
-- Storage JSON API - storage-api.googleapis.com
+- Dataflow API - dataflow.googleapis.com
 
 ## Install
 

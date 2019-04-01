@@ -37,10 +37,5 @@ suites:
           backend: local
           controls:
             - gcloud
-       # - name: simple_example
-        #  backend: gcp
-         # shell: true
-          #controls:
-           # - gcp
     provisioner:
       name: terraform
