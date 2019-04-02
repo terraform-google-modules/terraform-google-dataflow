@@ -5,6 +5,9 @@ The resources/services/activations/deletions that this module will create/trigge
 - Create a Dataflow job 
 
 ## Usage
+
+Before using this module, one should get familiar with the google_dataflow_job’s (Notes on “destroy”/”apply”)[https://www.terraform.io/docs/providers/google/r/dataflow_job.html#note-on-quot-destroy-quot-quot-apply-quot-] as the behavior is atypical when compared to other resources.
+
 There are examples included in the [examples](./examples/) folder but simple usage is as follows:
 
 ```hcl
