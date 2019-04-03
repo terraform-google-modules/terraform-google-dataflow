@@ -55,6 +55,6 @@ variable "service_account_email" {
 }
 
 variable "bucket_region" {
-  description = "BUCKET REGION"
+  description = "The bucket's region location"
   default     = "us-central1"
 }

@@ -84,6 +84,7 @@ The [project factory](https://github.com/terraform-google-modules/terraform-goog
 In order to execute this module you must have a Service Account with the
 following project roles:
 - roles/dataflow.admin
+- roles/iam.serviceAccountUser
 
 ### Configure a Controller Service Account to create the job
 If you want to use the service_account_email input to specify a service account that will identify the VMs in which the jobs are running, the service account will need the following project roles:

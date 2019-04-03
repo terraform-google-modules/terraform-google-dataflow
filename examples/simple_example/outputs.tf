@@ -48,3 +48,8 @@ output "df_job_name_2" {
   description = "The name of the newly created Dataflow job"
   value       = "${module.dataflow-job-2.df_job_name}"
 }
+
+output "bucket_name" {
+  description = "The name of the bucket"
+  value       = "${module.dataflow-bucket.bucket_name}"
+}

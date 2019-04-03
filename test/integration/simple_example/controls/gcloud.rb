@@ -13,17 +13,16 @@
 # limitations under the License.
 
 project_id = attribute('project_id')
-#state = attribute('state')
 name = attribute('job_name')
 region = attribute('region')
 df_job_state = attribute('df_job_state')
 df_job_id = attribute('df_job_id')
 df_job_state_2 = attribute('df_job_state_2')
 df_job_id_2 = attribute('df_job_id_2')
+bucket_name = attribute('bucket_name')
 
 control "gcloud" do
   title "gcloud configuration"
-  #describe command("gcloud --project=#{project_id} services list --available --format=json") do
   describe command("gcloud --project=#{project_id} dataflow jobs list --format=json") do
     its(:exit_status) { should eq 0 }
     its(:stderr) { should eq '' }
@@ -38,8 +37,8 @@ control "gcloud" do
     end
 
     context "gcloud dataflow jobs list OUTPUT" do
-      describe "contains a job with same name and location" do
-        it "includes newly created dataflow job's job_id" do
+      describe "contains all successful and failed jobs for the target project" do
+        it "should include the newly created dataflow jobs' job_ids" do
           expect(data).to include(
             including(
               "id" => "#{df_job_id}",
@@ -61,15 +60,12 @@ control "gcloud" do
       end
     end
 
-    #describe "enabled services" do
-     # it "includes storage-api" do
-      #  expect(data).to include(
-       #   including(
-        #    "config" =>
-         #   "name" => "storage-api.googleapis.com",
-          #),
-        #)
-      #end
-    #end
+  end
+
+
+  describe command("gsutil lifecycle get gs://#{bucket_name} --project=#{project_id}") do
+      its(:exit_status) { should eq 0 }
+      its(:stderr) { should eq '' }
+      its('stdout') { should match("has no lifecycle configuration.") }
   end
 end

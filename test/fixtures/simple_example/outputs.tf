@@ -53,3 +53,8 @@ output "df_job_id_2" {
   description = "The unique Id of the newly created Dataflow job"
   value       = "${module.example.df_job_id_2}"
 }
+
+output "bucket_name" {
+  description = "The name of the bucket"
+  value       = "${module.example.bucket_name}"
+}
