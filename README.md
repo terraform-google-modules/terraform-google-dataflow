@@ -41,7 +41,7 @@ Then perform the following commands on the root folder:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| bucket\_region | BUCKET REGION | string | `"us-central1"` | no |
+| bucket\_region | The bucket's region location | string | `"us-central1"` | no |
 | job\_name | (Required) The name of the dataflow job | string | n/a | yes |
 | max\_workers | (Optional)  The number of workers permitted to work on the job. More workers may improve processing speed at additional cost. | string | `"1"` | no |
 | on\_delete | (Optional) One of drain or cancel. Specifies behavior of deletion during terraform destroy. The default is cancel. | string | `"cancel"` | no |

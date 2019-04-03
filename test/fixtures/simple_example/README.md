@@ -16,6 +16,7 @@ This example illustrates how to use the `dataflow-module` module.
 
 | Name | Description |
 |------|-------------|
+| bucket\_name | The name of the bucket |
 | df\_job\_id | The unique Id of the newly created Dataflow job |
 | df\_job\_id\_2 | The unique Id of the newly created Dataflow job |
 | df\_job\_state | The state of the newly created Dataflow job |

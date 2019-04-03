@@ -28,6 +28,7 @@ We recommend using a custome service account with fine-grained access control to
 
 | Name | Description |
 |------|-------------|
+| bucket\_name | The name of the bucket |
 | df\_job\_id | The unique Id of the newly created Dataflow job |
 | df\_job\_id\_2 | The unique Id of the newly created Dataflow job |
 | df\_job\_name | The name of the newly created Dataflow job |
