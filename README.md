@@ -2,11 +2,15 @@
 
 The resources/services/activations/deletions that this module will create/trigger are:
 - Create a  GCS bucket for temporary job data
-- Create a Dataflow job 
+- Create a Dataflow job
 
 ## Usage
 
 Before using this module, one should get familiar with the google_dataflow_job’s (Notes on “destroy”/”apply”)[https://www.terraform.io/docs/providers/google/r/dataflow_job.html#note-on-quot-destroy-quot-quot-apply-quot-] as the behavior is atypical when compared to other resources.
+
+### Assumption
+The module is made to be used with the template_gcs_path as the staging location.
+Hence, one assumption is that, before using this module, you already have working Dataflow job template(s) in GCS staging location(s).
 
 There are examples included in the [examples](./examples/) folder but simple usage is as follows:
 
@@ -85,6 +89,7 @@ In order to execute this module you must have a Service Account with the
 following project roles:
 - roles/dataflow.admin
 - roles/iam.serviceAccountUser
+- roles/storage.admin
 
 ### Configure a Controller Service Account to create the job
 If you want to use the service_account_email input to specify a service account that will identify the VMs in which the jobs are running, the service account will need the following project roles:
@@ -146,6 +151,9 @@ Integration tests are run though [test-kitchen](https://github.com/test-kitchen/
 
   ```
   make docker_run
+
+  # Activate service account to make sure gsutil is authenticated.
+  gcloud auth activate-service-account --key-file=credentials.json
   ```
 
   The module root directory will be loaded into the Docker container at `/cft/workdir/`.
