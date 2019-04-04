@@ -121,7 +121,7 @@ docker_verify:
 		-e GOOGLE_APPLICATION_CREDENTIALS=${CREDENTIALS_PATH} \
 		-v $(CURDIR):/cft/workdir \
 		${DOCKER_REPO_BASE_KITCHEN_TERRAFORM} \
-		/bin/bash -c "kitchen verify"
+		/bin/bash -c "gcloud auth activate-service-account --key-file=${CREDENTIALS_PATH} && kitchen verify"
 
 .PHONY: docker_destroy
 docker_destroy:
