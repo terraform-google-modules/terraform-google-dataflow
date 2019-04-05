@@ -8,7 +8,7 @@ The resources/services/activations/deletions that this module will create/trigge
 
 ## Usage
 
-Before using this module, one should get familiar with the google_dataflow_job’s [Notes on “destroy”/”apply”](https://www.terraform.io/docs/providers/google/r/dataflow_job.html#note-on-quot-destroy-quot-quot-apply-quot-) as the behavior is atypical when compared to other resources.
+Before using this module, one should get familiar with the `google_dataflow_job`’s [Notes on “destroy”/”apply”](https://www.terraform.io/docs/providers/google/r/dataflow_job.html#note-on-quot-destroy-quot-quot-apply-quot-) as the behavior is atypical when compared to other resources.
 
 ### Assumption
 The module is made to be used with the template_gcs_path as the staging location.
@@ -83,8 +83,8 @@ The [project factory](https://github.com/terraform-google-modules/terraform-goog
 
 ### Software Dependencies
 ### Terraform
-- [Terraform](https://www.terraform.io/downloads.html) 0.10.x
-- [terraform-provider-google](https://github.com/terraform-providers/terraform-provider-google) plugin v1.8.0
+- [Terraform](https://www.terraform.io/downloads.html) 0.11.x
+- [terraform-provider-google](https://github.com/terraform-providers/terraform-provider-google) plugin v2.0.0
 
 ### Configure a Service Account to execute the module
 In order to execute this module you must have a Service Account with the
@@ -106,27 +106,15 @@ In order to launch a Dataflow Job, the Dataflow API must be enabled:
 ## Install
 
 ### Terraform
-Be sure you have the correct Terraform version (0.10.x), you can choose the binary here:
+Be sure you have the correct Terraform version (0.11.x), you can choose the binary here:
 - https://releases.hashicorp.com/terraform/
-
-## File structure
-The project has the following folders and files:
-
-- /: root folder
-- /examples: examples for using this module
-- /helpers: Helper scripts
-- /test: Folders with files for testing the module (see Testing section on this file)
-- /main.tf: main file for this module, contains all the resources to create
-- /variables.tf: all the variables for the module
-- /output.tf: the outputs of the module
-- /README.md: this file
 
 ## Testing
 
 ### Requirements
 - [bundler](https://github.com/bundler/bundler)
 - [gcloud](https://cloud.google.com/sdk/install)
-- [terraform-docs](https://github.com/segmentio/terraform-docs/releases) 0.3.0
+- [terraform-docs](https://github.com/segmentio/terraform-docs/releases) 0.6.0
 
 ### Autogeneration of documentation from .tf files
 Run
