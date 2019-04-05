@@ -3,7 +3,7 @@ output "bucket_name" {
   value       = "${var.bucket_name}"
 }
 
-output "bucket_region" {
+output "region" {
   description = "The bucket's region location"
-  value       = "${var.bucket_region}"
+  value       = "${var.region}"
 }

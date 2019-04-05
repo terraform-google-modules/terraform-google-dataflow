@@ -30,7 +30,7 @@ locals {
 module "dataflow-bucket" {
   source        = "../../modules/dataflow_bucket"
   bucket_name   = "${local.gcs_bucket_name}"
-  bucket_region = "${var.region}"
+  region = "${var.region}"
   project_id    = "${var.project_id}"
 }
 
