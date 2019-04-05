@@ -1,5 +1,7 @@
 # Terraform Google Dataflow Module
 
+This module handles opiniated Dataflow job configuration and deployments.
+
 The resources/services/activations/deletions that this module will create/trigger are:
 - Create a  GCS bucket for temporary job data
 - Create a Dataflow job
