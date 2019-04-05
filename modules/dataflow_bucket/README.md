@@ -37,4 +37,4 @@ See [here](../example/simple_example) for a multi jobs example.
 ## Tests
 
 The integration test [here](../test/integration/simple_example/controls/gcloud.rb) checks if the lifecycle rule is not enabled.
-Passing this test also implicitly checks whether or not the bucket was successfully created.
+This test also implicitly checks whether or not the bucket was successfully created.
