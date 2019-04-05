@@ -9,7 +9,7 @@ It is also not using `lifecycle_rule` or `force_destroy` options to prevent dest
 
 ## Usage
 You may use this bucket for a single job or for multiple jobs.
-If deploying multiple jobs in a single region, the best practice to use a single bucket for temporary job data.
+If deploying multiple jobs in a single region, the best practice is to use a single bucket for temporary job data.
 Applying this best practice will optimize your jobs' performance.
 See [here](../example/simple_example) for a multi jobs example.
 
