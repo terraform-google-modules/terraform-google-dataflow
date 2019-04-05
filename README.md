@@ -153,9 +153,6 @@ Integration tests are run though [test-kitchen](https://github.com/test-kitchen/
 
   ```
   make docker_run
-
-  # Activate service account to make sure gsutil is authenticated.
-  gcloud auth activate-service-account --key-file=credentials.json
   ```
 
   The module root directory will be loaded into the Docker container at `/cft/workdir/`.

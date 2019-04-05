@@ -63,7 +63,7 @@ control "gcloud" do
   end
 
 
-  describe command("gsutil lifecycle get gs://#{bucket_name} --project=#{project_id}") do
+  describe command("gsutil -o Credentials:gs_service_key_file=$GOOGLE_APPLICATION_CREDENTIALS lifecycle get gs://#{bucket_name} --project=#{project_id}") do
       its(:exit_status) { should eq 0 }
       its(:stderr) { should eq '' }
       its('stdout') { should match("has no lifecycle configuration.") }
