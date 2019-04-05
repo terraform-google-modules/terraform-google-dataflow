@@ -4,7 +4,7 @@ This submodule helps for the creation and deployment of the GCS bucket used to s
 
 ## Constants
 The bucket is forced to be regional to optimize cost.
-It is also not using lifecycle rules or --force-destroy option to prevent destroying temporary data while a job is running.
+It is also not using `lifecycle_rule` or `force_destroy` options to prevent destroying temporary data while a job is running.
 
 
 ## Usage
