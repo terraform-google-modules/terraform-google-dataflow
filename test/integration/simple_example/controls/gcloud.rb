@@ -22,7 +22,7 @@ df_job_id_2 = attribute('df_job_id_2')
 bucket_name = attribute('bucket_name')
 
 control "gcloud" do
-  title "gcloud configuration"
+  title "jobs ids match"
   describe command("gcloud --project=#{project_id} dataflow jobs list --format=json") do
     its(:exit_status) { should eq 0 }
     its(:stderr) { should eq '' }
@@ -41,28 +41,39 @@ control "gcloud" do
         it "should include the newly created dataflow jobs' job_ids" do
           expect(data).to include(
             including(
-              "id" => "#{df_job_id}",
+              "id" => "#{df_job_id}"
             ),
-          )
-          expect(data).to include(
             including(
-              "id" => "#{df_job_id_2}",
-            ),
+              "id" => "#{df_job_id_2}"
+            )
           )
         end
       end
     end
 
+  end
+end
+
+
+control "gcloud_dataflow" do
+  title "jobs state"
+  describe command("gcloud --project=#{project_id} dataflow jobs list --format=json") do
+    its(:exit_status) { should eq 0 }
+    its(:stderr) { should eq '' }
+
+
     context "google_dataflow_job's state attribute" do
       it "should be a stable state (e.g JOB_STATE_RUNNING or JOB_STATE_PENDING)" do
-        expect(df_job_state).to eql('JOB_STATE_RUNNING') | eql('JOB_STATE_PENDING')
-        expect(df_job_state_2).to eql('JOB_STATE_RUNNING') | eql('JOB_STATE_PENDING')
+       expect(df_job_state).to match(/(JOB_STATE_RUNNING|JOB_STATE_PENDING)/)
+       expect(df_job_state_2).to match(/(JOB_STATE_RUNNING|JOB_STATE_PENDING)/)
       end
     end
 
   end
+end
 
-
+control "gsutil" do
+  title "bucket configuration"
   describe command("gsutil -o Credentials:gs_service_key_file=$GOOGLE_APPLICATION_CREDENTIALS lifecycle get gs://#{bucket_name} --project=#{project_id}") do
       its(:exit_status) { should eq 0 }
       its(:stderr) { should eq '' }

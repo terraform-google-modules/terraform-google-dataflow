@@ -37,5 +37,7 @@ suites:
           backend: local
           controls:
             - gcloud
+            - gcloud_dataflow
+            - gsutil
     provisioner:
       name: terraform
