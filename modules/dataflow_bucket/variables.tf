@@ -8,5 +8,5 @@ variable "bucket_region" {
 }
 
 variable "bucket_name" {
-  description = "(Required) The name of the bucket."
+  description = "The name of the bucket."
 }
