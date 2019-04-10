@@ -62,9 +62,14 @@ control "gcloud_dataflow" do
     its(:stderr) { should eq '' }
 
 
-    context "google_dataflow_job's state attribute" do
+    context "google_dataflow_job 1 state attribute" do
       it "should be a stable state (e.g JOB_STATE_RUNNING or JOB_STATE_PENDING)" do
        expect(df_job_state).to match(/(JOB_STATE_RUNNING|JOB_STATE_PENDING)/)
+      end
+    end
+
+    context "google_dataflow_job 2 state attribute" do
+      it "should be a stable state (e.g JOB_STATE_RUNNING or JOB_STATE_PENDING)" do
        expect(df_job_state_2).to match(/(JOB_STATE_RUNNING|JOB_STATE_PENDING)/)
       end
     end
