@@ -19,7 +19,7 @@ df_job_state = attribute('df_job_state')
 df_job_id = attribute('df_job_id')
 df_job_state_2 = attribute('df_job_state_2')
 df_job_id_2 = attribute('df_job_id_2')
-bucket_name = attribute('bucket_name')
+bucket_name = attribute('name')
 
 control "gcloud" do
   title "jobs ids match"

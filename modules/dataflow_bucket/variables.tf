@@ -7,6 +7,6 @@ variable "region" {
   default     = "us-central1"
 }
 
-variable "bucket_name" {
+variable "name" {
   description = "The name of the bucket."
 }

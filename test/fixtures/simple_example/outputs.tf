@@ -54,7 +54,7 @@ output "df_job_id_2" {
   value       = "${module.example.df_job_id_2}"
 }
 
-output "bucket_name" {
+output "name" {
   description = "The name of the bucket"
-  value       = "${module.example.bucket_name}"
+  value       = "${module.example.name}"
 }

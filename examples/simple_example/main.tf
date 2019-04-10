@@ -29,7 +29,7 @@ locals {
 
 module "dataflow-bucket" {
   source        = "../../modules/dataflow_bucket"
-  bucket_name   = "${local.gcs_bucket_name}"
+  name   = "${local.gcs_bucket_name}"
   region = "${var.region}"
   project_id    = "${var.project_id}"
 }
@@ -42,7 +42,7 @@ module "dataflow-job" {
   zone                  = "${var.region}-a"
   max_workers           = 1
   template_gcs_path     = "gs://dataflow-templates/latest/Word_Count"
-  temp_gcs_location     = "${module.dataflow-bucket.bucket_name}"
+  temp_gcs_location     = "${module.dataflow-bucket.name}"
   service_account_email = "${var.service_account_email}"
 
   parameters = {
@@ -59,7 +59,7 @@ module "dataflow-job-2" {
   zone                  = "${var.region}-a"
   max_workers           = 1
   template_gcs_path     = "gs://dataflow-templates/latest/Word_Count"
-  temp_gcs_location     = "${module.dataflow-bucket.bucket_name}"
+  temp_gcs_location     = "${module.dataflow-bucket.name}"
   service_account_email = "${var.service_account_email}"
 
   parameters = {

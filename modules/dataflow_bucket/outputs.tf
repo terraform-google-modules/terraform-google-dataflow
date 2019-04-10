@@ -1,6 +1,6 @@
-output "bucket_name" {
+output "name" {
   description = "The name of the bucket"
-  value       = "${var.bucket_name}"
+  value       = "${var.name}"
 }
 
 output "region" {
