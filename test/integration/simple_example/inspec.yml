@@ -10,7 +10,7 @@ attributes:
   - name: region
     required: true
     type: string
-  - name: job_name
+  - name: df_job_name
     required: true
     type: string
   - name: df_job_state
@@ -19,7 +19,7 @@ attributes:
   - name: df_job_id
     required: true
     type: string
-  - name: job_name_2
+  - name: df_job_name_2
     required: true
     type: string
   - name: df_job_state_2

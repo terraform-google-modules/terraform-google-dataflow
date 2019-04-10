@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-output "df_job_name" {
+output "name" {
   description = "The name of the dataflow job"
   value       = "${google_dataflow_job.dataflow_job.name}"
 }
 
-output "df_job_template_gcs_path" {
+output "template_gcs_path" {
   description = "The GCS path to the Dataflow job template."
   value       = "${google_dataflow_job.dataflow_job.template_gcs_path}"
 }
@@ -29,12 +29,12 @@ output "temp_gcs_location" {
   value       = "${google_dataflow_job.dataflow_job.temp_gcs_location}"
 }
 
-output "df_job_state" {
+output "state" {
   description = "The state of the newly created Dataflow job"
   value       = "${google_dataflow_job.dataflow_job.state}"
 }
 
-output "df_job_id" {
+output "id" {
   description = "The unique Id of the newly created Dataflow job"
   value       = "${google_dataflow_job.dataflow_job.id}"
 }

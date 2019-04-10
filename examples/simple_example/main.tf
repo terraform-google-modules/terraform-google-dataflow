@@ -37,7 +37,7 @@ module "dataflow-bucket" {
 module "dataflow-job" {
   source                = "../../"
   project_id            = "${var.project_id}"
-  job_name              = "wordcount-terraform-example"
+  name              = "wordcount-terraform-example"
   on_delete             = "cancel"
   zone                  = "${var.region}-a"
   max_workers           = 1
@@ -54,7 +54,7 @@ module "dataflow-job" {
 module "dataflow-job-2" {
   source                = "../../"
   project_id            = "${var.project_id}"
-  job_name              = "wordcount-terraform-example-2"
+  name              = "wordcount-terraform-example-2"
   on_delete             = "cancel"
   zone                  = "${var.region}-a"
   max_workers           = 1

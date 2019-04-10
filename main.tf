@@ -18,7 +18,7 @@ resource "google_dataflow_job" "dataflow_job" {
   provider              = "google"
   project               = "${var.project_id}"
   zone                  = "${var.zone}"
-  name                  = "${var.job_name}"
+  name                  = "${var.name}"
   on_delete             = "${var.on_delete}"
   max_workers           = "${var.max_workers}"
   template_gcs_path     = "${var.template_gcs_path}"

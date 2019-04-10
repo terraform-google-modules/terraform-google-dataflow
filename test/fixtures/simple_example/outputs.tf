@@ -24,7 +24,7 @@ output "region" {
   value       = "${var.region}"
 }
 
-output "job_name" {
+output "df_job_name" {
   description = "The name of the newly created Dataflow job"
   value       = "${module.example.df_job_name}"
 }
@@ -39,7 +39,7 @@ output "df_job_id" {
   value       = "${module.example.df_job_id}"
 }
 
-output "job_name_2" {
+output "df_job_name_2" {
   description = "The name of the newly created Dataflow job"
   value       = "${module.example.df_job_name_2}"
 }
@@ -54,7 +54,7 @@ output "df_job_id_2" {
   value       = "${module.example.df_job_id_2}"
 }
 
-output "name" {
+output "bucket_name" {
   description = "The name of the bucket"
-  value       = "${module.example.name}"
+  value       = "${module.example.bucket_name}"
 }
