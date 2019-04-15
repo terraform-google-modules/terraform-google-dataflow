@@ -47,26 +47,26 @@ Then perform the following commands on the root folder:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| bucket\_region | The bucket's region location | string | `"us-central1"` | no |
-| job\_name | (Required) The name of the dataflow job | string | n/a | yes |
-| max\_workers | (Optional)  The number of workers permitted to work on the job. More workers may improve processing speed at additional cost. | string | `"1"` | no |
-| on\_delete | (Optional) One of drain or cancel. Specifies behavior of deletion during terraform destroy. The default is cancel. | string | `"cancel"` | no |
-| parameters | (Optional) Key/Value pairs to be passed to the Dataflow job (as used in the template). | map | `<map>` | no |
-| project\_id | (Required) The project in which the resource belongs. If it is not provided, the provider project is used. | string | n/a | yes |
-| service\_account\_email | (Optional) The Service Account email that will be used to identify the VMs in which the jobs are running | string | `""` | no |
-| temp\_gcs\_location | (Required) A writeable location on GCS for the Dataflow job to dump its temporary data. | string | n/a | yes |
-| template\_gcs\_path | (Required) The GCS path to the Dataflow job template. | string | n/a | yes |
-| zone | (Optional) The zone in which the created job should run. If it is not provided, the provider zone is used. | string | `"us-central1-a"` | no |
+| max\_workers | The number of workers permitted to work on the job. More workers may improve processing speed at additional cost. | string | `"1"` | no |
+| name | The name of the dataflow job | string | n/a | yes |
+| on\_delete | One of drain or cancel. Specifies behavior of deletion during terraform destroy. The default is cancel. | string | `"cancel"` | no |
+| parameters | Key/Value pairs to be passed to the Dataflow job (as used in the template). | map | `<map>` | no |
+| project\_id | The project in which the resource belongs. If it is not provided, the provider project is used. | string | n/a | yes |
+| region | The bucket's region location | string | `"us-central1"` | no |
+| service\_account\_email | The Service Account email that will be used to identify the VMs in which the jobs are running | string | `""` | no |
+| temp\_gcs\_location | A writeable location on GCS for the Dataflow job to dump its temporary data. | string | n/a | yes |
+| template\_gcs\_path | The GCS path to the Dataflow job template. | string | n/a | yes |
+| zone | The zone in which the created job should run. If it is not provided, the provider zone is used. | string | `"us-central1-a"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| df\_job\_id | The unique Id of the newly created Dataflow job |
-| df\_job\_name | The name of the dataflow job |
-| df\_job\_state | The state of the newly created Dataflow job |
-| df\_job\_template\_gcs\_path | The GCS path to the Dataflow job template. |
+| id | The unique Id of the newly created Dataflow job |
+| name | The name of the dataflow job |
+| state | The state of the newly created Dataflow job |
 | temp\_gcs\_location | The GCS path for the Dataflow job's temporary data. |
+| template\_gcs\_path | The GCS path to the Dataflow job template. |
 
 [^]: (autogen_docs_end)
 

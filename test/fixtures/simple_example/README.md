@@ -19,10 +19,10 @@ This example illustrates how to use the `dataflow-module` module.
 | bucket\_name | The name of the bucket |
 | df\_job\_id | The unique Id of the newly created Dataflow job |
 | df\_job\_id\_2 | The unique Id of the newly created Dataflow job |
+| df\_job\_name | The name of the newly created Dataflow job |
+| df\_job\_name\_2 | The name of the newly created Dataflow job |
 | df\_job\_state | The state of the newly created Dataflow job |
 | df\_job\_state\_2 | The state of the newly created Dataflow job |
-| job\_name | The name of the newly created Dataflow job |
-| job\_name\_2 | The name of the newly created Dataflow job |
 | project\_id | The project id used when managing resources. |
 | region | The region used when managing resources. |
 
