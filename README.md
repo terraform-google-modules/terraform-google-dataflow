@@ -1,4 +1,4 @@
-# Terraform Google Dataflow Module
+# [Google Dataflow Terraform Module](https://registry.terraform.io/modules/terraform-google-modules/dataflow/google)
 
 This module handles opiniated Dataflow job configuration and deployments.
 
@@ -18,7 +18,9 @@ There are examples included in the [examples](./examples/) folder but simple usa
 
 ```hcl
 module "dataflow-job" {
-  source      = "../../modules/dataflow"
+  source  = "terraform-google-modules/dataflow/google"
+  version = "0.1.0"
+ 
   project_id  = "<project_id>"
   job_name = "<job_name>"
   on_delete = "cancel"
