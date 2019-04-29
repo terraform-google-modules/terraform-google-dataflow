@@ -25,4 +25,6 @@ resource "google_dataflow_job" "dataflow_job" {
   temp_gcs_location     = "gs://${var.temp_gcs_location}/tmp_dir"
   parameters            = "${var.parameters}"
   service_account_email = "${var.service_account_email}"
+  network               = "${var.network}"
+  subnetwork            = "${var.subnetwork}"
 }

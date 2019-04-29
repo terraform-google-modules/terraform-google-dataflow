@@ -58,3 +58,13 @@ variable "region" {
   description = "The bucket's region location"
   default     = "us-central1"
 }
+
+variable "subnetwork" {
+  description = "The subnetwork to which VMs will be assigned. Should be of the form \"regions/REGION/subnetworks/SUBNETWORK\"."
+  default     = ""
+}
+
+variable "network" {
+  description = "The network to which VMs will be assigned. If it is not provided, \"default\" will be used."
+  default     = ""
+}

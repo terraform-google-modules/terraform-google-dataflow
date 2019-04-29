@@ -28,16 +28,16 @@ locals {
 }
 
 module "dataflow-bucket" {
-  source        = "../../modules/dataflow_bucket"
-  name   = "${local.gcs_bucket_name}"
-  region = "${var.region}"
-  project_id    = "${var.project_id}"
+  source     = "../../modules/dataflow_bucket"
+  name       = "${local.gcs_bucket_name}"
+  region     = "${var.region}"
+  project_id = "${var.project_id}"
 }
 
 module "dataflow-job" {
   source                = "../../"
   project_id            = "${var.project_id}"
-  name              = "wordcount-terraform-example"
+  name                  = "wordcount-terraform-example"
   on_delete             = "cancel"
   zone                  = "${var.region}-a"
   max_workers           = 1
@@ -54,7 +54,7 @@ module "dataflow-job" {
 module "dataflow-job-2" {
   source                = "../../"
   project_id            = "${var.project_id}"
-  name              = "wordcount-terraform-example-2"
+  name                  = "wordcount-terraform-example-2"
   on_delete             = "cancel"
   zone                  = "${var.region}-a"
   max_workers           = 1
