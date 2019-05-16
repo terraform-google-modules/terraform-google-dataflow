@@ -26,7 +26,10 @@ In order to execute this module, your Service Account uses the following project
 - roles/cloudkms.cryptoKeyEncrypterDecrypter
 
 ### GCloud
-This example uses gcloud shell commands to create a wrapped key. Please ensure that you have gcloud [installed](https://cloud.google.com/sdk/install) are authenticated using `gcloud init` and also properly set the project `gcloud config set project my-project`
+This example uses gcloud shell commands to create a wrapped key and download the sample cc data. Please ensure that you have gcloud [installed](https://cloud.google.com/sdk/install) are authenticated using `gcloud init` and also properly set the project `gcloud config set project my-project`. You may need to enable the following APIs- see [here](https://cloud.google.com/apis/docs/enable-disable-apis)
+1. Cloud Key Management Service (KMS) API
+2. Cloud Storage API 
+3. DLP API
 
 
 [^]: (autogen_docs_start)
