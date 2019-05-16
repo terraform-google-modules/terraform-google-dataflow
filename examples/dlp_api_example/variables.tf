@@ -14,11 +14,9 @@
  * limitations under the License.
  */
 
-
 variable "project_id" {
   description = "The project ID to deploy to"
 }
-
 
 variable "region" {
   description = "The region in which the bucket and the dataflow job will be deployed"
@@ -37,16 +35,11 @@ variable "kms_key_name" {
 }
 
 variable "wrapped_key" {
-  description ="Wrapped key from KMS leave blank if create_key_ring=true"
-  default = [""]
+  description = "Wrapped key from KMS leave blank if create_key_ring=true"
+  default     = [""]
 }
 
-variable "create_key_ring"{
+variable "create_key_ring" {
   description = "Boolean for determining whether to create key ring with keys(true or false)"
-  default = ["true"]
+  default     = ["true"]
 }
-
-
-
-
-

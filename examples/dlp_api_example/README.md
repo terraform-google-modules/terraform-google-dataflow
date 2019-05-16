@@ -15,6 +15,16 @@ Also, to optimize your jobs performance, this bucket should always in the corres
 This example features the use of a controller service account which is specified with the `service_account_email` input variables.
 We recommend using a custome service account with fine-grained access control to mitigate security risks. See more about controller service accounts [here](https://cloud.google.com/dataflow/docs/concepts/security-and-permissions#controller_service_account)
 
+In order to execute this module, your Service Account uses the following project roles:
+
+- roles/dataflow.admin
+- roles/iam.serviceAccountUser
+- roles/storage.admin
+- roles/bigquery.admin
+- roles/cloudkms.admin
+- roles/dlp.admin
+- roles/cloudkms.cryptoKeyEncrypterDecrypter
+
 ### GCloud
 This example uses gcloud shell commands to create a wrapped key. Please ensure that you have gcloud [installed](https://cloud.google.com/sdk/install) are authenticated using `gcloud init` and also properly set the project `gcloud config set project my-project`
 
