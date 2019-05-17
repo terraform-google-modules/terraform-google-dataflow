@@ -15,6 +15,9 @@
  */
 
 provider "google" {
+  version = "~> 2.6.0"
+  region  = "${var.region}"
+}
   region = "${var.region}"
 }
 
