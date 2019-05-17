@@ -10,7 +10,13 @@ This terraform script allows users to use their own pre-created KMS key ring/key
 ### Cost and Performance
 As featured in this example, using a single regional bucket for storing your jobs' temporary data is recommended to optimize cost.
 Also, to optimize your jobs performance, this bucket should always in the corresponding region of the zones in which your jobs are running.
-
+## 
+- Make sure the service account to execute the example has the basic  permissions needed for the module listed [here](../../README#configure-a-service-account-to-execute-the-module) 
+- Grant these additional permissions to the service account needed to run the example:
+- - roles/bigquery.admin
+- - roles/cloudkms.admin
+- - roles/dlp.admin
+- - roles/cloudkms.cryptoKeyEncrypterDecrypter
 ### Controller Service Account
 This example features the use of a controller service account which is specified with the `service_account_email` input variables.
 We recommend using a custome service account with fine-grained access control to mitigate security risks. See more about controller service accounts [here](https://cloud.google.com/dataflow/docs/concepts/security-and-permissions#controller_service_account)
