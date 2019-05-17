@@ -18,8 +18,8 @@ provider "google" {
   version = "~> 2.6.0"
   region  = "${var.region}"
 }
-  region = "${var.region}"
-}
+
+resource "random_id" "random_suffix" { byte_length = 4 }
 
 locals {
   gcs_bucket_name = "tmp-dir-bucket-${random_id.random_suffix.hex}"
