@@ -101,22 +101,6 @@ resource "null_resource" "create_kms_wrapped_key" {
   }
 }
 
-resource "google_dataflow_job" "dlp_deidentify_job_to_bigquery" {
-  name              = "dataflow-dlp-job"
-  depends_on        = ["null_resource.deinspection_template_setup", "null_resource.download_sample_cc_into_gcs"]
-  template_gcs_path = "gs://dataflow-templates/latest/Stream_DLP_GCS_Text_to_BigQuery"
-  temp_gcs_location = "gs://${google_storage_bucket.cc_store.name}/tmp_dir"
-  project           = "${var.gcp_project}"
-
-  parameters = {
-    inputFilePattern       = "gs://${google_storage_bucket.cc_store.name}/cc_records.csv"
-    datasetName            = "${google_bigquery_dataset.default.dataset_id}"
-    batchSize              = 1000
-    dlpProjectId           = "${var.gcp_project}"
-    deidentifyTemplateName = "projects/${var.gcp_project}/deidentifyTemplates/15"
-  }
-}
-
 module "dataflow-job" {
   source                = "../../"
   project_id            = "${var.project_id}"
