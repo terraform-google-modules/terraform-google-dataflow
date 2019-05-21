@@ -20,10 +20,15 @@ variable "project_id" {
 
 variable "region" {
   description = "The region in which the bucket and the dataflow job will be deployed"
+  default = "us-central1"
 }
 
 variable "service_account_email" {
   description = "The Service Account email used to create the job."
+}
+
+variable "terraform_service_account_email" {
+  description = "The Service Account email used by terraform to spin up resources- the one from environmental variable GOOGLE_APPLICATION_CREDENTIALS"
 }
 
 variable "key_ring" {
@@ -36,10 +41,10 @@ variable "kms_key_name" {
 
 variable "wrapped_key" {
   description = "Wrapped key from KMS leave blank if create_key_ring=true"
-  default     = [""]
+  default     = ""
 }
 
 variable "create_key_ring" {
   description = "Boolean for determining whether to create key ring with keys(true or false)"
-  default     = ["true"]
+  default     = "true"
 }

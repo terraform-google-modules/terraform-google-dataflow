@@ -15,7 +15,7 @@
  */
 
 provider "google" {
-  version = "~> 2.6.0"
+  version = "~> 2.4.0"
   region  = "${var.region}"
 }
 
@@ -56,9 +56,9 @@ resource "null_resource" "deinspection_template_setup" {
 
     echo $wrapped_key
 
-    curl https://dlp.googleapis.com/v2/projects/${var.gcp_project}/deidentifyTemplates -H "Authorization: Bearer $(gcloud auth application-default print-access-token)" \
+    curl https://dlp.googleapis.com/v2/projects/${var.project_id}/deidentifyTemplates -H "Authorization: Bearer $(gcloud auth application-default print-access-token)" \
     -H "Content-Type: application/json" \
-    -d '{"deidentifyTemplate": {"deidentifyConfig": {"recordTransformations": {"fieldTransformations": [{"fields": [{"name": "Card Number"}, {"name": "Card PIN"}], "primitiveTransformation": {"cryptoReplaceFfxFpeConfig": {"cryptoKey": {"kmsWrapped": {"cryptoKeyName": "projects/${var.gcp_project}/locations/global/keyRings/${var.key_ring}/cryptoKeys/${var.kms_key_name}", "wrappedKey": "'$wrapped_key'"}}, "commonAlphabet": "ALPHA_NUMERIC"}}}]}}}, "templateId": "15"}'
+    -d '{"deidentifyTemplate": {"deidentifyConfig": {"recordTransformations": {"fieldTransformations": [{"fields": [{"name": "Card Number"}, {"name": "Card PIN"}], "primitiveTransformation": {"cryptoReplaceFfxFpeConfig": {"cryptoKey": {"kmsWrapped": {"cryptoKeyName": "projects/${var.project_id}/locations/global/keyRings/${var.key_ring}/cryptoKeys/${var.kms_key_name}", "wrappedKey": "'$wrapped_key'"}}, "commonAlphabet": "ALPHA_NUMERIC"}}}]}}}, "templateId": "15"}'
     EOF
   }
 }
@@ -74,13 +74,12 @@ resource "google_bigquery_dataset" "default" {
 
 resource "google_kms_key_ring" "create_kms_ring" {
   project  = "${var.project_id}"
-  count    = "${var.create_key_ring == true ? 1 : 0}"
+  count    = "${var.create_key_ring == "true" ? 1 : 0}"
   name     = "${var.key_ring}"
   location = "global"
 }
 
 resource "google_kms_crypto_key" "create_kms_key" {
-  project  = "${var.project_id}"
   count    = "${google_kms_key_ring.create_kms_ring.count}"
   name     = "${var.kms_key_name}"
   key_ring = "${google_kms_key_ring.create_kms_ring.self_link}"
@@ -95,8 +94,8 @@ resource "null_resource" "create_kms_wrapped_key" {
   rm wrapped_key.txt
   python -c "import os,base64; key=os.urandom(32); encoded_key = base64.b64encode(key).decode('utf-8'); print(encoded_key)" >> original_key.txt
   original_key="$(cat original_key.txt)"
-  gcloud kms keys add-iam-policy-binding ${var.kms_key_name} --location global --keyring ${var.key_ring} --member allAuthenticatedUsers --role roles/cloudkms.cryptoKeyEncrypterDecrypter
-  curl -s -X POST "https://cloudkms.googleapis.com/v1/projects/${var.gcp_project}/locations/global/keyRings/${var.key_ring}/cryptoKeys/${var.kms_key_name}:encrypt"  -d '{"plaintext":"'$original_key'"}'  -H "Authorization:Bearer $(gcloud auth application-default print-access-token)"  -H "Content-Type:application/json" | python -c "import sys, json; print(json.load(sys.stdin)['ciphertext'])" >> wrapped_key.txt
+  gcloud kms keys add-iam-policy-binding ${var.kms_key_name} --location global --keyring ${var.key_ring} --member serviceAccount:${var.terraform_service_account_email} --role roles/cloudkms.cryptoKeyEncrypterDecrypter
+  curl -s -X POST "https://cloudkms.googleapis.com/v1/projects/${var.project_id}/locations/global/keyRings/${var.key_ring}/cryptoKeys/${var.kms_key_name}:encrypt"  -d '{"plaintext":"'$original_key'"}'  -H "Authorization:Bearer $(gcloud auth application-default print-access-token)"  -H "Content-Type:application/json" | python -c "import sys, json; print(json.load(sys.stdin)['ciphertext'])" >> wrapped_key.txt
   EOF
   }
 }
@@ -104,19 +103,19 @@ resource "null_resource" "create_kms_wrapped_key" {
 module "dataflow-job" {
   source                = "../../"
   project_id            = "${var.project_id}"
-  name                  = "dlp-terraform-example"
-  depends_on            = ["null_resource.deinspection_template_setup", "null_resource.download_sample_cc_into_gcs"]
+  name                  = "dlp_example_${null_resource.download_sample_cc_into_gcs.id}_${null_resource.deinspection_template_setup.id}"
   on_delete             = "cancel"
   zone                  = "${var.region}-a"
   template_gcs_path     = "gs://dataflow-templates/latest/Stream_DLP_GCS_Text_to_BigQuery"
   temp_gcs_location     = "${module.dataflow-bucket.name}"
   service_account_email = "${var.service_account_email}"
+  max_workers		= 5
 
   parameters = {
     inputFilePattern       = "gs://${module.dataflow-bucket.name}/cc_records.csv"
     datasetName            = "${google_bigquery_dataset.default.dataset_id}"
     batchSize              = 1000
-    dlpProjectId           = "${var.gcp_project}"
-    deidentifyTemplateName = "projects/${var.gcp_project}/deidentifyTemplates/15"
+    dlpProjectId           = "${var.project_id}"
+    deidentifyTemplateName = "projects/${var.project_id}/deidentifyTemplates/15"
   }
 }

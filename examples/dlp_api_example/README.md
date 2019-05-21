@@ -13,6 +13,7 @@ Also, to optimize your jobs performance, this bucket should always in the corres
 ## 
 - Make sure the terraform service account to execute the example has the basic  permissions needed for the module listed [here](../../README#configure-a-service-account-to-execute-the-module) 
 - Grant these additional permissions to the service account needed to run the example:
+- - roles/dataflow.admin
 - - roles/bigquery.admin
 - - roles/iam.serviceAccountUser
 - - roles/storage.admin
@@ -25,9 +26,7 @@ This example features the use of a controller service account which is specified
 We recommend using a custom service account with fine-grained access control to mitigate security risks. See more about controller service accounts [here](https://cloud.google.com/dataflow/docs/concepts/security-and-permissions#controller_service_account)
 
 In order to execute this module, your Controller Service Account uses the following project roles:
-
-- roles/dataflow.admin
-- roles/iam.serviceAccountUser
+- roles/dataflow.worker
 - roles/storage.admin
 - roles/bigquery.admin
 - roles/cloudkms.admin
@@ -71,4 +70,4 @@ To provision this example, run the following from within this directory:
 - `terraform init` to get the plugins
 - `terraform plan` to see the infrastructure plan
 - `terraform apply` to apply the infrastructure build
-- `terraform destroy` to destroy the built infrastructure
+- `terraform destroy` to destroy the built infrastructure. (Note that KMS key rings and crypto keys cannot be destroyed!)
