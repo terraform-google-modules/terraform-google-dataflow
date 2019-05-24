@@ -13,7 +13,10 @@ Also, to optimize your jobs performance, this bucket should always in the corres
 ## 
 - Make sure the terraform service account to execute the example has the basic  permissions needed for the module listed [here](../../README#configure-a-service-account-to-execute-the-module) 
 - Grant these additional permissions to the service account needed to run the example:
-- - roles/dataflow.admin
+  - roles/bigquery.admin
+   - roles/cloudkms.admin
+   - roles/dlp.admin
+   - roles/cloudkms.cryptoKeyEncrypterDecrypter
 - - roles/bigquery.admin
 - - roles/iam.serviceAccountUser
 - - roles/storage.admin
