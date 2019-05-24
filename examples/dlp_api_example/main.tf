@@ -94,7 +94,7 @@ resource "null_resource" "create_kms_wrapped_key" {
   rm wrapped_key.txt
   python -c "import os,base64; key=os.urandom(32); encoded_key = base64.b64encode(key).decode('utf-8'); print(encoded_key)" >> original_key.txt
   original_key="$(cat original_key.txt)"
-  gcloud kms keys add-iam-policy-binding ${var.kms_key_name} --location global --keyring ${var.key_ring} --member serviceAccount:${var.terraform_service_account_email} --role roles/cloudkms.cryptoKeyEncrypterDecrypter
+  gcloud kms keys add-iam-policy-binding ${var.kms_key_name} --project ${var.project_id} --location global --keyring ${var.key_ring} --member serviceAccount:${var.terraform_service_account_email} --role roles/cloudkms.cryptoKeyEncrypterDecrypter
   curl -s -X POST "https://cloudkms.googleapis.com/v1/projects/${var.project_id}/locations/global/keyRings/${var.key_ring}/cryptoKeys/${var.kms_key_name}:encrypt"  -d '{"plaintext":"'$original_key'"}'  -H "Authorization:Bearer $(gcloud auth application-default print-access-token)"  -H "Content-Type:application/json" | python -c "import sys, json; print(json.load(sys.stdin)['ciphertext'])" >> wrapped_key.txt
   EOF
   }
