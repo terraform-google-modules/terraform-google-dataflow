@@ -119,3 +119,12 @@ module "dataflow-job" {
     deidentifyTemplateName = "projects/${var.project_id}/deidentifyTemplates/15"
   }
 }
+
+resource "null_resource" "destroy_deidentify_template"{
+provisioner "local-exec" {
+  when    = "destroy"
+  command = <<EOF
+  curl -s -X DELETE "https://dlp.googleapis.com/v2/projects/${var.project_id}/deidentifyTemplates/15" -H "Authorization:Bearer $(gcloud auth application-default print-access-token)"
+  EOF
+}
+}
