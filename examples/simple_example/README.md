@@ -1,6 +1,7 @@
 # Simple Example
 
 This example illustrates how to use the Dataflow module to start multiple jobs with a common bucket for temporary job data.
+A network and subnetwork are created as well to demonstrate how Dataflow instance can be created in a specific network and subnetwork.
 
 
 ## Best practices
