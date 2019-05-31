@@ -103,7 +103,8 @@ If you want to use the service_account_email input to specify a service account 
 ### Enable APIs
 In order to launch a Dataflow Job, the Dataflow API must be enabled:
 
-- Dataflow API - dataflow.googleapis.com
+- Dataflow API - `dataflow.googleapis.com`
+- Compute Engine API: `compute.googleapis.com`
 
 ## Install
 

@@ -9,6 +9,12 @@ This example illustrates how to use the Dataflow module to start multiple jobs w
 As featured in this example, using a single regional bucket for storing your jobs' temporary data is recommended to optimize cost.
 Also, to optimize your jobs performance, this bucket should always in the corresponding region of the zones in which your jobs are running.
 
+## Running the example
+Make sure you grant the addtional permissions below to the service account execute the module:
+
+- roles/compute.networkAdmin
+
+
 ### Controller Service Account
 This example features the use of a controller service accoun which is specified with the `service_account_email` input variables.
 We recommend using a custome service account with fine-grained access control to mitigate security risks. See more about controller service accounts [here](https://cloud.google.com/dataflow/docs/concepts/security-and-permissions#controller_service_account)
