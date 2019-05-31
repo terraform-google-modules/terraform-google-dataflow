@@ -19,4 +19,5 @@ module "example" {
   project_id            = "${var.project_id}"
   region                = "${var.region}"
   service_account_email = "${var.service_account_email}"
+  force_destroy         = "true"
 }
