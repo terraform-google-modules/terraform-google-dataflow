@@ -27,4 +27,5 @@ resource "google_dataflow_job" "dataflow_job" {
   service_account_email = "${var.service_account_email}"
   network               = "${var.network}"
   subnetwork            = "${var.subnetwork}"
+  machine_type          = "${var.machine_type}"
 }

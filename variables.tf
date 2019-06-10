@@ -68,3 +68,8 @@ variable "network" {
   description = "The network to which VMs will be assigned. If it is not provided, \"default\" will be used."
   default     = ""
 }
+
+variable "machine_type" {
+  description = "The machine type to use for the job."
+  default     = ""
+}
