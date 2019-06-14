@@ -25,7 +25,7 @@ resource "google_dataflow_job" "dataflow_job" {
   temp_gcs_location     = "gs://${var.temp_gcs_location}/tmp_dir"
   parameters            = "${var.parameters}"
   service_account_email = "${var.service_account_email}"
-  network               = "${replace(var.network_self_link, "/(.*)/networks/(.*)/", "$2")}"
+  network               = "${var.network_name}"
   subnetwork            = "${replace(var.subnetwork_self_link, "/(.*)/regions/(.*)/", "regions/$2")}"
   machine_type          = "${var.machine_type}"
 }

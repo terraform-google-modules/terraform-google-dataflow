@@ -64,8 +64,8 @@ variable "subnetwork_self_link" {
   default     = ""
 }
 
-variable "network_self_link" {
-  description = "The network self link to which VMs will be assigned."
+variable "network_name" {
+  description = "The name of the network to which VMs will be assigned."
   default     = "default"
 }
 
