@@ -59,14 +59,14 @@ variable "region" {
   default     = "us-central1"
 }
 
-variable "subnetwork" {
-  description = "The subnetwork to which VMs will be assigned. Should be of the form \"regions/REGION/subnetworks/SUBNETWORK\"."
+variable "subnetwork_self_link" {
+  description = "The subnetwork self link to which VMs will be assigned."
   default     = ""
 }
 
 variable "network" {
-  description = "The network to which VMs will be assigned. If it is not provided, \"default\" will be used."
-  default     = ""
+  description = "The network to which VMs will be assigned."
+  default     = "default"
 }
 
 variable "machine_type" {

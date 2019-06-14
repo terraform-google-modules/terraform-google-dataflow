@@ -26,6 +26,6 @@ resource "google_dataflow_job" "dataflow_job" {
   parameters            = "${var.parameters}"
   service_account_email = "${var.service_account_email}"
   network               = "${var.network}"
-  subnetwork            = "${var.subnetwork}"
+  subnetwork            = "${replace(var.subnetwork_self_link, "/(.*)/regions/(.*)/", "regions/$2")}"
   machine_type          = "${var.machine_type}"
 }

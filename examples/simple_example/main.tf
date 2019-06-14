@@ -29,7 +29,7 @@ locals {
 
 module "vpc" {
   source       = "terraform-google-modules/network/google"
-  version      = "~> 0.4.0"
+  version      = "~> 0.8.0"
   project_id   = "${var.project_id}"
   network_name = "dataflow-network"
 
@@ -68,8 +68,8 @@ module "dataflow-job" {
   temp_gcs_location     = "${module.dataflow-bucket.name}"
   service_account_email = "${var.service_account_email}"
   network               = "${module.vpc.network_name}"
-  subnetwork            = "regions/${module.vpc.subnets_regions[0]}/subnetworks/${module.vpc.subnets_names[0]}"
-  machine_type          = "n1-standard-1"
+  subnetwork_self_link = "${module.vpc.subnets_self_links[0]}"
+  machine_type         = "n1-standard-1"
 
   parameters = {
     inputFile = "gs://dataflow-samples/shakespeare/kinglear.txt"
@@ -88,7 +88,7 @@ module "dataflow-job-2" {
   temp_gcs_location     = "${module.dataflow-bucket.name}"
   service_account_email = "${var.service_account_email}"
   network               = "${module.vpc.network_name}"
-  subnetwork            = "regions/${module.vpc.subnets_regions[0]}/subnetworks/${module.vpc.subnets_names[0]}"
+  subnetwork_self_link = "${module.vpc.subnets_self_links[0]}"
   machine_type          = "n1-standard-2"
 
   parameters = {
