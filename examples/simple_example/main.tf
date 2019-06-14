@@ -67,9 +67,9 @@ module "dataflow-job" {
   template_gcs_path     = "gs://dataflow-templates/latest/Word_Count"
   temp_gcs_location     = "${module.dataflow-bucket.name}"
   service_account_email = "${var.service_account_email}"
-  network               = "${module.vpc.network_name}"
-  subnetwork_self_link = "${module.vpc.subnets_self_links[0]}"
-  machine_type         = "n1-standard-1"
+  network_self_link     = "${module.vpc.network_self_link}"
+  subnetwork_self_link  = "${module.vpc.subnets_self_links[0]}"
+  machine_type          = "n1-standard-1"
 
   parameters = {
     inputFile = "gs://dataflow-samples/shakespeare/kinglear.txt"
@@ -87,8 +87,8 @@ module "dataflow-job-2" {
   template_gcs_path     = "gs://dataflow-templates/latest/Word_Count"
   temp_gcs_location     = "${module.dataflow-bucket.name}"
   service_account_email = "${var.service_account_email}"
-  network               = "${module.vpc.network_name}"
-  subnetwork_self_link = "${module.vpc.subnets_self_links[0]}"
+  network_self_link     = "${module.vpc.network_self_link}"
+  subnetwork_self_link  = "${module.vpc.subnets_self_links[0]}"
   machine_type          = "n1-standard-2"
 
   parameters = {
