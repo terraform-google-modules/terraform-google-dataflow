@@ -20,7 +20,6 @@ See [here](../example/simple_example) for a multi jobs example.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| force\_destroy | When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that contains objects, Terraform will fail that run. | string | `"false"` | no |
 | name | The name of the bucket. | string | n/a | yes |
 | project\_id | The project_id to deploy the example instance into.  (e.g. "simple-sample-project-1234") | string | n/a | yes |
 | region | The GCS bucket region. This should be the same as your dataflow job's zone ot optimize performance. | string | `"us-central1"` | no |

@@ -27,7 +27,6 @@ We recommend using a custome service account with fine-grained access control to
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| force\_destroy | When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that contains objects, Terraform will fail that run. | string | `"false"` | no |
 | project\_id | The project ID to deploy to | string | n/a | yes |
 | region | The region in which the bucket and the dataflow job will be deployed | string | n/a | yes |
 | service\_account\_email | The Service Account email used to create the job. | string | n/a | yes |
