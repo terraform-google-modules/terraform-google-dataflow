@@ -58,3 +58,18 @@ variable "region" {
   description = "The bucket's region location"
   default     = "us-central1"
 }
+
+variable "subnetwork_self_link" {
+  description = "The subnetwork self link to which VMs will be assigned."
+  default     = ""
+}
+
+variable "network_self_link" {
+  description = "The network self link to which VMs will be assigned."
+  default     = "default"
+}
+
+variable "machine_type" {
+  description = "The machine type to use for the job."
+  default     = ""
+}

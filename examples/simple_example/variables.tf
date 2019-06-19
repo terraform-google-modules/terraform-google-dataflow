@@ -25,3 +25,8 @@ variable "region" {
 variable "service_account_email" {
   description = "The Service Account email used to create the job."
 }
+
+variable "force_destroy" {
+  description = "When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that contains objects, Terraform will fail that run."
+  default     = "false"
+}
