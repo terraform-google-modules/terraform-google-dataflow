@@ -17,6 +17,6 @@ project adheres to [Semantic Versioning](http://semver.org/).
 
 * Initial release of module.
 
-[v2.1.0]: https://github.com/terraform-google-modules/terraform-google-dataflow/compare/v0.1.0...v0.2.0
+[v0.2.0]: https://github.com/terraform-google-modules/terraform-google-dataflow/compare/v0.1.0...v0.2.0
 
-[#v4]: https://github.com/terraform-google-modules/terraform-google-dataflow/pull/4
+[#4]: https://github.com/terraform-google-modules/terraform-google-dataflow/pull/4
