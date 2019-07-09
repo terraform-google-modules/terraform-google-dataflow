@@ -45,7 +45,7 @@ variable "on_delete" {
 }
 
 variable "region" {
-  description = "The region in which the created job should run."
+  description = "The region in which the created job should run. Also determines the location of the staging bucket if created."
   default     = "us-central1"
 }
 
@@ -57,11 +57,6 @@ variable "zone" {
 variable "service_account_email" {
   description = "The Service Account email that will be used to identify the VMs in which the jobs are running"
   default     = ""
-}
-
-variable "region" {
-  description = "The bucket's region location"
-  default     = "us-central1"
 }
 
 variable "subnetwork_self_link" {

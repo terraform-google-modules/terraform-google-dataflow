@@ -4,6 +4,12 @@ variable "project_id" {
 
 variable "region" {
   description = "The region to deploy to"
+  default     = "us-east1"
+}
+
+variable "zone" {
+  description = "The zone to deploy to"
+  default     = "us-central1-a"
 }
 
 variable "service_account_email" {

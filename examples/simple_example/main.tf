@@ -63,7 +63,7 @@ module "dataflow-job" {
   name                  = "wordcount-terraform-example"
   on_delete             = "cancel"
   region                = "${var.region}"
-  zone                  = "${var.region}-a"
+  zone                  = "${var.zone}"
   max_workers           = 1
   template_gcs_path     = "gs://dataflow-templates/latest/Word_Count"
   temp_gcs_location     = "${module.dataflow-bucket.name}"
@@ -84,7 +84,7 @@ module "dataflow-job-2" {
   name                  = "wordcount-terraform-example-2"
   on_delete             = "cancel"
   region                = "${var.region}"
-  zone                  = "${var.region}-a"
+  zone                  = "${var.zone}"
   max_workers           = 1
   template_gcs_path     = "gs://dataflow-templates/latest/Word_Count"
   temp_gcs_location     = "${module.dataflow-bucket.name}"
