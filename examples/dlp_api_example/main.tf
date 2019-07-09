@@ -19,7 +19,9 @@ provider "google" {
   region  = "${var.region}"
 }
 
-resource "random_id" "random_suffix" { byte_length = 4 }
+resource "random_id" "random_suffix" {
+  byte_length = 4
+}
 
 locals {
   gcs_bucket_name = "tmp-dir-bucket-${random_id.random_suffix.hex}"
@@ -105,11 +107,12 @@ module "dataflow-job" {
   project_id            = "${var.project_id}"
   name                  = "dlp_example_${null_resource.download_sample_cc_into_gcs.id}_${null_resource.deinspection_template_setup.id}"
   on_delete             = "cancel"
+  region                = "${var.region}"
   zone                  = "${var.region}-a"
   template_gcs_path     = "gs://dataflow-templates/latest/Stream_DLP_GCS_Text_to_BigQuery"
   temp_gcs_location     = "${module.dataflow-bucket.name}"
   service_account_email = "${var.service_account_email}"
-  max_workers		= 5
+  max_workers           = 5
 
   parameters = {
     inputFilePattern       = "gs://${module.dataflow-bucket.name}/cc_records.csv"
@@ -120,11 +123,12 @@ module "dataflow-job" {
   }
 }
 
-resource "null_resource" "destroy_deidentify_template"{
-provisioner "local-exec" {
-  when    = "destroy"
-  command = <<EOF
+resource "null_resource" "destroy_deidentify_template" {
+  provisioner "local-exec" {
+    when = "destroy"
+
+    command = <<EOF
   curl -s -X DELETE "https://dlp.googleapis.com/v2/projects/${var.project_id}/deidentifyTemplates/15" -H "Authorization:Bearer $(gcloud auth application-default print-access-token)"
   EOF
-}
+  }
 }

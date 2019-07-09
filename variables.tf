@@ -44,8 +44,13 @@ variable "on_delete" {
   default     = "cancel"
 }
 
+variable "region" {
+  description = "The region in which the created job should run."
+  default     = "us-central1"
+}
+
 variable "zone" {
-  description = "The zone in which the created job should run. If it is not provided, the provider zone is used."
+  description = "The zone in which the created job should run."
   default     = "us-central1-a"
 }
 
