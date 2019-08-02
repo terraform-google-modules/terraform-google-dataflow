@@ -6,6 +6,11 @@ The resources/services/activations/deletions that this module will create/trigge
 - Create a  GCS bucket for temporary job data
 - Create a Dataflow job
 
+## Compatibility
+
+This module is meant for use with Terraform 0.12. If you haven't [upgraded](https://www.terraform.io/upgrade-guides/0-12.html) and need a Terraform 0.11.x-compatible version of this module, the last released version intended for Terraform 0.11.x
+is [0.3.0](https://registry.terraform.io/modules/terraform-google-modules/dataflow/google/0.3.0).
+
 ## Usage
 
 Before using this module, one should get familiar with the `google_dataflow_job`’s [Notes on “destroy”/”apply”](https://www.terraform.io/docs/providers/google/r/dataflow_job.html#note-on-quot-destroy-quot-quot-apply-quot-) as the behavior is atypical when compared to other resources.
@@ -43,25 +48,24 @@ Then perform the following commands on the root folder:
 - `terraform destroy` to destroy the built infrastructure
 
 
-[^]: (autogen_docs_start)
-
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
 | machine\_type | The machine type to use for the job. | string | `""` | no |
-| max\_workers | The number of workers permitted to work on the job. More workers may improve processing speed at additional cost. | string | `"1"` | no |
+| max\_workers | The number of workers permitted to work on the job. More workers may improve processing speed at additional cost. | number | `"1"` | no |
 | name | The name of the dataflow job | string | n/a | yes |
 | network\_self\_link | The network self link to which VMs will be assigned. | string | `"default"` | no |
 | on\_delete | One of drain or cancel. Specifies behavior of deletion during terraform destroy. The default is cancel. | string | `"cancel"` | no |
-| parameters | Key/Value pairs to be passed to the Dataflow job (as used in the template). | map | `<map>` | no |
+| parameters | Key/Value pairs to be passed to the Dataflow job \(as used in the template\). | map(string) | `<map>` | no |
 | project\_id | The project in which the resource belongs. If it is not provided, the provider project is used. | string | n/a | yes |
-| region | The bucket's region location | string | `"us-central1"` | no |
+| region | The region in which the created job should run. Also determines the location of the staging bucket if created. | string | `"us-central1"` | no |
 | service\_account\_email | The Service Account email that will be used to identify the VMs in which the jobs are running | string | `""` | no |
 | subnetwork\_self\_link | The subnetwork self link to which VMs will be assigned. | string | `""` | no |
 | temp\_gcs\_location | A writeable location on GCS for the Dataflow job to dump its temporary data. | string | n/a | yes |
 | template\_gcs\_path | The GCS path to the Dataflow job template. | string | n/a | yes |
-| zone | The zone in which the created job should run. If it is not provided, the provider zone is used. | string | `"us-central1-a"` | no |
+| zone | The zone in which the created job should run. | string | `"us-central1-a"` | no |
 
 ## Outputs
 
@@ -73,7 +77,7 @@ Then perform the following commands on the root folder:
 | temp\_gcs\_location | The GCS path for the Dataflow job's temporary data. |
 | template\_gcs\_path | The GCS path to the Dataflow job template. |
 
-[^]: (autogen_docs_end)
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Requirements
 

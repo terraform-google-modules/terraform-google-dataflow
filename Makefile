@@ -21,8 +21,7 @@ SHELL := /usr/bin/env bash
 # Docker build config variables
 CREDENTIALS_PATH 			?= /cft/workdir/credentials.json
 DOCKER_ORG 				:= gcr.io/cloud-foundation-cicd
-#DOCKER_TAG_BASE_KITCHEN_TERRAFORM 	?= 0.11.10_216.0.0_1.19.1_0.1.10
-DOCKER_TAG_BASE_KITCHEN_TERRAFORM 	?= 1.0.0
+DOCKER_TAG_BASE_KITCHEN_TERRAFORM 	?= 2.3.0
 DOCKER_REPO_BASE_KITCHEN_TERRAFORM 	:= ${DOCKER_ORG}/cft/kitchen-terraform:${DOCKER_TAG_BASE_KITCHEN_TERRAFORM}
 
 # All is the first target in the file so it will get picked up when you just run 'make' on its own
@@ -95,7 +94,7 @@ docker_run:
 		-e SERVICE_ACCOUNT_EMAIL \
 		-e SERVICE_ACCOUNT_JSON \
 		-e GOOGLE_APPLICATION_CREDENTIALS=${CREDENTIALS_PATH} \
-		-v $(CURDIR):/cft/workdir \
+		-v "$(CURDIR)":/cft/workdir \
 		${DOCKER_REPO_BASE_KITCHEN_TERRAFORM} \
 		/bin/bash -c "source test/ci_integration.sh && setup_environment && exec /bin/bash"
 
@@ -108,7 +107,7 @@ docker_create:
 		-e SERVICE_ACCOUNT_EMAIL \
 		-e SERVICE_ACCOUNT_JSON \
 		-e GOOGLE_APPLICATION_CREDENTIALS=${CREDENTIALS_PATH} \
-		-v $(CURDIR):/cft/workdir \
+		-v "$(CURDIR)":/cft/workdir \
 		${DOCKER_REPO_BASE_KITCHEN_TERRAFORM} \
 		/bin/bash -c "source test/ci_integration.sh && setup_environment && kitchen create"
 
@@ -121,7 +120,7 @@ docker_converge:
 		-e SERVICE_ACCOUNT_EMAIL \
 		-e SERVICE_ACCOUNT_JSON \
 		-e GOOGLE_APPLICATION_CREDENTIALS=${CREDENTIALS_PATH} \
-		-v $(CURDIR):/cft/workdir \
+		-v "$(CURDIR)":/cft/workdir \
 		${DOCKER_REPO_BASE_KITCHEN_TERRAFORM} \
 		/bin/bash -c "source test/ci_integration.sh && setup_environment && kitchen converge"
 
@@ -134,7 +133,7 @@ docker_verify:
 		-e SERVICE_ACCOUNT_EMAIL \
 		-e SERVICE_ACCOUNT_JSON \
 		-e GOOGLE_APPLICATION_CREDENTIALS=${CREDENTIALS_PATH} \
-		-v $(CURDIR):/cft/workdir \
+		-v "$(CURDIR)":/cft/workdir \
 		${DOCKER_REPO_BASE_KITCHEN_TERRAFORM} \
 		/bin/bash -c "source test/ci_integration.sh && setup_environment && kitchen verify"
 
@@ -147,7 +146,7 @@ docker_destroy:
 		-e SERVICE_ACCOUNT_EMAIL \
 		-e SERVICE_ACCOUNT_JSON \
 		-e GOOGLE_APPLICATION_CREDENTIALS=${CREDENTIALS_PATH} \
-		-v $(CURDIR):/cft/workdir \
+		-v "$(CURDIR)":/cft/workdir \
 		${DOCKER_REPO_BASE_KITCHEN_TERRAFORM} \
 		/bin/bash -c "source test/ci_integration.sh && setup_environment && kitchen destroy"
 
@@ -160,6 +159,6 @@ test_integration_docker:
 		-e SERVICE_ACCOUNT_EMAIL \
 		-e SERVICE_ACCOUNT_JSON \
 		-e GOOGLE_APPLICATION_CREDENTIALS=${CREDENTIALS_PATH} \
-		-v $(CURDIR):/cft/workdir \
+		-v "$(CURDIR)":/cft/workdir \
 		${DOCKER_REPO_BASE_KITCHEN_TERRAFORM} \
 		make test_integration

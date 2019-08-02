@@ -14,25 +14,6 @@
  * limitations under the License.
  */
 
-variable "project_id" {
-  type        = string
-  description = "The project_id to deploy the example instance into.  (e.g. \"simple-sample-project-1234\")"
+terraform {
+  required_version = ">= 0.12"
 }
-
-variable "region" {
-  type        = string
-  description = "The region to deploy to"
-  default     = "us-east1"
-}
-
-variable "zone" {
-  type        = string
-  description = "The zone to deploy to"
-  default     = "us-central1-a"
-}
-
-variable "service_account_email" {
-  type        = string
-  description = "The Service Account email used to create the job."
-}
-
