@@ -1,8 +1,8 @@
 # DLP API Example
 
-This dataflow example runs the DLP Dataflow template under gs://dataflow-templates/latest/Stream_DLP_GCS_Text_to_BigQuery. It downloads a fake credit card [zipfile](http://eforexcel.com/wp/wp-content/uploads/2017/07/1500000%20CC%20Records.zip) unzips to a csv, deidentifies the credit card number and pin columns using the DLP API and dumps the data into a BigQuery dataset. 
+This dataflow example runs the DLP Dataflow template under gs://dataflow-templates/latest/Stream_DLP_GCS_Text_to_BigQuery. It downloads a fake credit card [zipfile](http://eforexcel.com/wp/wp-content/uploads/2017/07/1500000%20CC%20Records.zip) unzips to a csv, deidentifies the credit card number and pin columns using the DLP API and dumps the data into a BigQuery dataset.
 
-This terraform script allows users to use their own pre-created KMS key ring/key/wrapped key by setting the variable `create_key_ring=false` or can also create all such resources for them by setting the variable `create_key_ring=true`. 
+This terraform script allows users to use their own pre-created KMS key ring/key/wrapped key by setting the variable `create_key_ring=false` or can also create all such resources for them by setting the variable `create_key_ring=true`.
 
 
 ## Best practices
@@ -10,8 +10,8 @@ This terraform script allows users to use their own pre-created KMS key ring/key
 ### Cost and Performance
 As featured in this example, using a single regional bucket for storing your jobs' temporary data is recommended to optimize cost.
 Also, to optimize your jobs performance, this bucket should always in the corresponding region of the zones in which your jobs are running.
-## 
-Make sure the terraform service account to execute the example has the basic  permissions needed for the module listed [here](../../README#configure-a-service-account-to-execute-the-module) 
+##
+Make sure the terraform service account to execute the example has the basic  permissions needed for the module listed [here](../../README#configure-a-service-account-to-execute-the-module)
 Grant these additional permissions to the service account needed to run the example:
 - roles/bigquery.admin
 - roles/iam.serviceAccountUser

@@ -20,7 +20,7 @@ There are examples included in the [examples](./examples/) folder but simple usa
 module "dataflow-job" {
   source  = "terraform-google-modules/dataflow/google"
   version = "0.1.0"
- 
+
   project_id  = "<project_id>"
   job_name = "<job_name>"
   on_delete = "cancel"

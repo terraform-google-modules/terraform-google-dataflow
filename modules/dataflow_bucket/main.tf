@@ -15,7 +15,6 @@
  */
 
 resource "google_storage_bucket" "tmp_dir_bucket" {
-  provider      = "google"
   name          = "${var.name}"
   location      = "${var.region}"
   storage_class = "REGIONAL"
