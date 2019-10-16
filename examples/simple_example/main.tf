@@ -16,7 +16,7 @@
 
 provider "google" {
   version = "~> 2.8.0"
-  region  = "${var.region}"
+  region  = var.region
 }
 
 resource "random_id" "random_suffix" {
@@ -29,8 +29,8 @@ locals {
 
 module "vpc" {
   source       = "terraform-google-modules/network/google"
-  version      = "~> 0.8.0"
-  project_id   = "${var.project_id}"
+  version      = "~> 1.0"
+  project_id   = var.project_id
   network_name = "dataflow-network"
 
   subnets = [
@@ -42,34 +42,36 @@ module "vpc" {
   ]
 
   secondary_ranges = {
-    dataflow-subnetwork = [{
-      range_name    = "my-secondary-range"
-      ip_cidr_range = "192.168.64.0/24"
-    }]
+    dataflow-subnetwork = [
+      {
+        range_name    = "my-secondary-range"
+        ip_cidr_range = "192.168.64.0/24"
+      },
+    ]
   }
 }
 
 module "dataflow-bucket" {
   source        = "../../modules/dataflow_bucket"
-  name          = "${local.gcs_bucket_name}"
-  region        = "${var.region}"
-  project_id    = "${var.project_id}"
-  force_destroy = "${var.force_destroy}"
+  name          = local.gcs_bucket_name
+  region        = var.region
+  project_id    = var.project_id
+  force_destroy = var.force_destroy
 }
 
 module "dataflow-job" {
   source                = "../../"
-  project_id            = "${var.project_id}"
+  project_id            = var.project_id
   name                  = "wordcount-terraform-example"
   on_delete             = "cancel"
-  region                = "${var.region}"
-  zone                  = "${var.zone}"
+  region                = var.region
+  zone                  = var.zone
   max_workers           = 1
   template_gcs_path     = "gs://dataflow-templates/latest/Word_Count"
-  temp_gcs_location     = "${module.dataflow-bucket.name}"
-  service_account_email = "${var.service_account_email}"
-  network_self_link     = "${module.vpc.network_self_link}"
-  subnetwork_self_link  = "${module.vpc.subnets_self_links[0]}"
+  temp_gcs_location     = module.dataflow-bucket.name
+  service_account_email = var.service_account_email
+  network_self_link     = module.vpc.network_self_link
+  subnetwork_self_link  = module.vpc.subnets_self_links[0]
   machine_type          = "n1-standard-1"
 
   parameters = {
@@ -80,17 +82,17 @@ module "dataflow-job" {
 
 module "dataflow-job-2" {
   source                = "../../"
-  project_id            = "${var.project_id}"
+  project_id            = var.project_id
   name                  = "wordcount-terraform-example-2"
   on_delete             = "cancel"
-  region                = "${var.region}"
-  zone                  = "${var.zone}"
+  region                = var.region
+  zone                  = var.zone
   max_workers           = 1
   template_gcs_path     = "gs://dataflow-templates/latest/Word_Count"
-  temp_gcs_location     = "${module.dataflow-bucket.name}"
-  service_account_email = "${var.service_account_email}"
-  network_self_link     = "${module.vpc.network_self_link}"
-  subnetwork_self_link  = "${module.vpc.subnets_self_links[0]}"
+  temp_gcs_location     = module.dataflow-bucket.name
+  service_account_email = var.service_account_email
+  network_self_link     = module.vpc.network_self_link
+  subnetwork_self_link  = module.vpc.subnets_self_links[0]
   machine_type          = "n1-standard-2"
 
   parameters = {
@@ -98,3 +100,4 @@ module "dataflow-job-2" {
     output    = "gs://${local.gcs_bucket_name}/output/my_output"
   }
 }
+
