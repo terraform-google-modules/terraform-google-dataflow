@@ -39,6 +39,17 @@ setup_environment() {
   # Terraform variables
   export TF_VAR_project_id="$PROJECT_ID"
   export TF_VAR_bucket_name="$BUCKET_NAME"
+  export TF_VAR_service_account_email="${SERVICE_ACCOUNT_EMAIL}"
+  export TF_VAR_region="${REGION}"
+  export TF_VAR_zone="${ZONE}"
+
+  # Stubs for tf (for linters to pass)
+  export TF_VAR_name=""
+  export TF_VAR_key_ring=""
+  export TF_VAR_kms_key_name=""
+  export TF_VAR_terraform_service_account_email=""
+  export TF_VAR_template_gcs_path=""
+  export TF_VAR_temp_gcs_location=""
 }
 
 main() {

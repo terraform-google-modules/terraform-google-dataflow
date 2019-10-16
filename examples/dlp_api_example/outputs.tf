@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,27 @@
  */
 
 output "project_id" {
-  value       = "${var.project_id}"
+  value       = var.project_id
   description = "The project's ID"
 }
 
 output "df_job_state" {
   description = "The state of the newly created Dataflow job"
-  value       = "${module.dataflow-job.state}"
+  value       = module.dataflow-job.state
 }
 
 output "df_job_id" {
   description = "The unique Id of the newly created Dataflow job"
-  value       = "${module.dataflow-job.id}"
+  value       = module.dataflow-job.id
 }
 
 output "df_job_name" {
   description = "The name of the newly created Dataflow job"
-  value       = "${module.dataflow-job.name}"
+  value       = module.dataflow-job.name
 }
 
 output "bucket_name" {
   description = "The name of the bucket"
-  value       = "${module.dataflow-bucket.name}"
+  value       = module.dataflow-bucket.name
 }
+

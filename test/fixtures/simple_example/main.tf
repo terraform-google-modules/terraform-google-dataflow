@@ -16,9 +16,10 @@
 
 module "example" {
   source                = "../../../examples/simple_example"
-  project_id            = "${var.project_id}"
-  region                = "${var.region}"
-  zone                  = "${var.zone}"
-  service_account_email = "${var.service_account_email}"
-  force_destroy         = "true"
+  project_id            = var.project_id
+  region                = var.region
+  zone                  = var.zone
+  service_account_email = var.service_account_email
+  force_destroy         = true
 }
+
