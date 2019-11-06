@@ -14,12 +14,25 @@
  * limitations under the License.
  */
 
-module "example" {
-  source                = "../../../examples/simple_example"
-  project_id            = var.project_id
-  region                = var.region
-  zone                  = var.zone
-  service_account_email = var.service_account_email
-  force_destroy         = true
+provider "google" {
+  version = "~> 2.18.0"
 }
 
+module "project-ci-dataflow" {
+  source  = "terraform-google-modules/project-factory/google"
+  version = "~> 3.0"
+
+  name                    = "ci-test-df"
+  random_project_id       = "true"
+  org_id                  = var.org_id
+  folder_id               = var.folder_id
+  billing_account         = var.billing_account
+  default_service_account = "keep"
+
+  activate_apis = [
+    "cloudresourcemanager.googleapis.com",
+    "storage-api.googleapis.com",
+    "serviceusage.googleapis.com",
+    "dataflow.googleapis.com"
+  ]
+}
