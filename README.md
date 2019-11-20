@@ -92,8 +92,8 @@ The [project factory](https://github.com/terraform-google-modules/terraform-goog
 
 ### Software Dependencies
 ### Terraform
-- [Terraform](https://www.terraform.io/downloads.html) 0.11.x
-- [terraform-provider-google](https://github.com/terraform-providers/terraform-provider-google) plugin v2.0.0
+- [Terraform](https://www.terraform.io/downloads.html) 0.12.x
+- [terraform-provider-google](https://github.com/terraform-providers/terraform-provider-google) plugin v2.18.0
 
 ### Configure a Service Account to execute the module
 In order to execute this module you must have a Service Account with the
@@ -116,7 +116,7 @@ In order to launch a Dataflow Job, the Dataflow API must be enabled:
 ## Install
 
 ### Terraform
-Be sure you have the correct Terraform version (0.11.x), you can choose the binary here:
+Be sure you have the correct Terraform version (0.12.x), you can choose the binary here:
 - https://releases.hashicorp.com/terraform/
 
 ## Testing

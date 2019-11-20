@@ -31,6 +31,7 @@ resource "google_dataflow_job" "dataflow_job" {
     "/(.*)/regions/(.*)/",
     "regions/$2",
   )
-  machine_type = var.machine_type
+  machine_type     = var.machine_type
+  ip_configuration = var.ip_configuration
 }
 
