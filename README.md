@@ -58,7 +58,7 @@ Then perform the following commands on the root folder:
 | name | The name of the dataflow job | string | n/a | yes |
 | network\_self\_link | The network self link to which VMs will be assigned. | string | `"default"` | no |
 | on\_delete | One of drain or cancel. Specifies behavior of deletion during terraform destroy. The default is cancel. | string | `"cancel"` | no |
-| parameters | Key/Value pairs to be passed to the Dataflow job \(as used in the template\). | map(string) | `<map>` | no |
+| parameters | Key/Value pairs to be passed to the Dataflow job (as used in the template). | map(string) | `<map>` | no |
 | project\_id | The project in which the resource belongs. If it is not provided, the provider project is used. | string | n/a | yes |
 | region | The region in which the created job should run. Also determines the location of the staging bucket if created. | string | `"us-central1"` | no |
 | service\_account\_email | The Service Account email that will be used to identify the VMs in which the jobs are running | string | `""` | no |

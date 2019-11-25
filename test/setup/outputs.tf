@@ -14,12 +14,15 @@
  * limitations under the License.
  */
 
-module "example" {
-  source                = "../../../examples/simple_example"
-  project_id            = var.project_id
-  region                = var.region
-  zone                  = var.zone
-  service_account_email = var.service_account_email
-  force_destroy         = true
+output "project_id" {
+  value = module.project-ci-dataflow.project_id
 }
 
+output "sa_key" {
+  value     = google_service_account_key.int_test.private_key
+  sensitive = true
+}
+
+output "service_account_email" {
+  value = google_service_account.int_test.email
+}
