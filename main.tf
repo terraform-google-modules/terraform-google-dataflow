@@ -33,5 +33,6 @@ resource "google_dataflow_job" "dataflow_job" {
   )
   machine_type     = var.machine_type
   ip_configuration = var.ip_configuration
+  labels           = var.labels
 }
 
