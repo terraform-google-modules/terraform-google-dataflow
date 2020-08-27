@@ -53,6 +53,7 @@ Then perform the following commands on the root folder:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
+| ip\_configuration | The configuration for VM IPs. Options are 'WORKER_IP_PUBLIC' or 'WORKER_IP_PRIVATE'. | string | `"null"` | no |
 | machine\_type | The machine type to use for the job. | string | `""` | no |
 | max\_workers | The number of workers permitted to work on the job. More workers may improve processing speed at additional cost. | number | `"1"` | no |
 | name | The name of the dataflow job | string | n/a | yes |
