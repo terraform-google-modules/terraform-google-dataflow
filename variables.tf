@@ -89,7 +89,7 @@ variable "machine_type" {
 
 variable "ip_configuration" {
   type        = string
-  description = "The configuration for VM IPs. Options are 'WORKER_IP_PUBLIC' or 'WORKER_IP_PRIVATE'." 
+  description = "The configuration for VM IPs. Options are 'WORKER_IP_PUBLIC' or 'WORKER_IP_PRIVATE'."
   default     = null
 }
 

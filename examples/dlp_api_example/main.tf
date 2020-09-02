@@ -84,16 +84,16 @@ resource "google_kms_key_ring" "create_kms_ring" {
 }
 
 resource "google_kms_crypto_key" "create_kms_key" {
-  count    = var.create_key_ring ? 1 : 0
-  name     = var.kms_key_name
-  key_ring = google_kms_key_ring.create_kms_ring[0].self_link
+  count      = var.create_key_ring ? 1 : 0
+  name       = var.kms_key_name
+  key_ring   = google_kms_key_ring.create_kms_ring[0].self_link
   depends_on = [google_kms_key_ring.create_kms_ring]
 }
 
 resource "null_resource" "create_kms_wrapped_key" {
-  count = var.create_key_ring ? 1 : 0
+  count      = var.create_key_ring ? 1 : 0
   depends_on = [google_kms_crypto_key.create_kms_key]
-  
+
   provisioner "local-exec" {
     command = <<EOF
   rm original_key.txt
