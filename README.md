@@ -53,7 +53,9 @@ Then perform the following commands on the root folder:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
+| additional\_experiments | List of experiments that should be used by the job | list(string) | `<list>` | no |
 | ip\_configuration | The configuration for VM IPs. Options are 'WORKER_IP_PUBLIC' or 'WORKER_IP_PRIVATE'. | string | `"null"` | no |
+| labels | User labels to be specified for the job. Keys and values should follow the restrictions specified in the labeling restrictions page. | map(string) | `<map>` | no |
 | machine\_type | The machine type to use for the job. | string | `""` | no |
 | max\_workers | The number of workers permitted to work on the job. More workers may improve processing speed at additional cost. | number | `"1"` | no |
 | name | The name of the dataflow job | string | n/a | yes |
@@ -66,6 +68,7 @@ Then perform the following commands on the root folder:
 | subnetwork\_self\_link | The subnetwork self link to which VMs will be assigned. | string | `""` | no |
 | temp\_gcs\_location | A writeable location on GCS for the Dataflow job to dump its temporary data. | string | n/a | yes |
 | template\_gcs\_path | The GCS path to the Dataflow job template. | string | n/a | yes |
+| transform\_name\_mapping | Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update. | map(string) | `<map>` | no |
 | zone | The zone in which the created job should run. | string | `"us-central1-a"` | no |
 
 ## Outputs

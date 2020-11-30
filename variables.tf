@@ -93,3 +93,19 @@ variable "ip_configuration" {
   default     = null
 }
 
+variable "labels" {
+  type        = map(string)
+  default     = {}
+  description = "User labels to be specified for the job. Keys and values should follow the restrictions specified in the labeling restrictions page."
+}
+variable "transform_name_mapping" {
+  type        = map(string)
+  default     = {}
+  description = "Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update. "
+}
+variable "additional_experiments" {
+  type        = list(string)
+  default     = []
+  description = "List of experiments that should be used by the job"
+}
+
