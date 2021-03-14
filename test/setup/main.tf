@@ -15,12 +15,12 @@
  */
 
 provider "google" {
-  version = "~> 2.18.0"
+  version = "~> 3.53"
 }
 
 module "project-ci-dataflow" {
   source  = "terraform-google-modules/project-factory/google"
-  version = "~> 3.0"
+  version = "~> 10.0"
 
   name                    = "ci-test-df"
   random_project_id       = "true"
