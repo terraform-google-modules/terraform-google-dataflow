@@ -15,7 +15,7 @@
  */
 
 provider "google" {
-  version = "~> 2.18.0"
+  version = "~> 3.53"
   region  = var.region
 }
 
@@ -29,7 +29,7 @@ locals {
 
 module "vpc" {
   source       = "terraform-google-modules/network/google"
-  version      = "~> 1.0"
+  version      = "~> 3.0"
   project_id   = var.project_id
   network_name = "dataflow-network"
 
