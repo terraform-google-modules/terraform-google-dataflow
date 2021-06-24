@@ -129,12 +129,14 @@ module "dataflow-job" {
 }
 
 resource "null_resource" "destroy_deidentify_template" {
+  triggers = {
+    project_id = var.project_id
+  }
+
   provisioner "local-exec" {
-    when = destroy
-
+    when    = destroy
     command = <<EOF
-  curl -s -X DELETE "https://dlp.googleapis.com/v2/projects/${var.project_id}/deidentifyTemplates/15" -H "Authorization:Bearer $(gcloud auth application-default print-access-token)"
+  curl -s -X DELETE "https://dlp.googleapis.com/v2/projects/${self.triggers.project_id}/deidentifyTemplates/15" -H "Authorization:Bearer $(gcloud auth application-default print-access-token)"
 EOF
-
   }
 }
