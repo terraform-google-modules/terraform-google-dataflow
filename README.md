@@ -7,9 +7,10 @@ The resources/services/activations/deletions that this module will create/trigge
 - Create a Dataflow job
 
 ## Compatibility
-
-This module is meant for use with Terraform 0.12. If you haven't [upgraded](https://www.terraform.io/upgrade-guides/0-12.html) and need a Terraform 0.11.x-compatible version of this module, the last released version intended for Terraform 0.11.x
-is [0.3.0](https://registry.terraform.io/modules/terraform-google-modules/dataflow/google/0.3.0).
+This module is meant for use with Terraform 0.13. If you haven't
+[upgraded](https://www.terraform.io/upgrade-guides/0-13.html) and need a Terraform
+0.12.x-compatible version of this module, the last released version
+intended for Terraform 0.12.x is [v1.0.0](https://registry.terraform.io/modules/terraform-google-modules/-dataflow/google/v1.0.0).
 
 ## Usage
 
@@ -52,21 +53,21 @@ Then perform the following commands on the root folder:
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| ip\_configuration | The configuration for VM IPs. Options are 'WORKER_IP_PUBLIC' or 'WORKER_IP_PRIVATE'. | string | `"null"` | no |
-| machine\_type | The machine type to use for the job. | string | `""` | no |
-| max\_workers | The number of workers permitted to work on the job. More workers may improve processing speed at additional cost. | number | `"1"` | no |
-| name | The name of the dataflow job | string | n/a | yes |
-| network\_self\_link | The network self link to which VMs will be assigned. | string | `"default"` | no |
-| on\_delete | One of drain or cancel. Specifies behavior of deletion during terraform destroy. The default is cancel. | string | `"cancel"` | no |
-| parameters | Key/Value pairs to be passed to the Dataflow job (as used in the template). | map(string) | `<map>` | no |
-| project\_id | The project in which the resource belongs. If it is not provided, the provider project is used. | string | n/a | yes |
-| region | The region in which the created job should run. Also determines the location of the staging bucket if created. | string | `"us-central1"` | no |
-| service\_account\_email | The Service Account email that will be used to identify the VMs in which the jobs are running | string | `""` | no |
-| subnetwork\_self\_link | The subnetwork self link to which VMs will be assigned. | string | `""` | no |
-| temp\_gcs\_location | A writeable location on GCS for the Dataflow job to dump its temporary data. | string | n/a | yes |
-| template\_gcs\_path | The GCS path to the Dataflow job template. | string | n/a | yes |
-| zone | The zone in which the created job should run. | string | `"us-central1-a"` | no |
+|------|-------------|------|---------|:--------:|
+| ip\_configuration | The configuration for VM IPs. Options are 'WORKER\_IP\_PUBLIC' or 'WORKER\_IP\_PRIVATE'. | `string` | `null` | no |
+| machine\_type | The machine type to use for the job. | `string` | `""` | no |
+| max\_workers | The number of workers permitted to work on the job. More workers may improve processing speed at additional cost. | `number` | `1` | no |
+| name | The name of the dataflow job | `string` | n/a | yes |
+| network\_self\_link | The network self link to which VMs will be assigned. | `string` | `"default"` | no |
+| on\_delete | One of drain or cancel. Specifies behavior of deletion during terraform destroy. The default is cancel. | `string` | `"cancel"` | no |
+| parameters | Key/Value pairs to be passed to the Dataflow job (as used in the template). | `map(string)` | `{}` | no |
+| project\_id | The project in which the resource belongs. If it is not provided, the provider project is used. | `string` | n/a | yes |
+| region | The region in which the created job should run. Also determines the location of the staging bucket if created. | `string` | `"us-central1"` | no |
+| service\_account\_email | The Service Account email that will be used to identify the VMs in which the jobs are running | `string` | `""` | no |
+| subnetwork\_self\_link | The subnetwork self link to which VMs will be assigned. | `string` | `""` | no |
+| temp\_gcs\_location | A writeable location on GCS for the Dataflow job to dump its temporary data. | `string` | n/a | yes |
+| template\_gcs\_path | The GCS path to the Dataflow job template. | `string` | n/a | yes |
+| zone | The zone in which the created job should run. | `string` | `"us-central1-a"` | no |
 
 ## Outputs
 
@@ -93,7 +94,7 @@ The [project factory](https://github.com/terraform-google-modules/terraform-goog
 
 ### Software Dependencies
 ### Terraform
-- [Terraform](https://www.terraform.io/downloads.html) 0.12.x
+- [Terraform](https://www.terraform.io/downloads.html) >= 0.13.0
 - [terraform-provider-google](https://github.com/terraform-providers/terraform-provider-google) plugin v2.18.0
 
 ### Configure a Service Account to execute the module
