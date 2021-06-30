@@ -7,6 +7,12 @@ project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.0.1]
+
+### Changed
+
+- use network self link
+
 ## [1.0.0]
 
 ### Changed
