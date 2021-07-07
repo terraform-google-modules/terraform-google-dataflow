@@ -99,29 +99,37 @@ The [project factory](https://github.com/terraform-google-modules/terraform-goog
 - [terraform-provider-google](https://github.com/terraform-providers/terraform-provider-google) plugin v2.18.0
 
 ### Configure a Service Account to execute the module
+
 In order to execute this module you must have a Service Account with the
 following project roles:
+
 - roles/dataflow.admin
 - roles/iam.serviceAccountUser
 - roles/storage.admin
 
-If you want to use the kms_key_name parameter, you need to follow [this guide](https://cloud.google.com/dataflow/docs/guides/customer-managed-encryption-keys), to add the following role in the kms keys:
-- roles/cloudkms.cryptoKeyEncrypterDecrypter
-
 ### Configure a Controller Service Account to create the job
+
 If you want to use the service_account_email input to specify a service account that will identify the VMs in which the jobs are running, the service account will need the following project roles:
+
 - roles/dataflow.worker
 - roles/storage.objectAdmin
 
+### Configure a Customer Managed Encryption Key
+
+If you want to use [Customer Managed Encryption Keys](https://cloud.google.com/kms/docs/cmek) in the [Dataflow Job](https://cloud.google.com/dataflow/docs/guides/customer-managed-encryption-keys) use the variable `kms_key_name` to provide a valid key.
+Follow the instructions in [Granting Encrypter/Decrypter permissions](https://cloud.google.com/dataflow/docs/guides/customer-managed-encryption-keys#granting_encrypterdecrypter_permissions) to configure the necessary roles for the Dataflow service accounts.
+
 ### Enable APIs
+
 In order to launch a Dataflow Job, the Dataflow API must be enabled:
 
 - Dataflow API - `dataflow.googleapis.com`
 - Compute Engine API: `compute.googleapis.com`
 - Compute Engine API: `compute.googleapis.com`
 
-If you want to use the kms_key_name parameter:
-- Cloud Key Management Service: `cloudkms.googleapis.com`
+**Note:** If you want to use a Customer Managed Encryption Key, the Cloud Key Management Service (KMS) API must be enabled:
+
+- Cloud Key Management Service (KMS) API: `cloudkms.googleapis.com`
 
 ## Install
 
