@@ -120,8 +120,8 @@ In order to launch a Dataflow Job, the Dataflow API must be enabled:
 - Compute Engine API: `compute.googleapis.com`
 - Compute Engine API: `compute.googleapis.com`
 
-If you want to use the Key Management Service:
-- Cloud Key Management Service: cloudkms.googleapis.com
+If you want to use the kms_key_name parameter:
+- Cloud Key Management Service: `cloudkms.googleapis.com`
 
 ## Install
 
