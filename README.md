@@ -105,7 +105,7 @@ following project roles:
 - roles/iam.serviceAccountUser
 - roles/storage.admin
 
-If you want to use the Key Management Service:
+If you want to use the kms_key_name parameter, you need to follow [this guide](https://cloud.google.com/dataflow/docs/guides/customer-managed-encryption-keys), to add the following role in the kms keys:
 - roles/cloudkms.cryptoKeyEncrypterDecrypter
 
 ### Configure a Controller Service Account to create the job
