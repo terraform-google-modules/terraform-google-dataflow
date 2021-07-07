@@ -55,6 +55,7 @@ Then perform the following commands on the root folder:
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | ip\_configuration | The configuration for VM IPs. Options are 'WORKER\_IP\_PUBLIC' or 'WORKER\_IP\_PRIVATE'. | `string` | `null` | no |
+| kms\_key\_name | The name for the Cloud KMS key for the job. Key format is: projects/PROJECT\_ID/locations/LOCATION/keyRings/KEY\_RING/cryptoKeys/KEY | `string` | `null` | no |
 | machine\_type | The machine type to use for the job. | `string` | `""` | no |
 | max\_workers | The number of workers permitted to work on the job. More workers may improve processing speed at additional cost. | `number` | `1` | no |
 | name | The name of the dataflow job | `string` | n/a | yes |
@@ -98,22 +99,36 @@ The [project factory](https://github.com/terraform-google-modules/terraform-goog
 - [terraform-provider-google](https://github.com/terraform-providers/terraform-provider-google) plugin v2.18.0
 
 ### Configure a Service Account to execute the module
+
 In order to execute this module you must have a Service Account with the
 following project roles:
+
 - roles/dataflow.admin
 - roles/iam.serviceAccountUser
 - roles/storage.admin
 
 ### Configure a Controller Service Account to create the job
+
 If you want to use the service_account_email input to specify a service account that will identify the VMs in which the jobs are running, the service account will need the following project roles:
+
 - roles/dataflow.worker
 - roles/storage.objectAdmin
 
+### Configure a Customer Managed Encryption Key
+
+If you want to use [Customer Managed Encryption Keys](https://cloud.google.com/kms/docs/cmek) in the [Dataflow Job](https://cloud.google.com/dataflow/docs/guides/customer-managed-encryption-keys) use the variable `kms_key_name` to provide a valid key.
+Follow the instructions in [Granting Encrypter/Decrypter permissions](https://cloud.google.com/dataflow/docs/guides/customer-managed-encryption-keys#granting_encrypterdecrypter_permissions) to configure the necessary roles for the Dataflow service accounts.
+
 ### Enable APIs
+
 In order to launch a Dataflow Job, the Dataflow API must be enabled:
 
 - Dataflow API - `dataflow.googleapis.com`
 - Compute Engine API: `compute.googleapis.com`
+
+**Note:** If you want to use a Customer Managed Encryption Key, the Cloud Key Management Service (KMS) API must be enabled:
+
+- Cloud Key Management Service (KMS) API: `cloudkms.googleapis.com`
 
 ## Install
 
