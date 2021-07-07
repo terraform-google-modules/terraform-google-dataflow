@@ -55,6 +55,7 @@ Then perform the following commands on the root folder:
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | ip\_configuration | The configuration for VM IPs. Options are 'WORKER\_IP\_PUBLIC' or 'WORKER\_IP\_PRIVATE'. | `string` | `null` | no |
+| kms\_key\_name | The name for the Cloud KMS key for the job. Key format is: projects/PROJECT\_ID/locations/LOCATION/keyRings/KEY\_RING/cryptoKeys/KEY | `string` | `null` | no |
 | machine\_type | The machine type to use for the job. | `string` | `""` | no |
 | max\_workers | The number of workers permitted to work on the job. More workers may improve processing speed at additional cost. | `number` | `1` | no |
 | name | The name of the dataflow job | `string` | n/a | yes |
@@ -104,6 +105,9 @@ following project roles:
 - roles/iam.serviceAccountUser
 - roles/storage.admin
 
+If you want to use the Key Management Service:
+- roles/cloudkms.cryptoKeyEncrypterDecrypter
+
 ### Configure a Controller Service Account to create the job
 If you want to use the service_account_email input to specify a service account that will identify the VMs in which the jobs are running, the service account will need the following project roles:
 - roles/dataflow.worker
@@ -114,6 +118,10 @@ In order to launch a Dataflow Job, the Dataflow API must be enabled:
 
 - Dataflow API - `dataflow.googleapis.com`
 - Compute Engine API: `compute.googleapis.com`
+- Compute Engine API: `compute.googleapis.com`
+
+If you want to use the Key Management Service:
+- Cloud Key Management Service: cloudkms.googleapis.com
 
 ## Install
 
