@@ -14,10 +14,6 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 3.53"
-}
-
 module "project-ci-dataflow" {
   source  = "terraform-google-modules/project-factory/google"
   version = "~> 10.0"
