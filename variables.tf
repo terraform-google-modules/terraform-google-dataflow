@@ -89,7 +89,12 @@ variable "machine_type" {
 
 variable "ip_configuration" {
   type        = string
-  description = "The configuration for VM IPs. Options are 'WORKER_IP_PUBLIC' or 'WORKER_IP_PRIVATE'." 
+  description = "The configuration for VM IPs. Options are 'WORKER_IP_PUBLIC' or 'WORKER_IP_PRIVATE'."
   default     = null
 }
 
+variable "kms_key_name" {
+  type        = string
+  description = "The name for the Cloud KMS key for the job. Key format is: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY"
+  default     = null
+}
