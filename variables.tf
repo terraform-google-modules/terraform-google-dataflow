@@ -98,3 +98,9 @@ variable "kms_key_name" {
   description = "The name for the Cloud KMS key for the job. Key format is: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY"
   default     = null
 }
+
+variable "additional_experiments" {
+  type         = list
+  descripttion = "(Optional) List of experiments that should be used by the job. An example value is [\"enable_stackdriver_agent_metrics\"]"
+  default      = null
+}
