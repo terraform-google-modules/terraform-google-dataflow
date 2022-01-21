@@ -1,12 +1,7 @@
 ## [2.1.1](https://www.github.com/terraform-google-modules/terraform-google-dataflow/compare/v2.0.0...v2.1.0) (2021-07-07)
-Merging upstream into recurly repo
+### Merging upstream into recurly repo
 
 
-### Features
-
-* Add CMEK support ([#28](https://www.github.com/terraform-google-modules/terraform-google-dataflow/issues/28)) ([604207b](https://www.github.com/terraform-google-modules/terraform-google-dataflow/commit/604207be49d1b11a854eed68067979b8148aadd7))
-
-## [2.0.0](https://www.github.com/terraform-google-modules/terraform-google-dataflow/compare/v1.0.0...v2.0.0) (2021-07-01)
 
 # Change Log
 
