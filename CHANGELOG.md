@@ -9,7 +9,7 @@ project adheres to [Semantic Versioning](http://semver.org/).
 ## 2.1.2 (2021-07-07)
 ### Adding additional experimnets to module
 
-## 2.1.1 2022-01-21
+## 2.1.1 (2022-01-21)
 ### Merging upstream into recurly repo
 
 
