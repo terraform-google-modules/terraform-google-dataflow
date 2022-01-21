@@ -100,7 +100,7 @@ variable "kms_key_name" {
 }
 
 variable "additional_experiments" {
-  type         = list
-  descripttion = "(Optional) List of experiments that should be used by the job. An example value is [\"enable_stackdriver_agent_metrics\"]"
-  default      = null
+  type        = list
+  description = "(Optional) List of experiments that should be used by the job. An example value is [\"enable_stackdriver_agent_metrics\"]"
+  default     = null
 }
