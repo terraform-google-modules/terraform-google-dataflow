@@ -29,7 +29,7 @@ module "dataflow-job" {
   version = "0.1.0"
 
   project_id  = "<project_id>"
-  job_name = "<job_name>"
+  name = "<job_name>"
   on_delete = "cancel"
   zone = "us-central1-a"
   max_workers = 1
