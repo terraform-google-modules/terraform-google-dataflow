@@ -15,8 +15,7 @@
  */
 
 provider "google" {
-  version = "~> 3.53"
-  region  = var.region
+  region = var.region
 }
 
 resource "random_id" "random_suffix" {
@@ -29,7 +28,7 @@ locals {
 
 module "vpc" {
   source       = "terraform-google-modules/network/google"
-  version      = "~> 3.0"
+  version      = "~> 4.0"
   project_id   = var.project_id
   network_name = "dataflow-network"
 
