@@ -57,6 +57,7 @@ Then perform the following commands on the root folder:
 |------|-------------|------|---------|:--------:|
 | ip\_configuration | The configuration for VM IPs. Options are 'WORKER\_IP\_PUBLIC' or 'WORKER\_IP\_PRIVATE'. | `string` | `null` | no |
 | kms\_key\_name | The name for the Cloud KMS key for the job. Key format is: projects/PROJECT\_ID/locations/LOCATION/keyRings/KEY\_RING/cryptoKeys/KEY | `string` | `null` | no |
+| labels | User labels to be specified for the job. | `map(string)` | `{}` | no |
 | machine\_type | The machine type to use for the job. | `string` | `""` | no |
 | max\_workers | The number of workers permitted to work on the job. More workers may improve processing speed at additional cost. | `number` | `1` | no |
 | name | The name of the dataflow job | `string` | n/a | yes |

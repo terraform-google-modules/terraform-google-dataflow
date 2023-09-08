@@ -125,6 +125,10 @@ module "dataflow-job" {
     dlpProjectId           = var.project_id
     deidentifyTemplateName = "projects/${var.project_id}/deidentifyTemplates/15"
   }
+
+  labels = {
+    example_name = "dlp_api_example"
+  }
 }
 
 resource "null_resource" "destroy_deidentify_template" {

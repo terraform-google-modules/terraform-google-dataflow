@@ -98,5 +98,9 @@ module "dataflow-job-2" {
     inputFile = "gs://dataflow-samples/shakespeare/kinglear.txt"
     output    = "gs://${local.gcs_bucket_name}/output/my_output"
   }
+
+  labels = {
+    example_name = "simple_example"
+  }
 }
 
