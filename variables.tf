@@ -98,3 +98,9 @@ variable "kms_key_name" {
   description = "The name for the Cloud KMS key for the job. Key format is: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY"
   default     = null
 }
+
+variable "labels" {
+  type        = map(string)
+  description = "User labels to be specified for the job."
+  default     = {}
+}

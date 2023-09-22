@@ -70,3 +70,29 @@ To provision this example, run the following from within this directory:
 - `terraform plan` to see the infrastructure plan
 - `terraform apply` to apply the infrastructure build
 - `terraform destroy` to destroy the built infrastructure. (Note that KMS key rings and crypto keys cannot be destroyed!)
+
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| create\_key\_ring | Boolean for determining whether to create key ring with keys(true or false) | `bool` | `true` | no |
+| key\_ring | The GCP KMS key ring to be created | `string` | n/a | yes |
+| kms\_key\_name | The GCP KMS key to be created going under the key ring | `string` | n/a | yes |
+| project\_id | The project ID to deploy to | `string` | n/a | yes |
+| region | The region in which the bucket and the dataflow job will be deployed | `string` | `"us-central1"` | no |
+| service\_account\_email | The Service Account email used to create the job. | `string` | n/a | yes |
+| terraform\_service\_account\_email | The Service Account email used by terraform to spin up resources- the one from environmental variable GOOGLE\_APPLICATION\_CREDENTIALS | `string` | n/a | yes |
+| wrapped\_key | Wrapped key from KMS leave blank if create\_key\_ring=true | `string` | `""` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| bucket\_name | The name of the bucket |
+| df\_job\_id | The unique Id of the newly created Dataflow job |
+| df\_job\_name | The name of the newly created Dataflow job |
+| df\_job\_state | The state of the newly created Dataflow job |
+| project\_id | The project's ID |
+
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
