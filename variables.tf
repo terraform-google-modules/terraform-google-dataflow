@@ -104,3 +104,9 @@ variable "labels" {
   description = "User labels to be specified for the job."
   default     = {}
 }
+
+variable "additional_experiments" {
+  type        = list(string)
+  description = "List of experiments that should be used by the job. An example value is `['enable_stackdriver_agent_metrics']`"
+  default     = []
+}
