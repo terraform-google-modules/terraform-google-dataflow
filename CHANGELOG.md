@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.4.0](https://github.com/terraform-google-modules/terraform-google-dataflow/compare/v2.3.0...v2.4.0) (2023-12-14)
+
+
+### Features
+
+* Add support for additional_experiments dataflow job field ([#64](https://github.com/terraform-google-modules/terraform-google-dataflow/issues/64)) ([5e1c674](https://github.com/terraform-google-modules/terraform-google-dataflow/commit/5e1c674624b660c6d63aa571dfeccafbdfc279f1))
+
 ## [2.3.0](https://github.com/terraform-google-modules/terraform-google-dataflow/compare/v2.2.0...v2.3.0) (2023-12-08)
 
 
