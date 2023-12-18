@@ -51,7 +51,9 @@ module "vpc" {
 }
 
 module "dataflow-bucket" {
-  source        = "../../modules/dataflow_bucket"
+  source  = "terraform-google-modules/dataflow/google//modules/dataflow_bucket"
+  version = "~> 2.0"
+
   name          = local.gcs_bucket_name
   region        = var.region
   project_id    = var.project_id
@@ -59,7 +61,9 @@ module "dataflow-bucket" {
 }
 
 module "dataflow-job" {
-  source                = "../../"
+  source  = "terraform-google-modules/dataflow/google"
+  version = "~> 2.0"
+
   project_id            = var.project_id
   name                  = "wordcount-terraform-example"
   on_delete             = "cancel"
@@ -80,7 +84,8 @@ module "dataflow-job" {
 }
 
 module "dataflow-job-2" {
-  source                = "../../"
+  source                = "terraform-google-modules/dataflow/google"
+  version               = "~> 2.0"
   project_id            = var.project_id
   name                  = "wordcount-terraform-example-2"
   on_delete             = "cancel"

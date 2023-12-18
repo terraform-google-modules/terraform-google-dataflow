@@ -27,7 +27,9 @@ locals {
 }
 
 module "dataflow-bucket" {
-  source     = "../../modules/dataflow_bucket"
+  source  = "terraform-google-modules/dataflow/google//modules/dataflow_bucket"
+  version = "~> 2.0"
+
   name       = local.gcs_bucket_name
   region     = var.region
   project_id = var.project_id
@@ -107,7 +109,9 @@ EOF
 }
 
 module "dataflow-job" {
-  source                = "../../"
+  source  = "terraform-google-modules/dataflow/google"
+  version = "~> 2.0"
+
   project_id            = var.project_id
   name                  = "dlp_example_${null_resource.download_sample_cc_into_gcs.id}_${null_resource.deinspection_template_setup.id}"
   on_delete             = "cancel"
