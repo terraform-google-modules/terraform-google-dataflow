@@ -1,4 +1,4 @@
-# Dataflow Custom Template Deployment 
+# Dataflow Custom Template Deployment
 
 This Terraform module sets up a data pipeline for reading logs from a Pub/Sub pull subscription and writing them to BigQuery tables using a custom Dataflow template.
 
@@ -11,7 +11,7 @@ Before using this module, ensure the following prerequisites are met:
 
 
 When you run your pipeline, Dataflow uses two service accounts to manage security and permissions:
-1. Dataflow Service Account : Dataflow service account as part of the job creation request, such as to check project quota and to create worker instances on your behalf. 
+1. Dataflow Service Account : Dataflow service account as part of the job creation request, such as to check project quota and to create worker instances on your behalf.
 2. Dataflow Worker Service Account : Worker instances use the worker service account to access input and output resources after you submit your job.By default, workers use the `Compute Engine default service account` associated with your project as the worker service account.
 - It is highly recommended to create a user-managed worker service account (that we're also passing in the dataflow module)
 - The Dataflow Worker Service Account must have permission to consume logs/messages from pub/sub and write to BigQuery.
@@ -36,7 +36,7 @@ Note: If you want to use a Customer Managed Encryption Key, the Cloud Key Manage
 
 ## Usage
 
-```hcl 
+```hcl
 module "dataflow-job" {
   source  = "terraform-google-modules/dataflow/google"
   version = "~>2.4.0"
@@ -68,6 +68,7 @@ Then perform the following commands on the root folder:
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | additional\_experiments | List of experiments that should be used by the job. An example value is `['enable_stackdriver_agent_metrics']` | `list(string)` | `[]` | no |
+| force\_destroy | When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that contains objects, Terraform will fail that run. | `bool` | `false` | no |
 | ip\_configuration | The configuration for VM IPs. Options are 'WORKER\_IP\_PUBLIC' or 'WORKER\_IP\_PRIVATE'. | `string` | `null` | no |
 | kms\_key\_name | The name for the Cloud KMS key for the job. Key format is: projects/PROJECT\_ID/locations/LOCATION/keyRings/KEY\_RING/cryptoKeys/KEY | `string` | `null` | no |
 | labels | User labels to be specified for the job. | `map(string)` | `{}` | no |
@@ -75,13 +76,12 @@ Then perform the following commands on the root folder:
 | max\_workers | The number of workers permitted to work on the job. More workers may improve processing speed at additional cost. | `number` | `1` | no |
 | name | The name of the dataflow job | `string` | n/a | yes |
 | network\_self\_link | The network self link to which VMs will be assigned. | `string` | `"default"` | no |
-| on\_delete | One of drain or cancel. Specifies behavior of deletion during terraform destroy. The default is cancel. | `string` | `"drain"` | no |
+| on\_delete | One of drain or cancel. Specifies behavior of deletion during terraform destroy. The default is cancel. | `string` | `"cancel"` | no |
 | parameters | Key/Value pairs to be passed to the Dataflow job (as used in the template). | `map(string)` | `{}` | no |
-| project\_id | The project in which the resource belongs. If it is not provided, the provider project is used. | `string` | n/a | yes |
+| project\_id | ID of the project | `string` | n/a | yes |
 | region | The region in which the created job should run. Also determines the location of the staging bucket if created. | `string` | `"us-central1"` | no |
 | service\_account\_email | The Service Account email that will be used to identify the VMs in which the jobs are running | `string` | `""` | no |
 | subnetwork\_self\_link | The subnetwork self link to which VMs will be assigned. | `string` | `""` | no |
-| temp\_gcs\_location | A writeable location on GCS for the Dataflow job to dump its temporary data. | `string` | n/a | yes |
 | template\_gcs\_path | The GCS path to the Dataflow job template. | `string` | n/a | yes |
 | zone | The zone in which the created job should run. | `string` | `"us-central1-a"` | no |
 
@@ -89,11 +89,11 @@ Then perform the following commands on the root folder:
 
 | Name | Description |
 |------|-------------|
-| id | The unique Id of the newly created Dataflow job |
-| name | The name of the dataflow job |
-| state | The state of the newly created Dataflow job |
-| temp\_gcs\_location | The GCS path for the Dataflow job's temporary data. |
-| template\_gcs\_path | The GCS path to the Dataflow job template. |
+| bucket\_name | The name of the bucket |
+| df\_job\_id | The unique Id of the newly created Dataflow job |
+| df\_job\_name | The name of the newly created Dataflow job |
+| df\_job\_state | The state of the newly created Dataflow job |
+| project\_id | The project's ID |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
