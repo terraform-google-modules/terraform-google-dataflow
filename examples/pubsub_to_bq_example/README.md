@@ -46,7 +46,7 @@ module "dataflow-job" {
   on_delete = "drain"
   zone = "us-central1-a"
   max_workers = 1
-  template_gcs_path =  "gs://<path-to-template>"
+  template_gcs_path =  "gs://<path-to-template>" 
   temp_gcs_location = "gs://<gcs_path_temp_data_bucket"
   parameters = {
         //Pass all the custom parameters that are require to run the dataflow template

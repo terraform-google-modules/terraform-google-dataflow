@@ -45,7 +45,7 @@ module "dataflow" {
   zone                   = var.zone
   on_delete              = var.on_delete
   max_workers            = var.max_workers
-  template_gcs_path      = "gs://${var.template_gcs_path}/templates/{PASS THE NAME OF THE MODULE}"
+  template_gcs_path      = "gs://${var.template_gcs_path}"
   temp_gcs_location      = module.dataflow-bucket.name
   service_account_email  = var.service_account_email
   network_self_link      = var.network_self_link
