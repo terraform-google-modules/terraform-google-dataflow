@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-# provider "google" {
-#   region = var.region
-# }
+provider "google" {
+  region = var.region
+}
 
 resource "random_id" "random_suffix" {
   byte_length = 4
