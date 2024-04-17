@@ -1,5 +1,5 @@
 /**
- * Copyright 2024 Google LLC
+ * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,25 +36,85 @@ module "dataflow-bucket" {
   force_destroy = var.force_destroy
 }
 
-module "dataflow" {
-  source  = "terraform-google-modules/dataflow/google"
-  version = "~>2.4.0"
-
-  project_id             = var.project_id
-  name                   = var.name
-  zone                   = var.zone
-  on_delete              = var.on_delete
-  max_workers            = var.max_workers
-  template_gcs_path      = "gs://${var.template_gcs_path}"
-  temp_gcs_location      = module.dataflow-bucket.name
-  service_account_email  = var.service_account_email
-  network_self_link      = var.network_self_link
-  subnetwork_self_link   = var.subnetwork_self_link
-  machine_type           = var.machine_type
-  ip_configuration       = var.ip_configuration
-  kms_key_name           = var.kms_key_name
-  labels                 = var.labels
-  additional_experiments = var.additional_experiments
-  parameters             = var.parameters
+resource "google_pubsub_topic" "topic" {
+  name    = var.topic_name
+  project = var.project_id
 }
 
+resource "google_pubsub_subscription" "pull_subscriptions" {
+  name                       = var.pull_subscription_name
+  project                    = var.project_id
+  topic                      = google_pubsub_topic.topic.id
+  message_retention_duration = "1200s"
+  retain_acked_messages      = true
+  ack_deadline_seconds       = 20
+  expiration_policy {
+    ttl = "300000.5s"
+  }
+  retry_policy {
+    minimum_backoff = "10s"
+  }
+  enable_message_ordering = false
+}
+
+resource "google_bigquery_dataset" "dataset" {
+  dataset_id    = var.dataset_id
+  friendly_name = var.dataset_name
+  project       = var.project_id
+  description   = "This is a test description"
+  location      = "US"
+
+
+  labels = {
+    env = "default"
+  }
+}
+
+resource "google_bigquery_table" "table" {
+  dataset_id          = google_bigquery_dataset.dataset.dataset_id
+  table_id            = var.table
+  project             = var.project_id
+  deletion_protection = var.deletion_protection
+  time_partitioning {
+    type = "DAY"
+  }
+
+  labels = {
+    env = "default"
+  }
+
+  schema = <<EOF
+    [
+    {
+        "name": "data",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": "The Permalink"
+    }
+    ]
+  EOF
+}
+
+
+module "dataflow" {
+  source  = "terraform-google-modules/dataflow/google"
+  version = "~> 2.0"
+
+  project_id            = var.project_id
+  name                  = "pubsub-to-bq-terraform-example-job"
+  region                = "us-central1"
+  on_delete             = "drain"
+  zone                  = "us-central1-a"
+  max_workers           = 1
+  template_gcs_path     = "gs://dataflow-templates/latest/PubSub_Subscription_to_BigQuery"
+  temp_gcs_location     = module.dataflow-bucket.name
+  service_account_email = var.service_account_email
+  network_self_link     = "default"
+  subnetwork_self_link  = ""
+  machine_type          = "n1-standard-1"
+
+  parameters = {
+    inputSubscription = "projects/${var.project_id}/subscriptions/${google_pubsub_subscription.pull_subscriptions.name}"
+    outputTableSpec   = "${var.project_id}:${google_bigquery_dataset.dataset.dataset_id}.${google_bigquery_table.table.table_id}"
+  }
+}

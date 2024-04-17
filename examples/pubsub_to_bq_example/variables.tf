@@ -15,100 +15,57 @@
  */
 
 variable "project_id" {
-  description = "ID of the project"
   type        = string
+  description = "The project ID to deploy to"
 }
 
-variable "name" {
-  type        = string
-  description = "The name of the dataflow job"
-}
-
-variable "template_gcs_path" {
-  type        = string
-  description = "The GCS path to the Dataflow job template."
-}
-
-variable "parameters" {
-  type        = map(string)
-  description = "Key/Value pairs to be passed to the Dataflow job (as used in the template)."
-  default     = {}
-}
-
-variable "max_workers" {
-  type        = number
-  description = " The number of workers permitted to work on the job. More workers may improve processing speed at additional cost."
-  default     = 1
-}
-
-variable "on_delete" {
-  type        = string
-  description = "One of drain or cancel. Specifies behavior of deletion during terraform destroy. The default is cancel."
-  default     = "cancel"
-}
 
 variable "region" {
   type        = string
-  description = "The region in which the created job should run. Also determines the location of the staging bucket if created."
-  default     = "us-central1"
-}
-
-variable "zone" {
-  type        = string
-  description = "The zone in which the created job should run."
-  default     = "us-central1-a"
+  description = "The region in which the bucket will be deployed"
 }
 
 variable "service_account_email" {
   type        = string
-  description = "The Service Account email that will be used to identify the VMs in which the jobs are running"
-  default     = ""
-}
-
-variable "subnetwork_self_link" {
-  type        = string
-  description = "The subnetwork self link to which VMs will be assigned."
-  default     = ""
-}
-
-variable "network_self_link" {
-  type        = string
-  description = "The network self link to which VMs will be assigned."
-  default     = "default"
-}
-
-variable "machine_type" {
-  type        = string
-  description = "The machine type to use for the job."
-  default     = ""
-}
-
-variable "ip_configuration" {
-  type        = string
-  description = "The configuration for VM IPs. Options are 'WORKER_IP_PUBLIC' or 'WORKER_IP_PRIVATE'."
+  description = "The Service Account email used to create the job."
   default     = null
-}
-
-variable "kms_key_name" {
-  type        = string
-  description = "The name for the Cloud KMS key for the job. Key format is: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY"
-  default     = null
-}
-
-variable "labels" {
-  type        = map(string)
-  description = "User labels to be specified for the job."
-  default     = {}
-}
-
-variable "additional_experiments" {
-  type        = list(string)
-  description = "List of experiments that should be used by the job. An example value is `['enable_stackdriver_agent_metrics']`"
-  default     = []
 }
 
 variable "force_destroy" {
   type        = bool
   description = "When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that contains objects, Terraform will fail that run."
+  default     = false
+}
+
+variable "topic_name" {
+  type        = string
+  description = "The Pub/Sub topic name."
+}
+
+variable "pull_subscription_name" {
+  type        = string
+  description = "The Pub/Sub Pull Subscription name."
+}
+
+variable "dataset_id" {
+  description = "Unique ID for the dataset being provisioned."
+  type        = string
+}
+
+variable "dataset_name" {
+  description = "Friendly name for the dataset being provisioned."
+  type        = string
+  default     = null
+}
+
+variable "table" {
+  description = "Table name"
+  type        = string
+  default     = null
+}
+
+variable "deletion_protection" {
+  description = "Whether or not to allow deletion of tables and external tables defined by this module. Can be overriden by table-level deletion_protection configuration."
+  type        = bool
   default     = false
 }
