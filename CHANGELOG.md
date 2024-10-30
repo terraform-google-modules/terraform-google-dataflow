@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.5.0](https://github.com/terraform-google-modules/terraform-google-dataflow/compare/v2.4.0...v2.5.0) (2024-10-30)
+
+
+### Features
+
+* **deps:** Update Terraform google to v6 ([#79](https://github.com/terraform-google-modules/terraform-google-dataflow/issues/79)) ([ec28497](https://github.com/terraform-google-modules/terraform-google-dataflow/commit/ec284970e085e9715a53d962ccd9b924b287c50d))
+
 ## [2.4.0](https://github.com/terraform-google-modules/terraform-google-dataflow/compare/v2.3.0...v2.4.0) (2023-12-14)
 
 
