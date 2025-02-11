@@ -1,0 +1,60 @@
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: terraform-google-dataflow-dataflow-bucket
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    title: Terraform Google Dataflow Bucket Submodule
+    source:
+      repo: https://github.com/terraform-google-modules/terraform-google-dataflow.git
+      sourceType: git
+      dir: /modules/dataflow_bucket
+    version: 2.5.0
+    actuationTool:
+      flavor: Terraform
+      version: ">= 0.13"
+    description: {}
+  content:
+    examples:
+      - name: dlp_api_example
+        location: examples/dlp_api_example
+      - name: simple_example
+        location: examples/simple_example
+  interfaces:
+    variables:
+      - name: project_id
+        description: The project_id to deploy the example instance into.  (e.g. "simple-sample-project-1234")
+        varType: string
+        required: true
+      - name: region
+        description: The GCS bucket region. This should be the same as your dataflow job's zone ot optimize performance.
+        varType: string
+        defaultValue: us-central1
+      - name: name
+        description: The name of the bucket.
+        varType: string
+        required: true
+      - name: force_destroy
+        description: When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that contains objects, Terraform will fail that run.
+        varType: bool
+        defaultValue: false
+    outputs:
+      - name: name
+        description: The name of the bucket
+        type: string
+      - name: region
+        description: The bucket's region location
+        type: string
+  requirements:
+    roles:
+      - level: Project
+        roles:
+          - roles/owner
+          - roles/dataflow.admin
+    services:
+      - cloudresourcemanager.googleapis.com
+      - storage-api.googleapis.com
+      - serviceusage.googleapis.com
+      - dataflow.googleapis.com

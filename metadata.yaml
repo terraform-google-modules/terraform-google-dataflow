@@ -1,0 +1,37 @@
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: terraform-google-dataflow
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    source:
+      repo: https://github.com/terraform-google-modules/terraform-google-dataflow.git
+      sourceType: git
+    description: {}
+  content:
+    subBlueprints:
+      - name: dataflow_bucket
+        location: modules/dataflow_bucket
+      - name: flex
+        location: modules/flex
+      - name: legacy
+        location: modules/legacy
+    examples:
+      - name: dlp_api_example
+        location: examples/dlp_api_example
+      - name: simple_example
+        location: examples/simple_example
+  interfaces: {}
+  requirements:
+    roles:
+      - level: Project
+        roles:
+          - roles/owner
+          - roles/dataflow.admin
+    services:
+      - cloudresourcemanager.googleapis.com
+      - storage-api.googleapis.com
+      - serviceusage.googleapis.com
+      - dataflow.googleapis.com

@@ -109,7 +109,7 @@ EOF
 }
 
 module "dataflow-job" {
-  source  = "terraform-google-modules/dataflow/google"
+  source  = "terraform-google-modules/dataflow/google//modules/legacy"
   version = "~> 2.0"
 
   project_id            = var.project_id

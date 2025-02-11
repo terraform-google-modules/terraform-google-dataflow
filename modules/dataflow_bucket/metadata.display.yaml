@@ -1,0 +1,28 @@
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: terraform-google-dataflow-dataflow-bucket-display
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    title: Terraform Google Dataflow Bucket Submodule
+    source:
+      repo: https://github.com/terraform-google-modules/terraform-google-dataflow.git
+      sourceType: git
+      dir: /modules/dataflow_bucket
+  ui:
+    input:
+      variables:
+        force_destroy:
+          name: force_destroy
+          title: Force Destroy
+        name:
+          name: name
+          title: Name
+        project_id:
+          name: project_id
+          title: Project Id
+        region:
+          name: region
+          title: Region

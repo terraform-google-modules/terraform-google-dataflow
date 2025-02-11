@@ -1,0 +1,78 @@
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: terraform-google-dataflow-display
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    source:
+      repo: https://github.com/terraform-google-modules/terraform-google-dataflow.git
+      sourceType: git
+      dir: /modules/flex
+  ui:
+    input:
+      variables:
+        additional_experiments:
+          name: additional_experiments
+          title: Additional Experiments
+        autoscaling_algorithm:
+          name: autoscaling_algorithm
+          title: Autoscaling Algorithm
+        container_spec_gcs_path:
+          name: container_spec_gcs_path
+          title: Container Spec Gcs Path
+        enable_streaming_engine:
+          name: enable_streaming_engine
+          title: Enable Streaming Engine
+        kms_key_name:
+          name: kms_key_name
+          title: Kms Key Name
+        labels:
+          name: labels
+          title: Labels
+        launcher_machine_type:
+          name: launcher_machine_type
+          title: Launcher Machine Type
+        machine_type:
+          name: machine_type
+          title: Machine Type
+        max_workers:
+          name: max_workers
+          title: Max Workers
+        name:
+          name: name
+          title: Name
+        network_name:
+          name: network_name
+          title: Network Name
+        on_delete:
+          name: on_delete
+          title: On Delete
+        parameters:
+          name: parameters
+          title: Parameters
+        project_id:
+          name: project_id
+          title: Project Id
+        region:
+          name: region
+          title: Region
+        sdk_container_image:
+          name: sdk_container_image
+          title: Sdk Container Image
+        service_account_email:
+          name: service_account_email
+          title: Service Account Email
+        skip_wait_on_job_termination:
+          name: skip_wait_on_job_termination
+          title: Skip Wait On Job Termination
+        subnetwork:
+          name: subnetwork
+          title: Subnetwork
+        temp_location:
+          name: temp_location
+          title: Temp Location
+        use_public_ips:
+          name: use_public_ips
+          title: Use Public Ips

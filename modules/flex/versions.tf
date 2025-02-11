@@ -25,7 +25,8 @@ terraform {
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-dataflow:dataflow_bucket/v2.5.0"
+    module_name = "blueprints/terraform/terraform-google-dataflow:flex/v2.5.0"
   }
 
 }
+

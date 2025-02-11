@@ -1,0 +1,135 @@
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: terraform-google-dataflow
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    source:
+      repo: https://github.com/terraform-google-modules/terraform-google-dataflow.git
+      sourceType: git
+      dir: /modules/flex
+    version: 2.5.0
+    actuationTool:
+      flavor: Terraform
+      version: ">= 0.13"
+    description: {}
+  content:
+    examples:
+      - name: dlp_api_example
+        location: examples/dlp_api_example
+      - name: simple_example
+        location: examples/simple_example
+  interfaces:
+    variables:
+      - name: project_id
+        description: The project in which the resource belongs. If it is not provided, the provider project is used.
+        varType: string
+        required: true
+      - name: name
+        description: The name of the dataflow job
+        varType: string
+        required: true
+      - name: container_spec_gcs_path
+        description: The GCS path to the Dataflow job Flex Template.
+        varType: string
+        required: true
+      - name: temp_location
+        description: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
+        varType: string
+      - name: on_delete
+        description: One of drain or cancel. Specifies behavior of deletion during terraform destroy. The default is cancel.
+        varType: string
+        defaultValue: cancel
+      - name: region
+        description: The region in which the created job should run. Also determines the location of the staging bucket if created.
+        varType: string
+        defaultValue: us-central1
+      - name: max_workers
+        description: " The number of workers permitted to work on the job. More workers may improve processing speed at additional cost."
+        varType: number
+        defaultValue: 1
+      - name: service_account_email
+        description: The Service Account email that will be used to identify the VMs in which the jobs are running
+        varType: string
+        defaultValue: ""
+      - name: subnetwork
+        description: The subnetwork to which VMs will be assigned. If provided, it should be of the form of 'regions/REGION/subnetworks/SUBNETWORK'.
+        varType: string
+        defaultValue: ""
+      - name: network_name
+        description: The network to which VMs will be assigned.
+        varType: string
+        defaultValue: default
+      - name: launcher_machine_type
+        description: The machine type to use for launching the job.
+        varType: string
+        defaultValue: ""
+      - name: machine_type
+        description: The machine type to use for the job.
+        varType: string
+        defaultValue: ""
+      - name: sdk_container_image
+        description: Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
+        varType: string
+      - name: use_public_ips
+        description: Specifies whether Dataflow workers use external IP addresses. If the value is set to false, Dataflow workers use internal IP addresses for all communication.
+        varType: bool
+        defaultValue: false
+      - name: enable_streaming_engine
+        description: Enable/disable the use of Streaming Engine for the job.
+        varType: bool
+        defaultValue: false
+      - name: autoscaling_algorithm
+        description: The algorithm to use for autoscaling.
+        varType: string
+      - name: skip_wait_on_job_termination
+        description: If set to true, terraform will treat DRAINING and CANCELLING as terminal states when deleting the resource, and will remove the resource from terraform state and move on.
+        varType: bool
+        defaultValue: false
+      - name: kms_key_name
+        description: "The name for the Cloud KMS key for the job. Key format is: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY"
+        varType: string
+      - name: additional_experiments
+        description: List of experiments that should be used by the job. An example value is `['enable_stackdriver_agent_metrics']`
+        varType: list(string)
+        defaultValue: []
+      - name: parameters
+        description: Key/Value pairs to be passed to the Dataflow job (as used in the template).
+        varType: map(string)
+        defaultValue: {}
+      - name: labels
+        description: User labels to be specified for the job.
+        varType: map(string)
+        defaultValue: {}
+    outputs:
+      - name: container_spec_gcs_path
+        description: The GCS path to the Dataflow job Flex Template.
+        type: string
+      - name: id
+        description: The unique Id of the newly created Dataflow job
+        type: string
+      - name: name
+        description: The name of the dataflow job
+        type: string
+      - name: state
+        description: The state of the newly created Dataflow job
+        type: string
+      - name: temp_location
+        description: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
+        type: string
+  requirements:
+    roles:
+      - level: Project
+        roles:
+          - roles/owner
+          - roles/dataflow.admin
+    services:
+      - cloudresourcemanager.googleapis.com
+      - storage-api.googleapis.com
+      - serviceusage.googleapis.com
+      - dataflow.googleapis.com
+    providerVersions:
+      - source: hashicorp/google
+        version: ">= 3.53, < 7"
