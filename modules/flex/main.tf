@@ -15,27 +15,27 @@
  */
 
 resource "google_dataflow_flex_template_job" "dataflow_job" {
-  provider                      = google-beta
+  provider = google-beta
 
-  project                = var.project_id
-  name                   = var.name
-  container_spec_gcs_path = var.container_spec_gcs_path
-  temp_location      = var.temp_location
-  on_delete              = var.on_delete
-  region                 = var.region
-  max_workers            = var.max_workers
-  service_account_email  = var.service_account_email
-  network                = var.network_name
-  subnetwork             = var.subnetwork
-  machine_type           = var.machine_type
-  launcher_machine_type = var.launcher_machine_type
-  sdk_container_image    = var.sdk_container_image
-  ip_configuration       = var.use_public_ips ? "WORKER_IP_PUBLIC" : "WORKER_IP_PRIVATE"
-  enable_streaming_engine = var.enable_streaming_engine
-  autoscaling_algorithm = var.autoscaling_algorithm
+  project                      = var.project_id
+  name                         = var.name
+  container_spec_gcs_path      = var.container_spec_gcs_path
+  temp_location                = var.temp_location
+  on_delete                    = var.on_delete
+  region                       = var.region
+  max_workers                  = var.max_workers
+  service_account_email        = var.service_account_email
+  network                      = var.network_name
+  subnetwork                   = var.subnetwork
+  machine_type                 = var.machine_type
+  launcher_machine_type        = var.launcher_machine_type
+  sdk_container_image          = var.sdk_container_image
+  ip_configuration             = var.use_public_ips ? "WORKER_IP_PUBLIC" : "WORKER_IP_PRIVATE"
+  enable_streaming_engine      = var.enable_streaming_engine
+  autoscaling_algorithm        = var.autoscaling_algorithm
   skip_wait_on_job_termination = var.skip_wait_on_job_termination
-  kms_key_name           = var.kms_key_name
-  additional_experiments = var.additional_experiments
-  parameters             = var.parameters
-  labels                 = var.labels
+  kms_key_name                 = var.kms_key_name
+  additional_experiments       = var.additional_experiments
+  parameters                   = var.parameters
+  labels                       = var.labels
 }

@@ -6,6 +6,7 @@ metadata:
     config.kubernetes.io/local-config: "true"
 spec:
   info:
+    title: Google Dataflow Flex Template Job Terraform Module
     source:
       repo: https://github.com/terraform-google-modules/terraform-google-dataflow.git
       sourceType: git

@@ -31,7 +31,7 @@ variable "container_spec_gcs_path" {
 variable "temp_location" {
   type        = string
   description = "The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://."
-  default = null
+  default     = null
 }
 
 variable "on_delete" {
