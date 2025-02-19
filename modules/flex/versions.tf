@@ -15,16 +15,16 @@
  */
 
 terraform {
-  required_version = ">= 0.13"
+  required_version = ">= 1.3"
   required_providers {
 
-    google = {
-      source  = "hashicorp/google"
+    google-beta = {
+      source  = "hashicorp/google-beta"
       version = ">= 3.53, < 7"
     }
   }
 
-  provider_meta "google" {
+  provider_meta "google-beta" {
     module_name = "blueprints/terraform/terraform-google-dataflow:flex/v2.5.0"
   }
 
