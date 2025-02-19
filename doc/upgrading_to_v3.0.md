@@ -1,4 +1,4 @@
-# Updating to Submodule
+# Upgrading to v3.0
 Dataflow legacy template job module has been moved to /modules/legacy.
 
 ```diff
