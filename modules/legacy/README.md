@@ -25,7 +25,7 @@ There are examples included in the [examples](./examples/) folder but simple usa
 
 ```hcl
 module "dataflow-job" {
-  source  = "terraform-google-modules/dataflow/google"
+  source  = "terraform-google-modules/dataflow/google//modules/legacy"
   version = "0.1.0"
 
   project_id  = "<project_id>"
