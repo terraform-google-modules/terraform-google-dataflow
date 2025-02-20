@@ -83,13 +83,13 @@ module "dataflow-job" {
 }
 
 module "dataflow-job-2" {
-  source                = "terraform-google-modules/dataflow/google"
+  source  = "terraform-google-modules/dataflow/google//modules/legacy"
   version               = "~> 2.0"
+
   project_id            = var.project_id
   name                  = "wordcount-terraform-example-2"
   on_delete             = "cancel"
   region                = var.region
-  zone                  = var.zone
   max_workers           = 1
   template_gcs_path     = "gs://dataflow-templates/latest/Word_Count"
   temp_gcs_location     = module.dataflow-bucket.name
