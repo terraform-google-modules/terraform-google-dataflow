@@ -28,7 +28,7 @@ locals {
 
 module "dataflow-bucket" {
   source  = "terraform-google-modules/dataflow/google//modules/dataflow_bucket"
-  version = "~> 2.0"
+  version = "= 2.5"
 
   name       = local.gcs_bucket_name
   region     = var.region
@@ -109,13 +109,14 @@ EOF
 }
 
 module "dataflow-job" {
-  source  = "terraform-google-modules/dataflow/google//modules/legacy"
-  version = "~> 2.0"
+  source  = "terraform-google-modules/dataflow/google"
+  version = "= 2.5"
 
   project_id            = var.project_id
   name                  = "dlp_example_${null_resource.download_sample_cc_into_gcs.id}_${null_resource.deinspection_template_setup.id}"
   on_delete             = "cancel"
   region                = var.region
+  zone                  = "${var.region}-a"
   template_gcs_path     = "gs://dataflow-templates/latest/Stream_DLP_GCS_Text_to_BigQuery"
   temp_gcs_location     = module.dataflow-bucket.name
   service_account_email = var.service_account_email

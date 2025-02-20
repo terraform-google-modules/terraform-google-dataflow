@@ -52,7 +52,7 @@ module "vpc" {
 
 module "dataflow-bucket" {
   source  = "terraform-google-modules/dataflow/google//modules/dataflow_bucket"
-  version = "~> 2.0"
+  version = "= 2.5"
 
   name          = local.gcs_bucket_name
   region        = var.region
@@ -61,19 +61,20 @@ module "dataflow-bucket" {
 }
 
 module "dataflow-job" {
-  source  = "terraform-google-modules/dataflow/google//modules/legacy"
-  version = "~> 2.0"
+  source  = "terraform-google-modules/dataflow/google"
+  version = "= 2.5"
 
   project_id            = var.project_id
   name                  = "wordcount-terraform-example"
   on_delete             = "cancel"
   region                = var.region
+  zone                  = var.zone
   max_workers           = 1
   template_gcs_path     = "gs://dataflow-templates/latest/Word_Count"
   temp_gcs_location     = module.dataflow-bucket.name
   service_account_email = var.service_account_email
-  network_name          = module.vpc.network_self_link
-  subnetwork            = module.vpc.subnets_self_links[0]
+  network_self_link     = module.vpc.network_self_link
+  subnetwork_self_link  = module.vpc.subnets_self_links[0]
   machine_type          = "n1-standard-1"
 
   parameters = {
@@ -83,13 +84,14 @@ module "dataflow-job" {
 }
 
 module "dataflow-job-2" {
-  source  = "terraform-google-modules/dataflow/google//modules/legacy"
-  version               = "~> 2.0"
+  source  = "terraform-google-modules/dataflow/google"
+  version = "= 2.5"
 
   project_id            = var.project_id
   name                  = "wordcount-terraform-example-2"
   on_delete             = "cancel"
   region                = var.region
+  zone                  = var.zone
   max_workers           = 1
   template_gcs_path     = "gs://dataflow-templates/latest/Word_Count"
   temp_gcs_location     = module.dataflow-bucket.name

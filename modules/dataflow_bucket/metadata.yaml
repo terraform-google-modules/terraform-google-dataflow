@@ -25,10 +25,10 @@ spec:
       repo: https://github.com/terraform-google-modules/terraform-google-dataflow.git
       sourceType: git
       dir: /modules/dataflow_bucket
-    version: 2.5.0
+    version: 4.0.0
     actuationTool:
       flavor: Terraform
-      version: ">= 0.13"
+      version: ">= 1.3"
     description: {}
   content:
     examples:
@@ -72,3 +72,6 @@ spec:
       - storage-api.googleapis.com
       - serviceusage.googleapis.com
       - dataflow.googleapis.com
+    providerVersions:
+      - source: hashicorp/google-beta
+        version: ">= 3.53, < 7"
