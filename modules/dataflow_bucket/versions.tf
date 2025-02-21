@@ -15,7 +15,7 @@
  */
 
 terraform {
-  required_version = ">= 0.13"
+  required_version = ">= 1.3"
   required_providers {
 
     google = {
@@ -25,7 +25,8 @@ terraform {
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-dataflow:dataflow_bucket/v2.5.0"
+    module_name = "blueprints/terraform/terraform-google-cloud-storage:simple_bucket/v4.0.0"
   }
 
 }
+

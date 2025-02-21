@@ -24,11 +24,6 @@ variable "region" {
   description = "The region in which the bucket will be deployed"
 }
 
-variable "zone" {
-  type        = string
-  description = "The zone in which the dataflow job will be deployed"
-}
-
 variable "service_account_email" {
   type        = string
   description = "The Service Account email used to create the job."

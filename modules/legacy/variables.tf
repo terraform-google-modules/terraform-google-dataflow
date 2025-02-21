@@ -30,19 +30,7 @@ variable "template_gcs_path" {
 
 variable "temp_gcs_location" {
   type        = string
-  description = "A writeable location on GCS for the Dataflow job to dump its temporary data."
-}
-
-variable "parameters" {
-  type        = map(string)
-  description = "Key/Value pairs to be passed to the Dataflow job (as used in the template)."
-  default     = {}
-}
-
-variable "max_workers" {
-  type        = number
-  description = " The number of workers permitted to work on the job. More workers may improve processing speed at additional cost."
-  default     = 1
+  description = "A writeable location on GCS for the Dataflow job to dump its temporary data. It will be used to form the temp location path for the job, 'gs://TEMP_GCS_LOCATION/tmp_dir'."
 }
 
 variable "on_delete" {
@@ -57,10 +45,10 @@ variable "region" {
   default     = "us-central1"
 }
 
-variable "zone" {
-  type        = string
-  description = "The zone in which the created job should run."
-  default     = "us-central1-a"
+variable "max_workers" {
+  type        = number
+  description = " The number of workers permitted to work on the job. More workers may improve processing speed at additional cost."
+  default     = 1
 }
 
 variable "service_account_email" {
@@ -69,15 +57,15 @@ variable "service_account_email" {
   default     = ""
 }
 
-variable "subnetwork_self_link" {
+variable "subnetwork" {
   type        = string
-  description = "The subnetwork self link to which VMs will be assigned."
+  description = "The subnetwork to which VMs will be assigned. If provided, it should be of the form of 'regions/REGION/subnetworks/SUBNETWORK'."
   default     = ""
 }
 
-variable "network_self_link" {
+variable "network_name" {
   type        = string
-  description = "The network self link to which VMs will be assigned."
+  description = "The network to which VMs will be assigned."
   default     = "default"
 }
 
@@ -87,10 +75,22 @@ variable "machine_type" {
   default     = ""
 }
 
-variable "ip_configuration" {
-  type        = string
-  description = "The configuration for VM IPs. Options are 'WORKER_IP_PUBLIC' or 'WORKER_IP_PRIVATE'."
-  default     = null
+variable "use_public_ips" {
+  type        = bool
+  description = "Specifies whether Dataflow workers use external IP addresses. If the value is set to false, Dataflow workers use internal IP addresses for all communication."
+  default     = false
+}
+
+variable "enable_streaming_engine" {
+  type        = bool
+  description = "Enable/disable the use of Streaming Engine for the job."
+  default     = false
+}
+
+variable "skip_wait_on_job_termination" {
+  type        = bool
+  description = "If set to true, terraform will treat DRAINING and CANCELLING as terminal states when deleting the resource, and will remove the resource from terraform state and move on."
+  default     = false
 }
 
 variable "kms_key_name" {
@@ -99,14 +99,20 @@ variable "kms_key_name" {
   default     = null
 }
 
-variable "labels" {
-  type        = map(string)
-  description = "User labels to be specified for the job."
-  default     = {}
-}
-
 variable "additional_experiments" {
   type        = list(string)
   description = "List of experiments that should be used by the job. An example value is `['enable_stackdriver_agent_metrics']`"
   default     = []
+}
+
+variable "parameters" {
+  type        = map(string)
+  description = "Key/Value pairs to be passed to the Dataflow job (as used in the template)."
+  default     = {}
+}
+
+variable "labels" {
+  type        = map(string)
+  description = "User labels to be specified for the job."
+  default     = {}
 }

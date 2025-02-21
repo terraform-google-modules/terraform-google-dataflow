@@ -62,7 +62,6 @@ To provision this example, run the following from within this directory:
 | project\_id | The project ID to deploy to | `string` | n/a | yes |
 | region | The region in which the bucket will be deployed | `string` | n/a | yes |
 | service\_account\_email | The Service Account email used to create the job. | `string` | n/a | yes |
-| zone | The zone in which the dataflow job will be deployed | `string` | n/a | yes |
 
 ## Outputs
 

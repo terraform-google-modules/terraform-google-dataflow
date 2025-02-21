@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 Google LLC
+ * Copyright 2021 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,19 @@
  * limitations under the License.
  */
 
-module "example" {
-  source                = "../../../examples/simple_example"
-  project_id            = var.project_id
-  region                = var.region
-  service_account_email = var.service_account_email
-  force_destroy         = true
+terraform {
+  required_version = ">= 1.3"
+  required_providers {
+
+    google-beta = {
+      source  = "hashicorp/google-beta"
+      version = ">= 3.53, < 7"
+    }
+  }
+
+  provider_meta "google-beta" {
+    module_name = "blueprints/terraform/terraform-google-dataflow:flex/v2.5.0"
+  }
+
 }
 
