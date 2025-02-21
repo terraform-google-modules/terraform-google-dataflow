@@ -53,6 +53,12 @@ spec:
       - name: temp_location
         description: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
         varType: string
+        connections:
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-cloud-storage//modules/simple_bucket
+              version: ">= 9.0.1"
+            spec:
+              outputExpr: url
       - name: on_delete
         description: One of drain or cancel. Specifies behavior of deletion during terraform destroy. The default is cancel.
         varType: string
@@ -69,6 +75,12 @@ spec:
         description: The Service Account email that will be used to identify the VMs in which the jobs are running
         varType: string
         defaultValue: ""
+        connections:
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-service-accounts//modules/simple-sa
+              version: ~> 4.3
+            spec:
+              outputExpr: email
       - name: subnetwork
         description: The subnetwork to which VMs will be assigned. If provided, it should be of the form of 'regions/REGION/subnetworks/SUBNETWORK'.
         varType: string
@@ -138,8 +150,12 @@ spec:
     roles:
       - level: Project
         roles:
-          - roles/owner
           - roles/dataflow.admin
+          - roles/dataflow.worker
+          - roles/storage.objectAdmin
+          - roles/artifactregistry.writer
+          - roles/iam.serviceAccountUser
+          - roles/resourcemanager.projectIamAdmin
     services:
       - cloudresourcemanager.googleapis.com
       - storage-api.googleapis.com
