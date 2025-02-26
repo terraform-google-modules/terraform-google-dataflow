@@ -39,8 +39,7 @@ spec:
           title: Container Spec Gcs Path
           altDefaults:
             - type: ALTERNATE_TYPE_DC
-              value:
-                - gs://dataflow-templates-us-central1/latest/flex/PubSub_to_BigQuery_Flex
+              value: gs://dataflow-templates-us-central1/latest/flex/PubSub_to_BigQuery_Flex
         enable_streaming_engine:
           name: enable_streaming_engine
           title: Enable Streaming Engine
