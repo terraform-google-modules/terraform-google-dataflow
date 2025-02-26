@@ -19,6 +19,9 @@ locals {
     "roles/dataflow.admin",
     "roles/dataflow.worker",
     "roles/storage.objectAdmin",
+    "roles/compute.networkAdmin",
+    "roles/pubsub.editor",
+    "roles/bigquery.dataEditor",
     "roles/artifactregistry.writer",
     "roles/iam.serviceAccountUser",
     "roles/resourcemanager.projectIamAdmin"
