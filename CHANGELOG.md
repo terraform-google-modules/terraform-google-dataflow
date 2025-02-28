@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.0.0](https://github.com/terraform-google-modules/terraform-google-dataflow/compare/v2.5.0...v3.0.0) (2025-02-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* Create separate modules for legacy and flex template jobs, and generate metadata. ([#86](https://github.com/terraform-google-modules/terraform-google-dataflow/issues/86))
+
+### Features
+
+* Create separate modules for legacy and flex template jobs, and generate metadata. ([#86](https://github.com/terraform-google-modules/terraform-google-dataflow/issues/86)) ([22568bf](https://github.com/terraform-google-modules/terraform-google-dataflow/commit/22568bfd2b179075db4788655e450d504fb5be84))
+
 ## [2.5.0](https://github.com/terraform-google-modules/terraform-google-dataflow/compare/v2.4.0...v2.5.0) (2024-10-30)
 
 
