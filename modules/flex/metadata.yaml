@@ -126,6 +126,32 @@ spec:
         description: Key/Value pairs to be passed to the Dataflow job (as used in the template).
         varType: map(string)
         defaultValue: {}
+        connections:
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-pubsub 
+              version: ">= 2.0"
+            spec:
+              outputExpr: "{\"inputSubscirption\": subscription_paths[0]}"
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-pubsub 
+              version: ">= 2.0"
+            spec:
+              outputExpr: "{\"inputTopic\": uri}"
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-pubsub
+              version: ">= 2.0"
+            spec:
+              outputExpr: "{\"outputTopic\": uri}"
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-bigquery 
+              version: ">= 8.0"
+            spec:
+              outputExpr: "{\"inputTableSpec\": \"project:bigquery_dataset.table_names[0]\"}"
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-bigquery 
+              version: ">= 8.0"
+            spec:
+              outputExpr: "{\"outputTableSpec\": \"project:bigquery_dataset.table_names[0]\"}"          
       - name: labels
         description: User labels to be specified for the job.
         varType: map(string)
