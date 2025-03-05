@@ -16,8 +16,15 @@
 
 locals {
   int_required_roles = [
-    "roles/owner",
-    "roles/dataflow.admin"
+    "roles/dataflow.admin",
+    "roles/dataflow.worker",
+    "roles/storage.admin",
+    "roles/compute.networkAdmin",
+    "roles/pubsub.editor",
+    "roles/bigquery.dataEditor",
+    "roles/artifactregistry.writer",
+    "roles/iam.serviceAccountUser",
+    "roles/resourcemanager.projectIamAdmin"
   ]
 }
 
