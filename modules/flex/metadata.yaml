@@ -126,6 +126,22 @@ spec:
         description: Key/Value pairs to be passed to the Dataflow job (as used in the template).
         varType: map(string)
         defaultValue: {}
+        connections:
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-bigquery
+              version: ">= 10.0.1"
+            spec:
+              outputExpr: "{\"OutputTableSpec\": table_ids[0]}"
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-pubsub
+              version: ">= 8.0.1"
+            spec:
+              outputExpr: "{\"InputTopic\": id}"
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-cloud-storage//modules/simple_bucket
+              version: ">= 9.1.0"
+            spec:
+              outputExpr: "{\"OutputDirectory\": url, \"OutputFilenamePrefix\": \"adc-dataflow\"}"
       - name: labels
         description: User labels to be specified for the job.
         varType: map(string)
