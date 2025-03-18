@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.0.1](https://github.com/terraform-google-modules/terraform-google-dataflow/compare/v3.0.0...v3.0.1) (2025-03-18)
+
+
+### Bug Fixes
+
+* add connections metadata with bigquery, pubsub and GCS simple bucket (https://github.com/terraform-google-modules/terraform-google-dataflow/pull/92) ([79a117b](https://github.com/terraform-google-modules/terraform-google-dataflow/commit/79a117b5d8c1eaae79a33287fbf7c779103e0d63))
+
 ## [3.0.0](https://github.com/terraform-google-modules/terraform-google-dataflow/compare/v2.5.0...v3.0.0) (2025-02-28)
 
 

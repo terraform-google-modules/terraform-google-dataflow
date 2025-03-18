@@ -25,7 +25,7 @@ terraform {
   }
 
   provider_meta "google-beta" {
-    module_name = "blueprints/terraform/terraform-google-dataflow:flex/v3.0.0"
+    module_name = "blueprints/terraform/terraform-google-dataflow:flex/v3.0.1"
   }
 
 }
