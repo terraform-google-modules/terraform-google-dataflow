@@ -96,3 +96,8 @@ spec:
         use_public_ips:
           name: use_public_ips
           title: Use Public Ips
+          level: 1
+          altDefaults:
+            - type: ALTERNATE_TYPE_DC
+              value: true
+

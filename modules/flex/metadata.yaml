@@ -53,12 +53,6 @@ spec:
       - name: temp_location
         description: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
         varType: string
-        connections:
-          - source:
-              source: github.com/terraform-google-modules/terraform-google-cloud-storage//modules/simple_bucket
-              version: ">= 9.0.1"
-            spec:
-              outputExpr: url
       - name: on_delete
         description: One of drain or cancel. Specifies behavior of deletion during terraform destroy. The default is cancel.
         varType: string
