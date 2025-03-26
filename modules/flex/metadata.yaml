@@ -122,10 +122,10 @@ spec:
         defaultValue: {}
         connections:
           - source:
-              source: github.com/amrkk123/terraform-google-bigquery
-              version: ">= 10.0.2"
+              source: github.com/terraform-google-modules/terraform-google-bigquery
+              version: ">= 10.0.3"
             spec:
-              outputExpr: "{\"OutputTableSpec\": computed_table_ids[0]}"
+              outputExpr: "{\"OutputTableSpec\": table_fqns[0]}"
           - source:
               source: github.com/terraform-google-modules/terraform-google-pubsub
               version: ">= 8.0.1"
