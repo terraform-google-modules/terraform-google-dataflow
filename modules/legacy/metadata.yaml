@@ -25,7 +25,7 @@ spec:
       repo: https://github.com/terraform-google-modules/terraform-google-dataflow.git
       sourceType: git
       dir: /modules/legacy
-    version: 3.0.1
+    version: 3.0.2
     actuationTool:
       flavor: Terraform
       version: ">= 0.13"
