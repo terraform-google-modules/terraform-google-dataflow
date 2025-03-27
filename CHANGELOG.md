@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.0.2](https://github.com/terraform-google-modules/terraform-google-dataflow/compare/v3.0.1...v3.0.2) (2025-03-26)
+
+
+### Bug Fixes
+
+* Removing connection and adding alternate defaults ([#95](https://github.com/terraform-google-modules/terraform-google-dataflow/issues/95)) ([76ce39a](https://github.com/terraform-google-modules/terraform-google-dataflow/commit/76ce39a7a048fc4f150bf6bd4c117ef171c00af4))
+
 ## [3.0.1](https://github.com/terraform-google-modules/terraform-google-dataflow/compare/v3.0.0...v3.0.1) (2025-03-18)
 
 
