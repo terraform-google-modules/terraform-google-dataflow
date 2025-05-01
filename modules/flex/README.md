@@ -56,6 +56,7 @@ Then perform the following commands on the root folder:
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | additional\_experiments | List of experiments that should be used by the job. An example value is `['enable_stackdriver_agent_metrics']` | `list(string)` | `[]` | no |
+| additional\_pipeline\_options | List of pipeline options that should be used by the job. An example value is `['numberOfWorkerHarnessThreads=300','sdkLocation=container']` | `list(string)` | `[]` | no |
 | autoscaling\_algorithm | The algorithm to use for autoscaling. | `string` | `null` | no |
 | container\_spec\_gcs\_path | The GCS path to the Dataflow job Flex Template. | `string` | n/a | yes |
 | enable\_streaming\_engine | Enable/disable the use of Streaming Engine for the job. | `bool` | `false` | no |

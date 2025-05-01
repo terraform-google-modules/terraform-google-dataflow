@@ -80,5 +80,5 @@ spec:
       - serviceusage.googleapis.com
       - dataflow.googleapis.com
     providerVersions:
-      - source: hashicorp/google-beta
+      - source: hashicorp/google
         version: ">= 3.53, < 7"

@@ -20,7 +20,6 @@ metadata:
     config.kubernetes.io/local-config: "true"
 spec:
   info:
-    title: Google Dataflow Flex Template Job Terraform Module
     source:
       repo: https://github.com/terraform-google-modules/terraform-google-dataflow.git
       sourceType: git
@@ -140,6 +139,10 @@ spec:
         description: User labels to be specified for the job.
         varType: map(string)
         defaultValue: {}
+      - name: additional_pipeline_options
+        description: List of pipeline options that should be used by the job. An example value is `['numberOfWorkerHarnessThreads=300','sdkLocation=container']`
+        varType: list(string)
+        defaultValue: []
     outputs:
       - name: container_spec_gcs_path
         description: The GCS path to the Dataflow job Flex Template.
