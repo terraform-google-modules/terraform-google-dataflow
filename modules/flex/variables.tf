@@ -135,3 +135,9 @@ variable "labels" {
   description = "User labels to be specified for the job."
   default     = {}
 }
+
+variable "additional_pipeline_options" {
+  type        = list(string)
+  description = "List of pipeline options that should be used by the job. An example value is `['numberOfWorkerHarnessThreads=300','sdkLocation=container']`"
+  default     = []
+}

@@ -38,4 +38,5 @@ resource "google_dataflow_flex_template_job" "dataflow_job" {
   additional_experiments       = var.additional_experiments
   parameters                   = var.parameters
   labels                       = var.labels
+  additional_pipeline_options  = var.additional_pipeline_options
 }
