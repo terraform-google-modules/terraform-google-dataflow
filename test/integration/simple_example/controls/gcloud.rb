@@ -78,7 +78,7 @@ end
 
 control "gsutil" do
   title "bucket configuration"
-  describe command("gsutil -o Credentials:gs_service_key_file=$GOOGLE_APPLICATION_CREDENTIALS lifecycle get gs://#{bucket_name} --project=#{project_id}") do
+  describe command("gcloud storage buckets describe gs://#{bucket_name} --project=#{project_id} --format='gsutiljson(lifecycle)'") do
       its(:exit_status) { should eq 0 }
       its(:stderr) { should eq '' }
       its('stdout') { should match("has no lifecycle configuration.") }
