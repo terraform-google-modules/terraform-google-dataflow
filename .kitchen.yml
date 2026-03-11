@@ -1,4 +1,4 @@
-# Copyright 2019 Google LLC
+# Copyright 2019-2026 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -40,5 +40,22 @@ suites:
             - gcloud
             - gcloud_dataflow
             - gsutil
+    provisioner:
+      name: terraform
+  - name: "confidential_compute_example"
+    driver:
+      name: "terraform"
+      command_timeout: 1800
+      root_module_directory: test/fixtures/confidential_compute_example/
+    verifier:
+      name: terraform
+      color: false
+      systems:
+        - name: confidential_compute_example
+          backend: local
+          controls:
+            - gcloud
+            - gcloud_dataflow
+            - dataflow_confidential_compute_enabled
     provisioner:
       name: terraform
