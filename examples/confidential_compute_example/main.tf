@@ -74,7 +74,7 @@ module "dataflow-job" {
   service_account_email = var.service_account_email
   network_name          = module.vpc.network_self_link
   subnetwork            = module.vpc.subnets_self_links[0]
-  use_public_ips        = true
+  use_public_ips        = false
   machine_type          = "n2d-standard-2" # For confidential computing supported machines list access: <https://cloud.google.com/confidential-computing/confidential-vm/docs/supported-configurations>
 
   parameters = {
