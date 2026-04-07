@@ -16,12 +16,12 @@
 
 variable "project_id" {
   type        = string
-  description = "The project ID to deploy to"
+  description = "The project ID to deploy to."
 }
 
 variable "region" {
   type        = string
-  description = "The region in which the bucket will be deployed"
+  description = "The region in which the bucket will be deployed."
 }
 
 variable "service_account_email" {
