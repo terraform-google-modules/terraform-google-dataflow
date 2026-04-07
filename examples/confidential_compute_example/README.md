@@ -56,18 +56,18 @@ To provision this example, run the following from within this directory:
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | force\_destroy | When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that contains objects, Terraform will fail that run. | `bool` | `false` | no |
-| project\_id | The project ID to deploy to | `string` | n/a | yes |
-| region | The region in which the bucket will be deployed | `string` | n/a | yes |
+| project\_id | The project ID to deploy to. | `string` | n/a | yes |
+| region | The region in which the bucket will be deployed. | `string` | n/a | yes |
 | service\_account\_email | The Service Account email used to create the job. | `string` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| bucket\_name | The name of the bucket |
-| df\_job\_id | The unique Id of the newly created Dataflow job |
-| df\_job\_name | The name of the newly created Dataflow job |
-| df\_job\_state | The state of the newly created Dataflow job |
-| project\_id | The project's ID |
+| bucket\_name | The name of the bucket. |
+| df\_job\_id | The unique Id of the newly created Dataflow job. |
+| df\_job\_name | The name of the newly created Dataflow job. |
+| df\_job\_state | The state of the newly created Dataflow job. |
+| project\_id | The project's ID. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
