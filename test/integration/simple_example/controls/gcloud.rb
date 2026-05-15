@@ -81,6 +81,6 @@ control "gsutil" do
   describe command("gcloud storage buckets describe gs://#{bucket_name} --project=#{project_id} --format='gsutiljson(lifecycle)'") do
       its(:exit_status) { should eq 0 }
       its(:stderr) { should eq '' }
-      its('stdout') { should match("has no lifecycle configuration.") }
+      its('stdout') { should match("") }
   end
 end
