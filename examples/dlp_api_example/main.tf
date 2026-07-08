@@ -146,3 +146,5 @@ resource "null_resource" "destroy_deidentify_template" {
 EOF
   }
 }
+
+# (doc) trivial no-op comment
