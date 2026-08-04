@@ -42,7 +42,7 @@ resource "null_resource" "download_sample_cc_into_gcs" {
     unzip cc_records.zip
     rm cc_records.zip
     mv 1500000\ CC\ Records.csv cc_records.csv
-    gsutil cp cc_records.csv gs://${module.dataflow-bucket.name}
+    gcloud storage cp cc_records.csv gs://${module.dataflow-bucket.name}
     rm cc_records.csv
 EOF
 
